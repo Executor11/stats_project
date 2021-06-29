@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "sf-pro";
+  src: url("../fonts/SF-Pro.ttf") format("truetype");
+}
+body {
+  background: #ECEFFA;
+  font-family: sf-pro;
+}
+
+/*# sourceMappingURL=styles.css.map */
