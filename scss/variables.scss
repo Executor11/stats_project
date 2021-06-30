@@ -25,6 +25,10 @@ $padding: 1rem;
   color: $blue;
 }
 
+.extra-bold {
+  text-shadow: -0.5px 0 $black, 0 0.5px $black, 0.5px 0 $black, 0 -0.5px $black;
+}
+
 .bold {
   font-family: sf-pro-bold;
   font-weight: 900;

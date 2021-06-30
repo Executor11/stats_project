@@ -22,7 +22,7 @@ body {
 }
 
 .header_top {
-  width: 100%;
+  margin: 20px;
   display: grid;
   align-items: center;
   grid-template-columns: repeat(16, 1fr);
@@ -31,9 +31,88 @@ body {
     align-self: center;
   }
   .header_title {
-    display: flex;
-    grid-column: 2/4;
-    justify-self: center;
-    align-self: center;
+    @include flex_center;
+    @include grid-column(1, 4);
+    font-size: 22px;
+  }
+
+  .header_search {
+    @include flex_center;
+    @include grid-column(6, 11);
+    position: relative;
+    width: 540px;
+
+    .servers,
+    .search_input,
+    .search_btn {
+      @include search;
+      @include btn;
+    }
+    .servers {
+      width: 60px;
+      left: 0;
+      z-index: 2;
+    }
+    .search_input {
+      width: 430px;
+      padding-left: 90px;
+      background: #fff;
+      color: #222;
+    }
+    .search_btn {
+      width: 40px;
+      right: 0;
+      z-index: 2;
+    }
+  }
+
+  .header_account-mngr {
+    @include grid-column(14, 16);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    align-items: center;
+    .language {
+      @include btn;
+      width: 60px;
+    }
+    .chat {
+      @include account_manager;
+    }
+    .favourite {
+      @include account_manager;
+    }
+    .notification {
+      @include account_manager;
+      position: relative;
+      &:after {
+        content: "3";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: $rose;
+        font-size: 10px;
+        border-radius: 10px;
+        right: -3px;
+        top: 0;
+        color: #fff;
+        text-align: center;
+      }
+    }
+
+    .user {
+      @include flex_center;
+
+      .avatar {
+        margin: 10px;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        clip-path: circle(50% at 50% 50%);
+      }
+      i {
+        font-size: 1rem;
+      }
+    }
   }
 }

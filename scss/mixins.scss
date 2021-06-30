@@ -3,3 +3,34 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin grid-column($start, $end) {
+  grid-column-start: $start;
+  grid-column-end: $end;
+  justify-self: center;
+  align-self: center;
+}
+@mixin search {
+  position: absolute;
+}
+
+@mixin btn {
+  padding: 10px;
+  border-radius: 1rem;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  background: $blue;
+  color: $moon;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+@mixin account_manager {
+  margin: 20px;
+  color: $blue;
+  font-size: 22px;
+  justify-self: center;
+  align-self: center;
+  position: relative;
+}
