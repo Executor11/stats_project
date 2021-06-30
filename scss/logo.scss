@@ -1,0 +1,37 @@
+@import "variables";
+
+@mixin spans {
+  position: absolute;
+  height: 40%;
+  width: 3px;
+  border-radius: 5px;
+  background: $moon;
+}
+
+.logo {
+  margin: 0 10px 0 10px;
+  .hexagon {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    background: $gradient;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    .span1 {
+      @include spans;
+      left: calc(50% - 8px);
+      top: calc(40% + 1px);
+    }
+    .span2 {
+      @include spans;
+      left: calc(50% - 2px);
+      top: calc(40% - 2px);
+    }
+    .span3 {
+      @include spans;
+      left: calc(50% + 4px);
+      top: calc(40% - 5px);
+    }
+  }
+}

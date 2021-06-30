@@ -1,12 +1,31 @@
 $black: #121518;
-$blue: #433FD1;
-$moon: #ECEFFA;
-$green: #3ABF5D;
-$rose: #D53D9C;
-$gradient: linear-gradient(90deg, rgba(213,61,156,1) 0%, rgba(67,63,209,1) 100%);
+$blue: #433fd1;
+$bluemoon: #eceffa;
+$moon: #f6f7ff;
+$green: #3abf5d;
+$rose: #d53d9c;
+$gradient: linear-gradient(
+  90deg,
+  rgba(67, 63, 209, 1) 0%,
+  rgba(213, 61, 156, 1) 100%
+);
 $mainFont: sf-pro;
+$padding: 1rem;
 
 @font-face {
-    font-family: 'sf-pro';
-    src: url('../fonts/SF-Pro.ttf') format('truetype');
+  font-family: "sf-pro";
+  src: url("../fonts/SF-Pro.ttf") format("truetype");
+}
+@font-face {
+  font-family: "sf-pro-bold";
+  src: url("../fonts/SFPro-Bold.ttf") format("truetype");
+}
+
+.blue {
+  color: $blue;
+}
+
+.bold {
+  font-family: sf-pro-bold;
+  font-weight: 900;
 }
