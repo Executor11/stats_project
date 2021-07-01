@@ -34,3 +34,16 @@
   align-self: center;
   position: relative;
 }
+
+@mixin games_menu {
+  width: 50px;
+  height: 50px;
+  border-radius: 1rem;
+  background: $blue;
+}
+
+@mixin game_bg {
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}

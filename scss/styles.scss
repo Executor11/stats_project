@@ -2,6 +2,12 @@
 @import "mixins";
 @import "logo";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html,
 body {
   background: $bluemoon;
@@ -11,6 +17,9 @@ body {
   position: relative;
   @include flex_center;
 }
+a {
+  text-decoration: none;
+}
 
 .main_wrapper {
   width: 100%;
@@ -18,11 +27,10 @@ body {
   background: $moon;
   border-radius: 2rem;
   margin: 15px 15px 15px 15px;
-  border: 1px solid #000;
 }
 
 .header_top {
-  margin: 20px;
+  margin: 20px 20px 50px 20px;
   display: grid;
   align-items: center;
   grid-template-columns: repeat(16, 1fr);
@@ -33,7 +41,7 @@ body {
   .header_title {
     @include flex_center;
     @include grid-column(1, 4);
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .header_search {
@@ -54,7 +62,8 @@ body {
       z-index: 2;
     }
     .search_input {
-      width: 430px;
+      cursor: auto;
+      width: 500px;
       padding-left: 90px;
       background: #fff;
       color: #222;
@@ -103,6 +112,25 @@ body {
     .user {
       @include flex_center;
 
+      .avatar_link {
+        position: relative;
+
+        &:after {
+          padding: 2px;
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background: $green;
+          font-size: 10px;
+          border-radius: 10px;
+          left: 10px;
+          bottom: 15px;
+          text-align: center;
+          vertical-align: middle;
+          border: 1px solid #fff;
+        }
+      }
       .avatar {
         margin: 10px;
         cursor: pointer;
@@ -114,5 +142,116 @@ body {
         font-size: 1rem;
       }
     }
+  }
+}
+
+// left menu bar
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+  //sidebars
+  .side_bar {
+    width: 250px;
+    height: 100%;
+    border-radius: 2rem;
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: inset 6px 1px 10px -8px #494949;
+
+    //left
+    .games {
+      width: 40%;
+      height: 100%;
+      background: $blue;
+      border-radius: 2rem;
+      display: grid;
+      grid-template-rows: repeat(10, 1fr);
+      justify-content: center;
+      align-items: center;
+
+      //items
+      .game_link,
+      .add_game {
+        @include flex_center;
+        @include games_menu;
+        box-shadow: -1px 2px 30px -8px rgba(236, 239, 250, 0.53);
+        margin-top: 30px;
+      }
+      .bar {
+        @include flex_center;
+        @include games_menu;
+        margin-top: 30px;
+        font-size: 24px;
+        color: $moon;
+      }
+      .dota {
+        background-image: url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/global/dota2_logo_symbol.png");
+        @include game_bg;
+      }
+      .overwatch {
+        background-image: url("https://playoverwatch.com/svg?path=https%3A%2F%2Fstatic.playoverwatch.com%2Fimg%2Flogos%2Flogo--overwatch-7d38f33606.svg");
+        @include game_bg;
+      }
+      .fa-gg-circle {
+        font-size: 28px;
+        color: #ffffff;
+      }
+
+      .add_game {
+        border: 3px dashed $moon;
+        color: $moon;
+        box-shadow: inset 8px 100px 7px -5px rgba(236, 239, 250, 0.1);
+      }
+
+      .background_mode {
+        @include flex_center;
+
+        align-self: start;
+        grid-row: 10/-1;
+
+        i {
+          color: #fff;
+          font-size: 38px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  // navigation
+  .nav {
+    width: 100%;
+    border-radius: 2rem;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+      .nav_list {
+        width: 100%;
+        list-style: none;
+        padding: 20px 10px 15px 40px;
+        font-size: 12px;
+        color: $silver;
+
+        i {
+          padding: 5px;
+          font-size: 1rem;
+        }
+      }
+      .active {
+        color: $blue;
+      }
+    }
+  }
+
+  //content rendering
+  .content_renderer {
+    width: calc(100% - 250px);
+    height: 100%;
+    // border: 1px solid #000;
   }
 }

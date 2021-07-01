@@ -81,6 +81,12 @@
   top: calc(40% - 5px);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html,
 body {
   background: #eceffa;
@@ -93,17 +99,20 @@ body {
   justify-content: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 .main_wrapper {
   width: 100%;
   height: 97%;
   background: #f6f7ff;
   border-radius: 2rem;
   margin: 15px 15px 15px 15px;
-  border: 1px solid #000;
 }
 
 .header_top {
-  margin: 20px;
+  margin: 20px 20px 50px 20px;
   display: grid;
   align-items: center;
   grid-template-columns: repeat(16, 1fr);
@@ -119,7 +128,7 @@ body {
   grid-column-end: 4;
   justify-self: center;
   align-self: center;
-  font-size: 22px;
+  font-size: 18px;
 }
 .header_top .header_search {
   display: flex;
@@ -152,7 +161,8 @@ body {
   z-index: 2;
 }
 .header_top .header_search .search_input {
-  width: 430px;
+  cursor: auto;
+  width: 500px;
   padding-left: 90px;
   background: #fff;
   color: #222;
@@ -227,6 +237,24 @@ body {
   align-items: center;
   justify-content: center;
 }
+.header_top .header_account-mngr .user .avatar_link {
+  position: relative;
+}
+.header_top .header_account-mngr .user .avatar_link:after {
+  padding: 2px;
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #3abf5d;
+  font-size: 10px;
+  border-radius: 10px;
+  left: 10px;
+  bottom: 15px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #fff;
+}
 .header_top .header_account-mngr .user .avatar {
   margin: 10px;
   cursor: pointer;
@@ -236,6 +264,114 @@ body {
 }
 .header_top .header_account-mngr .user i {
   font-size: 1rem;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.content .side_bar {
+  width: 250px;
+  height: 100%;
+  border-radius: 2rem;
+  display: flex;
+  background-color: #ffffff;
+  box-shadow: inset 6px 1px 10px -8px #494949;
+}
+.content .side_bar .games {
+  width: 40%;
+  height: 100%;
+  background: #433fd1;
+  border-radius: 2rem;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+.content .side_bar .games .game_link,
+.content .side_bar .games .add_game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 1rem;
+  background: #433fd1;
+  box-shadow: -1px 2px 30px -8px rgba(236, 239, 250, 0.53);
+  margin-top: 30px;
+}
+.content .side_bar .games .bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 1rem;
+  background: #433fd1;
+  margin-top: 30px;
+  font-size: 24px;
+  color: #f6f7ff;
+}
+.content .side_bar .games .dota {
+  background-image: url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/global/dota2_logo_symbol.png");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.content .side_bar .games .overwatch {
+  background-image: url("https://playoverwatch.com/svg?path=https%3A%2F%2Fstatic.playoverwatch.com%2Fimg%2Flogos%2Flogo--overwatch-7d38f33606.svg");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.content .side_bar .games .fa-gg-circle {
+  font-size: 28px;
+  color: #ffffff;
+}
+.content .side_bar .games .add_game {
+  border: 3px dashed #f6f7ff;
+  color: #f6f7ff;
+  box-shadow: inset 8px 100px 7px -5px rgba(236, 239, 250, 0.1);
+}
+.content .side_bar .games .background_mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: start;
+  grid-row: 10/-1;
+}
+.content .side_bar .games .background_mode i {
+  color: #fff;
+  font-size: 38px;
+  cursor: pointer;
+}
+.content .nav {
+  width: 100%;
+  border-radius: 2rem;
+}
+.content .nav ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.content .nav ul .nav_list {
+  width: 100%;
+  list-style: none;
+  padding: 20px 10px 15px 40px;
+  font-size: 12px;
+  color: #a3a8b0;
+}
+.content .nav ul .nav_list i {
+  padding: 5px;
+  font-size: 1rem;
+}
+.content .nav ul .active {
+  color: #433fd1;
+}
+.content .content_renderer {
+  width: calc(100% - 250px);
+  height: 100%;
 }
 
 /*# sourceMappingURL=styles.css.map */
