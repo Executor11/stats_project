@@ -81,6 +81,56 @@
   top: calc(40% - 5px);
 }
 
+.content_renderer {
+  overflow: hidden;
+}
+.content_renderer .level {
+  width: 100%;
+  position: relative;
+}
+.content_renderer .level .hero {
+  width: 92px;
+  height: 92px;
+  border-radius: 100%;
+  position: absolute;
+  left: 49%;
+  top: 55px;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  border: 10px solid #a3a8b0;
+  background-image: url(../img/avatar.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.content_renderer .level svg {
+  min-width: 50%;
+  width: 50%;
+  position: absolute;
+  left: 30%;
+  top: -20px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateZ(-90deg);
+}
+.content_renderer .level svg circle {
+  width: 20px;
+  height: 20px;
+  fill: transparent;
+  stroke: #433fd1;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: animate 2s linear forwards;
+}
+
+@keyframes animate {
+  100% {
+    stroke-dashoffset: 260;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -346,6 +396,9 @@ a {
   font-size: 38px;
   cursor: pointer;
 }
+.content .side_bar .games .background_mode i:hover {
+  color: #121518;
+}
 .content .nav {
   width: 100%;
   border-radius: 2rem;
@@ -356,6 +409,7 @@ a {
   margin-top: 30px;
 }
 .content .nav ul .nav_list {
+  cursor: pointer;
   width: 100%;
   list-style: none;
   padding: 20px 10px 15px 40px;
@@ -366,12 +420,62 @@ a {
   padding: 5px;
   font-size: 1rem;
 }
+.content .nav ul .nav_list:hover {
+  color: #433fd1;
+}
 .content .nav ul .active {
   color: #433fd1;
 }
 .content .content_renderer {
-  width: calc(100% - 250px);
+  background-color: #f6f7ff;
+  width: calc(100% - 300px);
+  margin-left: 50px;
   height: 100%;
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+}
+.content .content_renderer .header {
+  font-size: 30px;
+  width: 100%;
+  color: #433fd1;
+  font-weight: 900;
+}
+.content .content_renderer .info {
+  grid-row: 2/4;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 50px;
+}
+.content .content_renderer .info .character_header {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.content .content_renderer .info .character_header .caption {
+  color: #121518;
+  width: 80%;
+  text-align: center;
+}
+.content .content_renderer .info .character_header i {
+  color: #a3a8b0;
+  font-size: 1em;
+}
+.content .content_renderer .info .character_header i:hover {
+  color: #433fd1;
+}
+.content .content_renderer .info .character,
+.content .content_renderer .info .role,
+.content .content_renderer .info .rank,
+.content .content_renderer .info .hero {
+  border: 1px solid black;
+}
+.content .content_renderer .player div {
+  background: #f6f7ff;
+  border-radius: 1rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

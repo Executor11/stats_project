@@ -1,0 +1,49 @@
+.content_renderer {
+  overflow: hidden;
+  .level {
+    width: 100%;
+    position: relative;
+
+    .hero {
+      width: 92px;
+      height: 92px;
+      border-radius: 100%;
+      position: absolute;
+      left: 49%;
+      top: 55px;
+      z-index: 2;
+      transform: translate(-50%, -50%);
+      border: 10px solid $silver;
+      background-image: url(../img/avatar.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    svg {
+      min-width: 50%;
+      width: 50%;
+      position: absolute;
+      left: 30%;
+      top: -20px;
+      transform: translate(-50%, -50%);
+      @include flex_center;
+      transform: rotateZ(-90deg);
+    }
+    svg circle {
+      width: 20px;
+      height: 20px;
+      fill: transparent;
+      stroke: $blue;
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      animation: animate 2s linear forwards;
+    }
+  }
+}
+@keyframes animate {
+  100% {
+    stroke-dashoffset: 260;
+  }
+}

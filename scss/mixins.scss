@@ -47,3 +47,9 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@mixin hoverBlue {
+  &:hover {
+    color: $blue;
+  }
+}

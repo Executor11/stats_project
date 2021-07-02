@@ -1,6 +1,7 @@
 @import "variables";
 @import "mixins";
 @import "logo";
+@import "progressbar";
 
 * {
   margin: 0;
@@ -216,6 +217,9 @@ a {
           color: #fff;
           font-size: 38px;
           cursor: pointer;
+          &:hover {
+            color: $black;
+          }
         }
       }
     }
@@ -231,6 +235,7 @@ a {
       flex-direction: column;
       margin-top: 30px;
       .nav_list {
+        cursor: pointer;
         width: 100%;
         list-style: none;
         padding: 20px 10px 15px 40px;
@@ -241,6 +246,8 @@ a {
           padding: 5px;
           font-size: 1rem;
         }
+
+        @include hoverBlue;
       }
       .active {
         color: $blue;
@@ -250,8 +257,55 @@ a {
 
   //content rendering
   .content_renderer {
-    width: calc(100% - 250px);
+    background-color: $moon;
+    width: calc(100% - 300px);
+    margin-left: 50px;
     height: 100%;
-    // border: 1px solid #000;
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+
+    .header {
+      font-size: 30px;
+      width: 100%;
+      color: $blue;
+      font-weight: 900;
+    }
+    .info {
+      grid-row: 2/4;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0 50px;
+
+      .character_header {
+        width: 100%;
+        padding: 15px;
+        @include flex_center;
+        flex-direction: row;
+        .caption {
+          color: $black;
+          width: 80%;
+          text-align: center;
+        }
+        i {
+          color: $silver;
+          font-size: 1em;
+          @include hoverBlue;
+        }
+      }
+
+      // delete after complete
+      .character,
+      .role,
+      .rank,
+      .hero {
+        border: 1px solid black;
+      }
+    }
+
+    .player div {
+      background: $moon;
+      border-radius: 1rem;
+    }
   }
 }
