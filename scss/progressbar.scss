@@ -2,44 +2,28 @@
   overflow: hidden;
   .level {
     width: 100%;
+    height: 50%;
+    padding: 40px;
     position: relative;
+    @include flex_center;
 
     .hero {
-      width: 92px;
-      height: 92px;
+      @include flex_center;
+      width: 80px;
+      height: 80px;
       border-radius: 100%;
-      position: absolute;
-      left: 49%;
-      top: 55px;
       z-index: 2;
-      transform: translate(-50%, -50%);
+      
       border: 10px solid $silver;
-      background-image: url(../img/avatar.jpg);
+      background-image: url(../img/widowmaker.png);
       background-repeat: no-repeat;
       background-size: cover;
     }
-
-    svg {
-      min-width: 50%;
-      width: 50%;
+    .level_counter{
       position: absolute;
-      left: 30%;
-      top: -20px;
-      transform: translate(-50%, -50%);
-      @include flex_center;
-      transform: rotateZ(-90deg);
     }
-    svg circle {
-      width: 20px;
-      height: 20px;
-      fill: transparent;
-      stroke: $blue;
-      stroke-width: 10;
-      stroke-linecap: round;
-      stroke-dasharray: 500;
-      stroke-dashoffset: 500;
-      animation: animate 2s linear forwards;
-    }
+
+    
   }
 }
 @keyframes animate {
@@ -47,3 +31,132 @@
     stroke-dashoffset: 260;
   }
 }
+
+
+//
+
+
+
+
+
+// -- vars
+
+$default-size: 120px;
+$label-font-size: $default-size / 4;
+$label-font-size-redo: $default-size * 4;
+// $progress_level: 70;
+
+
+// -- mixins
+@mixin size($width, $height) {
+  height: $height;
+  width: $width;
+}
+
+@mixin draw-progress($progress, $color) {
+  
+  .pie {
+    .half-circle {
+      border-color: $color;
+    }
+    
+    .left-side {
+      animation: animate 4s infinite;
+      transform: rotate($progress * 3.6deg);
+    }
+
+    @if $progress <= 50 {
+      .right-side {
+        display: none;
+      }
+    } @else {
+      clip: rect(auto, auto, auto, auto);
+
+      .right-side {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+
+
+// -- selectors
+
+
+.pie-wrapper {
+  
+  @include size($default-size, $default-size);
+  float: left;
+  margin: 15px;
+  position: relative;
+  
+  
+  &:nth-child(3n + 1) {
+    clear: both;
+  }
+  
+  .pie {
+    @include size(120px, 120px);
+    clip: rect(0, $default-size, $default-size, $default-size / 2);
+    left: 0;
+    position: absolute;
+    top: 0;
+    
+    .half-circle {
+      @include size(120px, 120px);
+      border: ($default-size / 10) solid #3498db;
+      border-radius: 50%;
+      clip: rect(0, $default-size / 2, $default-size, 0);
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .label {
+    
+    border-radius: 50%;
+    bottom: $label-font-size-redo / 10;
+    color: #ecf0f1;
+    cursor: default;
+    display: block;
+    font-size: $label-font-size;
+    left: $label-font-size-redo / 10;
+    line-height: $label-font-size-redo * .70;
+    position: absolute;
+    right: $label-font-size-redo / 10;
+    text-align: center;
+    top: $label-font-size-redo / 10;
+
+  }
+
+  .shadow {
+    @include size(120px, 120px);
+    border: $default-size / 10 solid $bluemoon;
+    border-radius: 50%;
+  }
+
+  &.style-2 {
+    .label {
+      background: none;
+      color: $silver;
+
+      .smaller {
+        color: #bdc3c7;
+      }
+    }
+  }
+
+  
+
+  &.progress {
+    @include draw-progress(80, $blue);
+    
+  }
+
+  
+}
+
+
+

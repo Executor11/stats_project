@@ -19,27 +19,6 @@
   font-weight: 900;
 }
 
-@font-face {
-  font-family: "sf-pro";
-  src: url("../fonts/SF-Pro.ttf") format("truetype");
-}
-@font-face {
-  font-family: "sf-pro-bold";
-  src: url("../fonts/SFPro-Bold.ttf") format("truetype");
-}
-.blue {
-  color: #433fd1;
-}
-
-.extra-bold {
-  text-shadow: -0.5px 0 #121518, 0 0.5px #121518, 0.5px 0 #121518, 0 -0.5px #121518;
-}
-
-.bold {
-  font-family: sf-pro-bold;
-  font-weight: 900;
-}
-
 .logo {
   margin: 0 10px 0 10px;
 }
@@ -86,44 +65,28 @@
 }
 .content_renderer .level {
   width: 100%;
+  height: 50%;
+  padding: 40px;
   position: relative;
-}
-.content_renderer .level .hero {
-  width: 92px;
-  height: 92px;
-  border-radius: 100%;
-  position: absolute;
-  left: 49%;
-  top: 55px;
-  z-index: 2;
-  transform: translate(-50%, -50%);
-  border: 10px solid #a3a8b0;
-  background-image: url(../img/avatar.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.content_renderer .level svg {
-  min-width: 50%;
-  width: 50%;
-  position: absolute;
-  left: 30%;
-  top: -20px;
-  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: rotateZ(-90deg);
 }
-.content_renderer .level svg circle {
-  width: 20px;
-  height: 20px;
-  fill: transparent;
-  stroke: #433fd1;
-  stroke-width: 10;
-  stroke-linecap: round;
-  stroke-dasharray: 500;
-  stroke-dashoffset: 500;
-  animation: animate 2s linear forwards;
+.content_renderer .level .hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  z-index: 2;
+  border: 10px solid #a3a8b0;
+  background-image: url(../img/widowmaker.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.content_renderer .level .level_counter {
+  position: absolute;
 }
 
 @keyframes animate {
@@ -131,6 +94,75 @@
     stroke-dashoffset: 260;
   }
 }
+.pie-wrapper {
+  height: 120px;
+  width: 120px;
+  float: left;
+  margin: 15px;
+  position: relative;
+}
+.pie-wrapper:nth-child(3n+1) {
+  clear: both;
+}
+.pie-wrapper .pie {
+  height: 120px;
+  width: 120px;
+  clip: rect(0, 120px, 120px, 60px);
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.pie-wrapper .pie .half-circle {
+  height: 120px;
+  width: 120px;
+  border: 12px solid #3498db;
+  border-radius: 50%;
+  clip: rect(0, 60px, 120px, 0);
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+.pie-wrapper .label {
+  border-radius: 50%;
+  bottom: 48px;
+  color: #ecf0f1;
+  cursor: default;
+  display: block;
+  font-size: 30px;
+  left: 48px;
+  line-height: 336px;
+  position: absolute;
+  right: 48px;
+  text-align: center;
+  top: 48px;
+}
+.pie-wrapper .shadow {
+  height: 120px;
+  width: 120px;
+  border: 12px solid #eceffa;
+  border-radius: 50%;
+}
+.pie-wrapper.style-2 .label {
+  background: none;
+  color: #a3a8b0;
+}
+.pie-wrapper.style-2 .label .smaller {
+  color: #bdc3c7;
+}
+.pie-wrapper.progress .pie {
+  clip: rect(auto, auto, auto, auto);
+}
+.pie-wrapper.progress .pie .half-circle {
+  border-color: #433fd1;
+}
+.pie-wrapper.progress .pie .left-side {
+  animation: animate 4s infinite;
+  transform: rotate(288deg);
+}
+.pie-wrapper.progress .pie .right-side {
+  transform: rotate(180deg);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -473,7 +505,7 @@ a {
 .content .content_renderer .info .hero {
   border: 1px solid black;
 }
-.content .content_renderer .player div {
+.content .content_renderer .player > div {
   background: #f6f7ff;
   border-radius: 1rem;
 }
