@@ -124,7 +124,7 @@ $label-font-size-redo: $default-size * 4;
   //
   .shadow {
     @include size(100px, 100px);
-    border: $default-size / 10 solid $bluemoon;
+    border: ($default-size / 10) solid $bluemoon;
     border-radius: 50%;
   }
 }

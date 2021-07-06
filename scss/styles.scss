@@ -28,6 +28,9 @@ a {
   background: $moon;
   border-radius: 2rem;
   margin: 15px 15px 15px 15px;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1),
+          -20px -15px 17px -9px rgb(255, 255, 255),
+          0px 5px 10px 2px rgba(236, 239, 250, 1) inset;
 }
 
 .header_top {
@@ -160,7 +163,9 @@ a {
     border-radius: 2rem;
     display: flex;
     background-color: #ffffff;
-    box-shadow: inset 6px 1px 10px -8px #494949;
+    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1),
+          -20px -15px 17px -9px rgb(255, 255, 255),
+          0px 5px 10px 2px rgba(236, 239, 250, 1) inset;
 
     //left
     .games {
@@ -275,7 +280,8 @@ a {
       width: 100%;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0 30px;
+      // column-gap: 20px;
+      row-gap: 20px;
 
       .character_header {
         width: 100%;
@@ -299,19 +305,13 @@ a {
       .role,
       .rank,
       .favourite_hero {
-        height: 190px;
-        width: 290px;
-        // border: 1px solid black;
-        box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1),
-          -20px -15px 17px -9px rgb(255, 255, 255),
-          0px 5px 10px 2px rgba(236, 239, 250, 1) inset;
+        @include  main_sections(190px,90%)
+        
       }
       .rank {
-        width: 270px;
       }
       .favourite_hero {
         margin-right: 20px;
-        width: 270px;
       }
 
       .role,
@@ -337,11 +337,8 @@ a {
           height: $height;
           justify-content: space-around;
         }
-        .win_rate {
-        }
-        .rate {
-        }
-        .count {
+        .difficulty{
+          margin-bottom: -10px;
         }
       }
     }
@@ -374,6 +371,72 @@ a {
     .fa-ellipsis-h {
       grid-column: 5/-1;
       color: $silver;
+      padding: 20px;
     }
+  }
+  .statistics{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: 4/6;
+    .title{
+      padding: 20px;
+    }
+  }
+  .title_bg{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    i{
+      margin-right: 10px;
+    }
+    
+  }
+  .content_bg{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-items: center;
+    
+  figure{
+    @include flex_center;
+    flex-direction: column;
+    .img{
+      width: 120px;
+      height: 120px;
+      
+      background-position: center;
+      background-size: cover;
+      border-radius: 100%;
+      margin: 10px;
+      position: relative;
+
+      &.img_1{
+        background-image: $gradient_low_alfa, url('../img/map1.jpg');
+        @include after_battlegraund(attr(data-value));
+      }
+      &.img_2{
+        background-image: $gradient_low_alfa, url('../img/map2.jpg');
+        @include after_battlegraund(attr(data-value));
+      }
+      &.img_3{
+        background-image: $gradient_low_alfa, url('../img/map3.jpg');
+        @include after_battlegraund(attr(data-value));
+      }
+
+      
+    }
+    figcaption{
+      margin-bottom: 10px;
+    }
+    
+  }
+  }
+  .battlegrounds,
+  .last_games{
+    @include  main_sections(250px,95%);
+    
+    
   }
 }

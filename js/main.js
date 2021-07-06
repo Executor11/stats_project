@@ -53,8 +53,40 @@ refresher.onclick = () => {
 
   if (!lockedRefresher) {
     styles.transform = `rotate(${(rotation += 180)}deg)`;
+      
     progressBar(70);
     lastUpdateTimer();
   }
   lockedRefresher = true;
 };
+// after pseudo element content on loading
+const loadingRateOfBg = () => {
+  const loadingElem = document.querySelectorAll(' figure > .img');
+  const playedGames = document.querySelectorAll(' figcaption > .black');
+  [...playedGames].forEach((e) => {
+    const value = e.textContent; 
+   let start = 0;
+ const interval = setInterval(() => {
+   
+         start += Math.round(Math.random() * 5);
+         e.textContent = start;
+         if(start >= value) window.clearInterval(interval);
+      }, 10);
+   
+ });
+
+  [...loadingElem].forEach((e) => {
+     start = 0;
+  const interval = setInterval(() => {
+          start += Math.random() * 2.5;
+          e.setAttribute('data-value', start.toFixed(1) +'%')
+          if(start >= 64) window.clearInterval(interval);
+       }, 110);
+    
+  })
+  // graphElem.addEventListener('click', function (event) {
+  //     event.target.setAttribute('data-before', 'anything');
+  // });
+  // 
+};
+loadingRateOfBg();

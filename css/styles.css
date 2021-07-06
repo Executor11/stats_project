@@ -16,7 +16,63 @@
 
 .bold {
   font-family: sf-pro-bold;
-  font-weight: 900;
+  font-weight: bold;
+}
+
+.green {
+  color: #3abf5d;
+}
+
+.font-10 {
+  font-size: 10px;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.silver {
+  color: #a3a8b0;
+}
+
+.h-10 {
+  height: 10px;
+}
+
+.h-12 {
+  height: 12px;
+}
+
+.h-14 {
+  height: 14px;
+}
+
+.h-16 {
+  height: 16px;
+}
+
+.h-18 {
+  height: 18px;
+}
+
+.h-20 {
+  height: 20px;
+}
+
+.black {
+  color: #121518;
 }
 
 .logo {
@@ -192,6 +248,7 @@ a {
   background: #f6f7ff;
   border-radius: 2rem;
   margin: 15px 15px 15px 15px;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 10px 2px #eceffa inset;
 }
 
 .header_top {
@@ -360,7 +417,7 @@ a {
   border-radius: 2rem;
   display: flex;
   background-color: #ffffff;
-  box-shadow: inset 6px 1px 10px -8px #494949;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 10px 2px #eceffa inset;
 }
 .content .side_bar .games {
   width: 40%;
@@ -478,7 +535,7 @@ a {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0 30px;
+  row-gap: 20px;
 }
 .content .content_renderer .info .character_header {
   width: 100%;
@@ -505,15 +562,11 @@ a {
 .content .content_renderer .info .rank,
 .content .content_renderer .info .favourite_hero {
   height: 190px;
-  width: 290px;
-  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 10px 2px #eceffa inset;
-}
-.content .content_renderer .info .rank {
-  width: 270px;
+  width: 90%;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 20px 1px #eceffa inset, 0px 5px 15px 15px #eceffa;
 }
 .content .content_renderer .info .favourite_hero {
   margin-right: 20px;
-  width: 270px;
 }
 .content .content_renderer .info .role,
 .content .content_renderer .info .rank,
@@ -542,6 +595,11 @@ a {
   height: 100px;
   justify-content: space-around;
 }
+.content .content_renderer .info .role .difficulty,
+.content .content_renderer .info .rank .difficulty,
+.content .content_renderer .info .favourite_hero .difficulty {
+  margin-bottom: -10px;
+}
 .content .content_renderer .stats {
   width: 100%;
   grid-column: 2/5;
@@ -567,6 +625,91 @@ a {
 .content .content_renderer .fa-ellipsis-h {
   grid-column: 5/-1;
   color: #a3a8b0;
+  padding: 20px;
+}
+.content .statistics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row: 4/6;
+}
+.content .statistics .title {
+  padding: 20px;
+}
+.content .title_bg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.content .title_bg i {
+  margin-right: 10px;
+}
+.content .content_bg {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-items: center;
+}
+.content .content_bg figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.content .content_bg figure .img {
+  width: 120px;
+  height: 120px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 100%;
+  margin: 10px;
+  position: relative;
+}
+.content .content_bg figure .img.img_1 {
+  background-image: linear-gradient(90deg, rgba(67, 63, 209, 0.5) 0%, rgba(213, 61, 156, 0.5) 100%), url("../img/map1.jpg");
+}
+.content .content_bg figure .img.img_1:after {
+  color: #f6f7ff;
+  content: attr(data-value);
+  position: absolute;
+  font-size: 1.5rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.content .content_bg figure .img.img_2 {
+  background-image: linear-gradient(90deg, rgba(67, 63, 209, 0.5) 0%, rgba(213, 61, 156, 0.5) 100%), url("../img/map2.jpg");
+}
+.content .content_bg figure .img.img_2:after {
+  color: #f6f7ff;
+  content: attr(data-value);
+  position: absolute;
+  font-size: 1.5rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.content .content_bg figure .img.img_3 {
+  background-image: linear-gradient(90deg, rgba(67, 63, 209, 0.5) 0%, rgba(213, 61, 156, 0.5) 100%), url("../img/map3.jpg");
+}
+.content .content_bg figure .img.img_3:after {
+  color: #f6f7ff;
+  content: attr(data-value);
+  position: absolute;
+  font-size: 1.5rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.content .content_bg figure figcaption {
+  margin-bottom: 10px;
+}
+.content .battlegrounds,
+.content .last_games {
+  height: 250px;
+  width: 95%;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 20px 1px #eceffa inset, 0px 5px 15px 15px #eceffa;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -10,6 +10,11 @@ $gradient: linear-gradient(
   rgba(67, 63, 209, 1) 0%,
   rgba(213, 61, 156, 1) 100%
 );
+$gradient_low_alfa: linear-gradient(
+  90deg,
+  rgba(67, 63, 209, 0.5) 0%,
+  rgba(213, 61, 156, 0.5) 100%
+);
 $mainFont: sf-pro;
 $padding: 1rem;
 $height: 100px;
@@ -33,5 +38,50 @@ $height: 100px;
 
 .bold {
   font-family: sf-pro-bold;
-  font-weight: 900;
+  font-weight: bold;
+}
+
+.green{
+  color: $green;
+}
+.font-10{
+  font-size: 10px;
+}
+
+.font-12{
+  font-size: 12px;
+}
+.font-14{
+  font-size: 14px;
+}
+.font-18{
+  font-size: 18px;
+}
+.font-20{
+  font-size: 20px;
+}
+.silver{
+  color: $silver;
+}
+.h-10{
+  height: 10px;
+}
+.h-12{
+  height: 12px;
+}
+.h-14{
+  height: 14px;
+}
+.h-16{
+  height: 16px;
+}
+.h-18{
+  height: 18px;
+}
+.h-20{
+  height: 20px;
+}
+
+.black {
+  color: $black;
 }
