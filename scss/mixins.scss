@@ -54,25 +54,23 @@
   }
 }
 
-@mixin main_sections($height,$width) {
-        height: $height;
-        width: $width;
-        box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1),
-          -20px -15px 17px -9px rgb(255, 255, 255),
-          0px 5px 20px 1px rgba(236, 239, 250, 1) inset,
-          0px 5px 15px 15px rgba(236, 239, 250, 1);
-      
-          
+@mixin main_sections($height, $width) {
+  height: $height;
+  width: $width;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1),
+    -20px -15px 17px -9px rgb(255, 255, 255),
+    0px 5px 20px 1px rgba(236, 239, 250, 1) inset,
+    0px 5px 15px 15px rgba(236, 239, 250, 1);
 }
 
 @mixin after_battlegraund($content) {
-  &:after{
+  &:after {
     color: $moon;
     content: $content;
     position: absolute;
     font-size: 1.5rem;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
   }
 }

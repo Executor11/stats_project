@@ -1,4 +1,8 @@
+//randomizer
+const randomNum = (min, max) => ~~(Math.random() * (max - min + 1) + min);
+
 // progress bar
+
 let lockedRefresher = true;
 const progressBar = (progress) => {
   const pieClass = document.querySelector(".pie");
@@ -53,7 +57,7 @@ refresher.onclick = () => {
 
   if (!lockedRefresher) {
     styles.transform = `rotate(${(rotation += 180)}deg)`;
-      
+
     progressBar(70);
     lastUpdateTimer();
   }
@@ -61,32 +65,51 @@ refresher.onclick = () => {
 };
 // after pseudo element content on loading
 const loadingRateOfBg = () => {
-  const loadingElem = document.querySelectorAll(' figure > .img');
-  const playedGames = document.querySelectorAll(' figcaption > .black');
+  const loadingElem = document.querySelectorAll(" figure > .img");
+  const playedGames = document.querySelectorAll(" figcaption > .black");
+  const statsTag = document.querySelectorAll("strong");
+  // stats changer
+  [...statsTag].forEach((e) => {
+    const target = e.textContent;
+    console.log(e.textContent);
+    const value = target.endsWith("%") ? target.slice(0, -1) : target;
+    let start = 0;
+    const interval = setInterval(() => {
+      start += target.endsWith("%") ? 1.1 : 16;
+      e.textContent = target.endsWith("%") ? start.toFixed(1) + "%" : start;
+      if (start >= value) window.clearInterval(interval);
+    }, 10);
+  });
+  // played games load
   [...playedGames].forEach((e) => {
-    const value = e.textContent; 
-   let start = 0;
- const interval = setInterval(() => {
-   
-         start += Math.round(Math.random() * 5);
-         e.textContent = start;
-         if(start >= value) window.clearInterval(interval);
-      }, 10);
-   
- });
-
+    const value = e.textContent;
+    let start = 0;
+    const interval = setInterval(() => {
+      start += Math.round(Math.random() * 5);
+      e.textContent = start;
+      if (start >= value) window.clearInterval(interval);
+    }, 10);
+  });
+  // img ::after
   [...loadingElem].forEach((e) => {
-     start = 0;
-  const interval = setInterval(() => {
-          start += Math.random() * 2.5;
-          e.setAttribute('data-value', start.toFixed(1) +'%')
-          if(start >= 64) window.clearInterval(interval);
-       }, 110);
-    
-  })
-  // graphElem.addEventListener('click', function (event) {
-  //     event.target.setAttribute('data-before', 'anything');
-  // });
-  // 
+    start = 0;
+    const interval = setInterval(() => {
+      start += Math.random() * 2.5;
+      e.setAttribute("data-value", start.toFixed(1) + "%");
+      if (start >= 64) window.clearInterval(interval);
+    }, 110);
+  });
 };
 loadingRateOfBg();
+
+// last games stats
+const lastGamesStats = document.querySelectorAll(
+  ".last_games_stats .col > span"
+);
+[...lastGamesStats].forEach((e, i) => {
+  // e.style.height = 0 + "px";
+  // e.style.transition = "2s ease";
+  e.style.height = randomNum(30, 120) + "px";
+  e.style.backgroundColor = i % 2 == 0 ? "rgb(219, 222, 234)" : "#433fd1";
+  // console.log(e.style.height);
+});

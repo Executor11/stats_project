@@ -27,7 +27,7 @@
 
       background-image: url(../img/widowmaker.png);
       background-repeat: no-repeat;
-      background-size: 80%;
+      background-size: cover;
       background-position: center;
     }
     .level_counter {
@@ -52,7 +52,6 @@
 $default-size: 100px;
 $label-font-size: $default-size / 4;
 $label-font-size-redo: $default-size * 4;
-// $progress_level: 70;
 
 // -- mixins
 @mixin size($width, $height) {
