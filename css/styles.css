@@ -231,7 +231,6 @@ body {
   background: #eceffa;
   font-family: sf-pro;
   width: 100%;
-  height: 100%;
   position: relative;
   display: flex;
   align-items: center;
@@ -408,12 +407,10 @@ a {
 
 .content {
   width: 100%;
-  height: 100%;
   display: flex;
 }
 .content .side_bar {
   width: 250px;
-  height: 100%;
   border-radius: 2rem;
   display: flex;
   background-color: #ffffff;
@@ -534,7 +531,6 @@ a {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  row-gap: 20px;
 }
 .content .content_renderer .info .character_header {
   width: 100%;
@@ -562,6 +558,7 @@ a {
 .content .content_renderer .info .favourite_hero {
   height: 190px;
   width: 90%;
+  border: 1px solid #eceffa;
   box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 20px 1px #eceffa inset, 0px 5px 15px 15px #eceffa;
 }
 .content .content_renderer .info .favourite_hero {
@@ -617,7 +614,8 @@ a {
   grid-template-rows: repeat(3, 1fr);
   align-items: center;
 }
-.content .content_renderer .player > div {
+.content .content_renderer .player > div,
+.content .content_renderer section.played_games {
   background: #f6f7ff;
   border-radius: 2rem;
 }
@@ -629,7 +627,8 @@ a {
 .content .statistics {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-row: 5/7;
+  grid-row: 4/7;
+  margin-top: 30px;
 }
 .content .statistics .title {
   padding: 20px;
@@ -706,8 +705,9 @@ a {
 }
 .content .battlegrounds,
 .content .last_games {
-  height: 250px;
+  height: 270px;
   width: 95%;
+  border: 1px solid #eceffa;
   box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 20px 1px #eceffa inset, 0px 5px 15px 15px #eceffa;
 }
 .content .battlegrounds .last_games_stats,
@@ -748,8 +748,6 @@ a {
   height: 0px;
   background: #433fd1;
   border-radius: 1rem;
-  transition: 2s ease-in-out;
-  -moz-transition: 2s ease-in-out;
 }
 .content .battlegrounds .win_lose,
 .content .last_games .win_lose {
@@ -777,6 +775,42 @@ a {
 .content .battlegrounds .win_lose > span.win:before,
 .content .last_games .win_lose > span.win:before {
   background: #433fd1;
+}
+
+section.played_games {
+  margin-top: 50px;
+  height: 320px;
+  width: 98%;
+  border: 1px solid #eceffa;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 20px 1px #eceffa inset, 0px 5px 15px 15px #eceffa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  grid-row: 7/-1;
+}
+section.played_games .title_played_games {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+section.played_games .title_played_games .title {
+  padding: 20px;
+}
+section.played_games .title_played_games i {
+  margin-right: 10px;
+}
+section.played_games .played_games_content {
+  width: 95%;
+  height: 85%;
+  border: 1px solid #000;
+}
+
+footer {
+  height: 150px;
+  width: 100%;
+  border: 1px solid #eceffa;
 }
 
 /*# sourceMappingURL=styles.css.map */

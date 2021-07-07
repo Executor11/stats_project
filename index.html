@@ -104,11 +104,11 @@
           <section class="nav">
             <ul>
               <li class="nav_list active">
-                <a href="#" class="active"
+                <a href="#" class="active my_account"
                   ><i class="fas fa-th-large"></i>My account</a
                 >
               </li>
-              <li class="nav_list">
+              <li class="nav_list my_statistics">
                 <i class="fas fa-chart-pie"></i>Statistic
               </li>
               <li class="nav_list"><i class="fas fa-trophy"></i>Top players</li>
@@ -182,7 +182,7 @@
                 <div class="win_rate">Win rate <strong>81.3%</strong></div>
                 <div class="rate font-18">Anna</div>
                 <div class="count">
-                  <i class="fas fa-plus font-20 blue bold"></i>
+                  <i class="far fa-plus-square font-20 blue bold"></i>
                   <span class="bold font-20">Healer</span>
                   <div class="difficulty">
                     <span class="font-12">Difficulty</span>
@@ -269,11 +269,20 @@
               </div>
             </div>
           </section>
-          <section class="player played_games"></section>
+          <section class="player played_games">
+            <div class="title_played_games">
+              <div class="title">Battlegrounds</div>
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+            <div class="played_games_content"> </div>
+          </section>
         </section>
       </main>
+      <footer class="footer"> </footer>
     </div>
 
+    <!-- scripts -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
