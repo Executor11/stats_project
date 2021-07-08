@@ -149,6 +149,7 @@ $(".my_account").on("click", () => {
 
   //randomizer
   const randomNum = (min, max) => ~~(Math.random() * (max - min + 1) + min);
+  const arrayRandomizer = array => [...array].sort(() => 0.5 - Math.random());
 
   // progress bar
 
@@ -266,6 +267,25 @@ $(".my_account").on("click", () => {
         },
         2500
       );
+  });
+
+  //random talents
+  const talents = $(".talents > .talent");
+  const images = [
+    "../img/skills/avenging-wrath.png",
+    "../img/skills/divine-favor.png",
+    "../img/skills/holy-wrath.png",
+    "../img/skills/righteous-hammer.png",
+    "../img/skills/vindication.png",
+    "../img/skills/word-of-glory.png",
+  ];
+  // console.log(...talents);
+  [...talents].forEach(e => {
+    const img = arrayRandomizer(images);
+    // console.log($(e).children);
+    [...$(e).children()].forEach((e, i) => {
+      $(e).css("backgroundImage", `url(${img[i]})`);
+    });
   });
 });
 $(".my_statistics").on("click", () => {

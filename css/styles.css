@@ -75,6 +75,14 @@
   color: #121518;
 }
 
+.red {
+  color: #d53d9c;
+}
+
+#border_red {
+  border-color: #d53d9c;
+}
+
 .logo {
   margin: 0 10px 0 10px;
 }
@@ -804,7 +812,70 @@ section.played_games .title_played_games i {
 section.played_games .played_games_content {
   width: 95%;
   height: 85%;
-  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+section.played_games .played_games_content .game {
+  height: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+section.played_games .played_games_content .game .hero_avatar {
+  height: 70%;
+  width: 55px;
+  border: 5px solid #3abf5d;
+  border-radius: 100%;
+  background-image: url(../img/irel.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+section.played_games .played_games_content .game .hero,
+section.played_games .played_games_content .game .mode,
+section.played_games .played_games_content .game .map,
+section.played_games .played_games_content .game .rating,
+section.played_games .played_games_content .game .result,
+section.played_games .played_games_content .game .time,
+section.played_games .played_games_content .game .talents {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+section.played_games .played_games_content .game .hero {
+  flex-direction: row;
+  align-items: center;
+}
+section.played_games .played_games_content .game .hero_name {
+  height: 100%;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 20px;
+}
+section.played_games .played_games_content .game .talents {
+  width: 20%;
+}
+section.played_games .played_games_content .game .talent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+section.played_games .played_games_content .game .talent_img {
+  margin-right: 5px;
+  display: block;
+  height: 30px;
+  width: 16.6666666667%;
+  border: 1px solid #3abf5d;
+  border-radius: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 footer {
