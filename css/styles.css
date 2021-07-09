@@ -92,7 +92,7 @@
   clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
   background: linear-gradient(90deg, #433fd1 0%, #d53d9c 100%);
   width: 35px;
-  height: 35px;
+  height: 40px;
   pointer-events: none;
   position: relative;
 }
@@ -226,6 +226,92 @@
 
 .progress .half-circle {
   border-color: #433fd1;
+}
+
+.search_hero {
+  grid-row: 2/3;
+  width: 95%;
+  height: 100px;
+  border-radius: 2rem;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 10px 2px #eceffa inset;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.search_hero .path,
+.search_hero .role,
+.search_hero .game_mode,
+.search_hero .map,
+.search_hero .hero_rank,
+.search_hero .graphic_mode,
+.search_hero .hero,
+.search_hero .search {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.search_hero .search_hero_select {
+  outline: none;
+  width: 120px;
+  border-radius: 2rem;
+  border: 1px solid #eceffa;
+  padding: 5px;
+  font-size: 12px;
+  background-color: #eceffa;
+}
+.search_hero .search > .search_btn {
+  height: 50%;
+  width: 100px;
+  font-size: 12px;
+  border-radius: 2rem;
+  background-color: #433fd1;
+  border: none;
+  color: #f6f7ff;
+  cursor: pointer;
+}
+
+.search_result {
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 10px 2px #eceffa inset;
+  margin-top: 50px;
+  border-radius: 2rem;
+  width: 95%;
+  grid-row: 3/-1;
+}
+.search_result > .header {
+  border-bottom: 1px solid #eceffa;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.search_result .hero_played {
+  margin: 20px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search_result .hero_avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  background-image: url(../img/irel.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.search_result .hero_name {
+  justify-self: flex-start;
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search_result .show_btn {
+  color: #433fd1;
+  margin-right: 35px;
+  cursor: pointer;
 }
 
 * {
@@ -470,9 +556,11 @@ a {
   background-repeat: no-repeat;
   background-position: center;
 }
-.content .side_bar .games .fa-gg-circle {
-  font-size: 28px;
-  color: #ffffff;
+.content .side_bar .games .heroes_of_the_storm {
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../img/heroes_of_the_storm.png");
 }
 .content .side_bar .games .add_game {
   border: 3px dashed #f6f7ff;
@@ -533,6 +621,7 @@ a {
   width: 100%;
   color: #433fd1;
   font-weight: 900;
+  grid-row: 1/2;
 }
 .content .content_renderer .info {
   grid-row: 2/4;
@@ -882,6 +971,37 @@ footer {
   height: 150px;
   width: 100%;
   border: 1px solid #eceffa;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  justify-content: center;
+}
+footer .about {
+  grid-column: 1/6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+footer .about .footer_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 50px;
+  font-size: 28px;
+}
+footer .about .footer_title .hexagon {
+  background: #a3a8b0;
+}
+footer .about .copyright {
+  margin-left: 60px;
+  margin-top: 10px;
+}
+footer .footer_menu {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column: 6/-1;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /*# sourceMappingURL=styles.css.map */

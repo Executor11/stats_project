@@ -1,151 +1,280 @@
 $(".my_account").on("click", () => {
-  // $(".content_renderer").hide().show(300)
-  //   .html(`<section class="header">My account</section>
-  // <section class="player info">
-  //   <div class="character">
-  //     <header class="character_header">
-  //       <i class="fas fa-cog setting"></i>
-  //       <div class="caption">Catunic</div>
-  //       <i class="fas fa-sync refresh"></i>
-  //     </header>
-  //     <div class="level">
-  //       <a href="#" class="hero_rank"></a>
-  //       <div class="pie-wrapper progress style-2">
-  //         <span class="label"></span>
-  //         <div class="pie">
-  //           <div class="left-side half-circle"></div>
-  //           <div class="right-side half-circle"></div>
-  //         </div>
-  //         <div class="shadow"></div>
-  //         <span class="level_counter bold">478</span>
-  //       </div>
-  //     </div>
-  //     <div class="update"></div>
-  //   </div>
-  //   <div class="role">
-  //     <div class="title">Favorite role</div>
-  //     <i class="fas fa-ellipsis-h"></i>
-  //     <div class="img">
-  //       <img src="img/slayer.png" alt="image" />
-  //     </div>
-  //     <div class="stats">
-  //       <div class="win_rate">Win rate <strong>64.1%</strong></div>
-  //       <div class="rate">Slayer</div>
-  //       <div class="count win_rate">
-  //         Played games <strong>1027</strong>
-  //       </div>
-  //     </div>
-  //   </div>
-  //   <div class="rank">
-  //     <div class="title">Current rank</div>
-  //     <i class="fas fa-ellipsis-h"></i>
-  //     <div class="img">
-  //       <img src="img/diamond.png" alt="image" />
-  //     </div>
-  //     <div class="stats">
-  //       <div class="win_rate">Win rate <strong>70.7%</strong></div>
-  //       <div class="rate">
-  //         Diamond <span class="green font-12">+168</span>
-  //       </div>
-  //       <div class="count win_rate">Rating <strong>2832</strong></div>
-  //     </div>
-  //   </div>
-  //   <div class="favourite_hero">
-  //     <div class="title">Favorite hero</div>
-  //     <i class="fas fa-ellipsis-h"></i>
-  //     <div class="img">
-  //       <img src="img/anna.png" alt="image" />
-  //     </div>
-  //     <div class="stats">
-  //       <div class="win_rate">Win rate <strong>81.3%</strong></div>
-  //       <div class="rate font-18">Anna</div>
-  //       <div class="count">
-  //         <i class="fas fa-plus font-20 blue bold"></i>
-  //         <span class="bold font-20">Healer</span>
-  //         <div class="difficulty">
-  //           <span class="font-12">Difficulty</span>
-  //         </div>
-  //         <div class="diffculty">
-  //           <i class="fas fa-window-minimize blue font-20"></i>
-  //           <i class="fas fa-window-minimize blue font-20"></i>
-  //           <i class="fas fa-window-minimize blue font-20"></i>
-  //           <i class="fas fa-window-minimize silver font-20"></i>
-  //           <i class="fas fa-window-minimize silver font-20"></i>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // </section>
-  // <section class="player statistics">
-  //   <div class="battlegrounds">
-  //     <div class="title_bg">
-  //       <div class="title">Battlegrounds</div>
-  //       <i class="fas fa-ellipsis-h"></i>
-  //     </div>
-  //     <div class="content_bg">
-  //       <div class="current_bg">
-  //         <figure>
-  //           <div class="img img_1" data-value="67.7%"></div>
-  //           <figcaption class="font-14 bold">Immortal fight</figcaption>
-  //           <figcaption class="silver font-12">
-  //             played games <span class="black font-12">456</span>
-  //           </figcaption>
-  //         </figure>
-  //       </div>
-  //       <div class="current_bg">
-  //         <figure>
-  //           <div class="img img_2" data-value="66.3%"></div>
-  //           <figcaption class="font-14 bold">Horror garden</figcaption>
-  //           <figcaption class="silver font-12">
-  //             played games <span class="black font-12">309</span>
-  //           </figcaption>
-  //         </figure>
-  //       </div>
-  //       <div class="current_bg">
-  //         <figure>
-  //           <div class="img img_3" data-value="66.2%"></div>
-  //           <figcaption class="font-14 bold">
-  //             Celestial temple
-  //           </figcaption>
-  //           <figcaption class="silver font-12">
-  //             played games <span class="black font-12">518</span>
-  //           </figcaption>
-  //         </figure>
-  //       </div>
-  //     </div>
-  //   </div>
-  //   <div class="last_games">
-  //     <div class="title_bg">
-  //       <div class="title">Summary of recent games</div>
-  //       <i class="fas fa-ellipsis-h"></i>
-  //     </div>
-  //     <div class="last_games_stats">
-  //       <div class="col"><span></span><span></span></div>
-  //       <div class="col"><span></span><span></span></div>
-  //       <div class="col"><span></span><span></span></div>
-  //       <div class="col"><span></span><span></span></div>
-  //       <div class="col"><span></span><span></span></div>
-  //       <div class="col"><span></span><span></span></div>
-  //       <div class="col"><span></span><span></span></div>
-  //     </div>
-  //     <div class="last_games_dates">
-  //       <span class="silver font-12" style="margin-left: 10px"
-  //         >13.07</span
-  //       >
-  //       <span class="silver font-12">15.07</span
-  //       ><span class="silver font-12">16.07</span
-  //       ><span class="silver font-12">19.07</span
-  //       ><span class="silver font-12">24.07</span
-  //       ><span class="silver font-12">25.07</span
-  //       ><span class="silver font-12" style="margin-right: 50px"
-  //         >02.08</span
-  //       >
-  //     </div>
-  //     <div class="win_lose">
-  //       <span class="silver font-12 win">win</span>
-  //       <span class="silver font-12">lose</span>
-  //     </div>
-  //   </div>`);
+  $(".content_renderer").hide().show()
+    .html(`  <section class="header">My account</section>
+    <section class="player info">
+      <div class="character">
+        <header class="character_header">
+          <i class="fas fa-cog setting"></i>
+          <div class="caption">Catunic</div>
+          <i class="fas fa-sync refresh"></i>
+        </header>
+        <div class="level">
+          <a href="#" class="hero_rank"></a>
+          <div class="pie-wrapper progress style-2">
+            <span class="label"></span>
+            <div class="pie">
+              <div class="left-side half-circle"></div>
+              <div class="right-side half-circle"></div>
+            </div>
+            <div class="shadow"></div>
+            <span class="level_counter bold">478</span>
+          </div>
+        </div>
+        <div class="update"></div>
+      </div>
+      <div class="role">
+        <div class="title">Favorite role</div>
+        <i class="fas fa-ellipsis-h"></i>
+        <div class="img">
+          <img src="img/slayer.png" alt="image" />
+        </div>
+        <div class="stats">
+          <div class="win_rate">Win rate <strong>64.1%</strong></div>
+          <div class="rate">Slayer</div>
+          <div class="count win_rate">
+            Played games <strong>1027</strong>
+          </div>
+        </div>
+      </div>
+      <div class="rank">
+        <div class="title">Current rank</div>
+        <i class="fas fa-ellipsis-h"></i>
+        <div class="img">
+          <img src="img/diamond.png" alt="image" />
+        </div>
+        <div class="stats">
+          <div class="win_rate">Win rate <strong>70.7%</strong></div>
+          <div class="rate">
+            Diamond <span class="green font-12">+168</span>
+          </div>
+          <div class="count win_rate">Rating <strong>2832</strong></div>
+        </div>
+      </div>
+      <div class="favourite_hero">
+        <div class="title">Favorite hero</div>
+        <i class="fas fa-ellipsis-h"></i>
+        <div class="img">
+          <img src="img/anna.png" alt="image" />
+        </div>
+        <div class="stats">
+          <div class="win_rate">Win rate <strong>81.3%</strong></div>
+          <div class="rate font-18">Anna</div>
+          <div class="count">
+            <i class="far fa-plus-square font-20 blue bold"></i>
+            <span class="bold font-20">Healer</span>
+            <div class="difficulty">
+              <span class="font-12">Difficulty</span>
+            </div>
+            <div class="diffculty">
+              <i class="fas fa-window-minimize blue font-20"></i>
+              <i class="fas fa-window-minimize blue font-20"></i>
+              <i class="fas fa-window-minimize blue font-20"></i>
+              <i class="fas fa-window-minimize silver font-20"></i>
+              <i class="fas fa-window-minimize silver font-20"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="player statistics">
+      <div class="battlegrounds">
+        <div class="title_bg">
+          <div class="title">Battlegrounds</div>
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <div class="content_bg">
+          <div class="current_bg">
+            <figure>
+              <div class="img img_1" data-value="67.7%"></div>
+              <figcaption class="font-14 bold">Immortal fight</figcaption>
+              <figcaption class="silver font-12">
+                played games <span class="black font-12">456</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="current_bg">
+            <figure>
+              <div class="img img_2" data-value="66.3%"></div>
+              <figcaption class="font-14 bold">Horror garden</figcaption>
+              <figcaption class="silver font-12">
+                played games <span class="black font-12">309</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="current_bg">
+            <figure>
+              <div class="img img_3" data-value="66.2%"></div>
+              <figcaption class="font-14 bold">
+                Celestial temple
+              </figcaption>
+              <figcaption class="silver font-12">
+                played games <span class="black font-12">518</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="last_games">
+        <div class="title_bg">
+          <div class="title">Summary of recent games</div>
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+        <div class="last_games_stats">
+          <div class="col"><span></span><span></span></div>
+          <div class="col"><span></span><span></span></div>
+          <div class="col"><span></span><span></span></div>
+          <div class="col"><span></span><span></span></div>
+          <div class="col"><span></span><span></span></div>
+          <div class="col"><span></span><span></span></div>
+          <div class="col"><span></span><span></span></div>
+        </div>
+        <div class="last_games_dates">
+          <span class="silver font-12" style="margin-left: 10px"
+            >13.07</span
+          >
+          <span class="silver font-12">15.07</span
+          ><span class="silver font-12">16.07</span
+          ><span class="silver font-12">19.07</span
+          ><span class="silver font-12">24.07</span
+          ><span class="silver font-12">25.07</span
+          ><span class="silver font-12" style="margin-right: 50px"
+            >02.08</span
+          >
+        </div>
+        <div class="win_lose">
+          <span class="silver font-12 win">win</span>
+          <span class="silver font-12">lose</span>
+        </div>
+      </div>
+    </section>
+    <section class="player played_games">
+      <div class="title_played_games">
+        <div class="title">Played games</div>
+        <i class="fas fa-ellipsis-h"></i>
+      </div>
+      <div class="played_games_content">
+        <div class="game">
+          <div class="hero">
+            <a href="#" class="hero_avatar" id="border_red"></a>
+            <div class="hero_name">
+              <span class="silver font-12">hero</span>
+              <span class="black font-12 bold">Irithel</span>
+            </div>
+          </div>
+          <div class="mode">
+            <span class="silver font-12">mode</span>
+            <span class="black font-12 bold">Rating game</span>
+          </div>
+          <div class="map">
+            <span class="silver font-12">map</span>
+            <span class="black font-12 bold">Celestial temple</span>
+          </div>
+          <div class="rating">
+            <span class="silver font-12">rating</span>
+            <span class="black font-12 bold">2832</span>
+          </div>
+          <div class="result">
+            <span class="silver font-12">result</span>
+            <span class="font-12 bold red">Defeat</span>
+          </div>
+          <div class="time">
+            <span class="silver font-12">time</span>
+            <span class="black font-12 bold">02.08.2021, 18:15</span>
+          </div>
+          <div class="talents">
+            <span class="silver font-12">talents</span>
+            <div class="talent">
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+            </div>
+          </div>
+        </div>
+        <div class="game">
+          <div class="hero">
+            <a href="#" class="hero_avatar"></a>
+            <div class="hero_name">
+              <span class="silver font-12">hero</span>
+              <span class="black font-12 bold">Irithel</span>
+            </div>
+          </div>
+          <div class="mode">
+            <span class="silver font-12">mode</span>
+            <span class="black font-12 bold">Rating game</span>
+          </div>
+          <div class="map">
+            <span class="silver font-12">map</span>
+            <span class="black font-12 bold">Celestial temple</span>
+          </div>
+          <div class="rating">
+            <span class="silver font-12">rating</span>
+            <span class="black font-12 bold">2832</span>
+          </div>
+          <div class="result">
+            <span class="silver font-12">result</span>
+            <span class="font-12 bold green">Win</span>
+          </div>
+          <div class="time">
+            <span class="silver font-12">time</span>
+            <span class="black font-12 bold">02.08.2021, 17:52</span>
+          </div>
+          <div class="talents">
+            <span class="silver font-12">talents</span>
+            <div class="talent">
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+            </div>
+          </div>
+        </div>
+        <div class="game">
+          <div class="hero">
+            <a href="#" class="hero_avatar"></a>
+            <div class="hero_name">
+              <span class="silver font-12">hero</span>
+              <span class="black font-12 bold">Irithel</span>
+            </div>
+          </div>
+          <div class="mode">
+            <span class="silver font-12">mode</span>
+            <span class="black font-12 bold">Rating game</span>
+          </div>
+          <div class="map">
+            <span class="silver font-12">map</span>
+            <span class="black font-12 bold">Celestial temple</span>
+          </div>
+          <div class="rating">
+            <span class="silver font-12">rating</span>
+            <span class="black font-12 bold">2832</span>
+          </div>
+          <div class="result">
+            <span class="silver font-12">result</span>
+            <span class="font-12 bold green">Win</span>
+          </div>
+          <div class="time">
+            <span class="silver font-12">time</span>
+            <span class="black font-12 bold">02.08.2021, 17:20</span>
+          </div>
+          <div class="talents">
+            <span class="silver font-12">talents</span>
+            <div class="talent">
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+              <a href="#" class="talent_img"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>`);
 
   //randomizer
   const randomNum = (min, max) => ~~(Math.random() * (max - min + 1) + min);
@@ -289,5 +418,162 @@ $(".my_account").on("click", () => {
   });
 });
 $(".my_statistics").on("click", () => {
-  $(".content_renderer").html("");
+  $(".content_renderer").html(`
+  <section class="header">Statistic</section>
+  <section class="search_hero">
+        <div class="path">
+          <span class="silver font-12">Path</span>
+          <select name="path" class="search_hero_select">
+            <option value="2.52.0.8">2.52.0.8</option>
+            <option value="2.52.0.6">2.52.0.6</option>
+            <option value="2.52.0.2">2.52.0.2</option>
+            <option value="2.51.9.8">2.51.9.8</option>
+          </select>
+        </div>
+      <div class="role">
+        <span class="silver font-12">Role</span>
+        <select name="path" class="search_hero_select">
+          <option value="All">All</option>
+          <option value="Healer">Healer</option>
+          <option value="Slayer">Slayer</option>
+          <option value="Tank">Tank</option>
+        </select>
+      </div>
+      <div class="game_mode">
+        <span class="silver font-12">Game mode</span>
+        <select name="path" class="search_hero_select">
+          <option value="Rating">Rating</option>
+          <option value="Solo">Solo</option>
+          <option value="Friendly">Friendly</option>
+          <option value="Normal">Normal</option>
+        </select>
+      </div>
+      <div class="map">
+        <span class="silver font-12">Map</span>
+        <select name="path" class="search_hero_select">
+          <option value="Temple">Temple</option>
+          <option value="Road">Road</option>
+          <option value="Walley">Walley</option>
+          <option value="Free">Free</option>
+        </select>
+      </div>
+      <div class="hero_rank">
+        <span class="silver font-12">Hero rank</span>
+        <select name="path" class="search_hero_select">
+          <option value="Silver">Silver</option>
+          <option value="Gold">Gold</option>
+          <option value="Diamond">Diamond</option>
+          <option value="Bronse">Bronse</option>
+        </select>
+      </div>
+      <div class="graphic_mode">
+        <span class="silver font-12">Graphic mode</span>
+        <select name="path" class="search_hero_select">
+          <option value="winRate">Win Rate</option>
+          <option value="playedGames">Played Games</option>
+        </select>
+      </div>
+      <div class="hero">
+        <span class="silver font-12">Hero</span>
+        <select name="path" class="search_hero_select">
+          <option value="All">All</option>
+          <option value="Healer">Healer</option>
+          <option value="Slayer">Slayer</option>
+          <option value="Tank">Tank</option>
+        </select>
+      </div>
+      <div class="search">
+        <button class="search_btn">Search</button>
+      </div>
+  </section>
+  <section class="search_result">
+    <div class="header">
+        <div class="hero">
+          <div class="hero_name">
+            <span class="silver font-14">Hero</span>
+          </div>
+        </div>
+        <div class="mode">
+          <span class="silver font-14">Win Rate %</span>
+        </div>
+        <div class="map">
+          <span class="silver font-14">Changes %</span>
+        </div>
+        <div class="rating">
+          <span class="silver font-14">Assurance %</span>
+        </div>
+        <div class="result">
+          <span class="silver font-14">Selection %</span>
+        </div>
+        <div class="time">
+          <span class="silver font-14">Banned %</span>
+        </div>
+        <div class="time">
+          <span class="silver font-14">Played Games</span>
+        </div>
+        <div class="talents">
+          <span class="silver font-14">Talents</span>
+          </div>
+    </div>
+    
+  
+  </section>
+  `);
+const heroResult = [
+{
+  img: '../img/irel.jpg',
+  name: 'Irel',
+  winRate: 51.02,
+  changes: -2.01,
+  assurance: '+3.17',
+  selection: 4.66,
+  banned: 1.37,
+  playedGames: 967
+},
+{
+  img: '../img/irel.jpg',
+  name: 'Irel',
+  winRate: 51.02,
+  changes: -2.01,
+  assurance: '+3.17',
+  selection: 4.66,
+  banned: 1.37,
+  playedGames: 1234,
+},
+
+]
+
+
+heroResult.forEach((e,i)=>{
+  $('.search_result').append(`<div class="hero_played">
+  <div class="hero">
+    <div class="hero_name">
+      <div  class="hero_avatar" ></div>
+      <span class="black font-18">${e.name}</span>
+    </div>
+  </div>
+  <div class="mode">
+    <span class="black font-14">${e.winRate}</span>
+  </div>
+  <div class="map">
+    <span class=" font-14 red">${e.changes}</span>
+  </div>
+  <div class="rating">
+    <span class="green font-14">${e.assurance}</span>
+  </div>
+  <div class="result">
+    <span class="black font-14">${e.selection}</span>
+  </div>
+  <div class="time">
+    <span class="black font-14">${e.banned}</span>
+  </div>
+  <div class="time">
+    <span class="black font-14">${e.playedGames}</span>
+  </div>
+  <div class="talents">
+    <span class=" font-14 show_btn">Show</span>
+    </div>
+</div>`);
+})
+
 });

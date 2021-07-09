@@ -2,6 +2,7 @@
 @import "mixins";
 @import "logo";
 @import "progressbar";
+@import 'statistic';
 
 * {
   margin: 0;
@@ -200,9 +201,9 @@ a {
         background-image: url("https://playoverwatch.com/svg?path=https%3A%2F%2Fstatic.playoverwatch.com%2Fimg%2Flogos%2Flogo--overwatch-7d38f33606.svg");
         @include game_bg;
       }
-      .fa-gg-circle {
-        font-size: 28px;
-        color: #ffffff;
+      .heroes_of_the_storm {
+        @include game_bg;
+        background-image: url('../img/heroes_of_the_storm.png');
       }
 
       .add_game {
@@ -273,6 +274,7 @@ a {
       width: 100%;
       color: $blue;
       font-weight: 900;
+      grid-row: 1/2;
     }
     .info {
       grid-row: 2/4;
@@ -595,4 +597,38 @@ footer {
   height: 150px;
   width: 100%;
   border: 1px solid $bluemoon;
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  justify-content: center;
+
+
+  .about{
+    grid-column: 1/6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    
+    .footer_title{
+      @include flex_center; 
+      margin-left: 50px;
+      font-size: 28px;
+       .hexagon{
+        background: $silver;
+      }
+    }
+    .copyright{
+      margin-left: 60px;
+      margin-top: 10px;
+    }
+  }
+
+  .footer_menu{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-column: 6/-1;
+    justify-content:space-around ;
+    align-items: center;
+  }
 }
