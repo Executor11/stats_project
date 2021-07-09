@@ -1,97 +1,93 @@
-@mixin box_shadow{
-    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1),
+@mixin box_shadow {
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1),
     -20px -15px 17px -9px rgb(255, 255, 255),
     0px 5px 10px 2px rgba(236, 239, 250, 1) inset;
 }
-.search_hero{
-    grid-row: 2/3;
-    width: 95%;
-    height: 100px;
-    border-radius: 2rem;
-    @include box_shadow;
+.search_hero {
+  grid-row: 2/3;
+  width: 95%;
+  height: 100px;
+  border-radius: 2rem;
+  @include box_shadow;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .path,
+  .role,
+  .game_mode,
+  .map,
+  .hero_rank,
+  .graphic_mode,
+  .hero,
+  .search {
+    margin-left: 10px;
+    height: 100%;
     display: flex;
-      justify-content: space-around;
-      align-items: center;
-
-      .path,
-      .role,
-      .game_mode,
-      .map,
-      .hero_rank,
-      .graphic_mode,
-      .hero,
-      .search {
-        height: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        // align-items: space-around;
-        flex-direction: column;
-      }
-      .search_hero_select{
-          outline: none;
-          width: 120px;
-          border-radius: 2rem;
-          border: 1px solid $bluemoon;
-          padding: 5px;
-          font-size: 12px;
-          background-color: $bluemoon;
-      }
-      .search > .search_btn{
-         height: 50%;
-         width: 100px;
-         font-size: 12px;
-         border-radius: 2rem;
-         background-color: $blue;
-         border: none;
-         color: $moon;
-         cursor: pointer;
-      }
-
-      
-}
-.search_result{
-    @include box_shadow;
-    margin-top: 50px;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+  .search_hero_select {
+    outline: none;
+    width: 120px;
     border-radius: 2rem;
-    width: 95%;
-    grid-row: 3/-1;
+    border: 1px solid $bluemoon;
+    padding: 5px;
+    font-size: 12px;
+    background-color: $bluemoon;
+  }
+  .search > .search_btn {
+    height: 50%;
+    width: 100px;
+    font-size: 12px;
+    border-radius: 2rem;
+    background-color: $blue;
+    border: none;
+    color: $moon;
+    cursor: pointer;
+  }
+}
+.search_result {
+  @include box_shadow;
+  margin-top: 50px;
+  border-radius: 2rem;
+  width: 95%;
+  grid-row: 3/-1;
 
-    
-    >.header{
+  > .header {
     border-bottom: 1px solid $bluemoon;
     height: 50px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    }
-    .hero_played{
+  }
+  .hero_played {
     margin: 20px;
     height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    }
-    .hero_avatar {
-        height: 50px;
-        width: 50px;
-        border-radius: 100%;
-        background-image: url(../img/irel.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-      }
-      .hero_name{
-          justify-self: flex-start;
-          width: 120px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+  }
+  .hero_avatar {
+    margin-right: 15px;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .hero_name {
+    justify-self: flex-start;
+    width: 130px;
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+  }
 
-      }
-
-      .show_btn{
-          color: $blue;
-          margin-right: 35px;
-          cursor: pointer;
-      }
+  .show_btn {
+    color: $blue;
+    margin-right: 15px;
+    cursor: pointer;
+  }
 }

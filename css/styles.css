@@ -246,6 +246,7 @@
 .search_hero .graphic_mode,
 .search_hero .hero,
 .search_hero .search {
+  margin-left: 10px;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -293,24 +294,23 @@
   align-items: center;
 }
 .search_result .hero_avatar {
+  margin-right: 15px;
   height: 50px;
   width: 50px;
   border-radius: 100%;
-  background-image: url(../img/irel.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 .search_result .hero_name {
   justify-self: flex-start;
-  width: 120px;
+  width: 130px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 .search_result .show_btn {
   color: #433fd1;
-  margin-right: 35px;
+  margin-right: 15px;
   cursor: pointer;
 }
 

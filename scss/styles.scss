@@ -2,7 +2,7 @@
 @import "mixins";
 @import "logo";
 @import "progressbar";
-@import 'statistic';
+@import "statistic";
 
 * {
   margin: 0;
@@ -203,7 +203,7 @@ a {
       }
       .heroes_of_the_storm {
         @include game_bg;
-        background-image: url('../img/heroes_of_the_storm.png');
+        background-image: url("../img/heroes_of_the_storm.png");
       }
 
       .add_game {
@@ -598,37 +598,35 @@ footer {
   width: 100%;
   border: 1px solid $bluemoon;
   display: grid;
-  grid-template-columns: repeat(10,1fr);
+  grid-template-columns: repeat(10, 1fr);
   justify-content: center;
 
-
-  .about{
+  .about {
     grid-column: 1/6;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
 
-    
-    .footer_title{
-      @include flex_center; 
+    .footer_title {
+      @include flex_center;
       margin-left: 50px;
       font-size: 28px;
-       .hexagon{
+      .hexagon {
         background: $silver;
       }
     }
-    .copyright{
+    .copyright {
       margin-left: 60px;
       margin-top: 10px;
     }
   }
 
-  .footer_menu{
+  .footer_menu {
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-column: 6/-1;
-    justify-content:space-around ;
+    justify-content: space-around;
     align-items: center;
   }
 }
