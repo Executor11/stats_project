@@ -631,7 +631,7 @@ $(".my_statistics").on("click", () => {
     },
   ];
 
-  heroResult.forEach((e, i) => {
+  heroResult.forEach(e => {
     $(".search_result").append(`
     <div class="hero_played">
       <div class="hero">
@@ -698,5 +698,90 @@ $(".my_statistics").on("click", () => {
       .children("div")
       .sort(() => 0.5 - Math.random())
       .appendTo(".search_result");
+  });
+});
+$(".my_top_players").on("click", () => {
+  $(".nav_list .active").removeClass("active");
+  $(".my_top_players a").addClass("active");
+
+  $(".content_renderer").html(`
+  <section class="header">Top players</section>
+          <section class="top_five">
+            
+          </section>
+
+          <section class="top_ten_player"></section>
+  `);
+  // top 5 player
+  const topFivePlayers = [
+    {
+      position: 1,
+      nickname: "Cris",
+      avatar: "../img/avatars/avatar1.jpg",
+      rating: 10815,
+      win: 537,
+      lose: 314,
+    },
+    {
+      position: 2,
+      nickname: "TotalyMew",
+      avatar: "../img/avatars/avatar2.jfif",
+      rating: 10724,
+      win: 652,
+      lose: 110,
+    },
+    {
+      position: 3,
+      nickname: "ZEACris",
+      avatar: "../img/avatars/avatar3.png",
+      rating: 10116,
+      win: 488,
+      lose: 401,
+    },
+    {
+      position: 4,
+      nickname: "Nano",
+      avatar: "../img/avatars/avatar4.jpg",
+      rating: 10087,
+      win: 467,
+      lose: 229,
+    },
+    {
+      position: 5,
+      nickname: "Mascarade",
+      avatar: "../img/avatars/avatar5.png",
+      rating: 10052,
+      win: 430,
+      lose: 187,
+    },
+  ];
+  topFivePlayers.forEach((e, i) => {
+    const winRate = (e.win / (e.win + e.lose)) * 100;
+    $(".top_five").append(`
+       <div class="top_five_player">
+              <header class="position_nickname">
+                <div class="position"
+                  > <div class="crown"></div><div class="center font-10">${e.position}</div></div
+                >
+                <div class="name font-20 bold">${e.nickname}</div>
+              </header>
+              <div class="avatar"
+              style="background-image: url(${e.avatar})"
+              ></div>
+              <div class="raiting font-12"
+                ><span class="font-12 silver">Raiting</span> ${e.rating}</div
+              >
+              <div class="win_lose_rate">
+                <div class="win_rating silver font-12"
+                style="width: ${winRate}%"
+                >${e.win}</div>
+                <div class="lose_rating silver font-12">${e.lose}</div>
+              </div>
+              <div class="win_lose_rate_1">
+                <div class="win_rating_1 silver font-12">Win</div>
+                <div class="lose_rating_1 silver font-12">Lose</div>
+              </div>
+            </div>
+  `);
   });
 });

@@ -1,0 +1,118 @@
+.top_five {
+  grid-row: 2/4;
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.top_five_player {
+  height: 220px;
+  width: 90%;
+  border: 1px solid $bluemoon;
+  @include box-shadow;
+  border-radius: 2rem;
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .position_nickname {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 5px;
+    // position: relative;
+
+    .position {
+      position: absolute;
+      left: 7px;
+      top: 7px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: $blue;
+      @include flex_center;
+      color: $moon;
+      .crown {
+        width: 20px;
+        height: 15px;
+        background: url(../img/crown.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: $black;
+      }
+    }
+    .name {
+      margin-top: 5px;
+      align-self: center;
+    }
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+    border: 4px solid $blue;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .raiting {
+    @include flex_center;
+    span {
+      margin-right: 5px;
+    }
+  }
+  .win_lose_rate_1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+  }
+  .win_lose_rate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    border: 1px solid $bluemoon;
+    height: 30px;
+    background: $bluemoon;
+    border-radius: 2rem;
+    transition: 1s ease;
+    .win_rating {
+      display: flex;
+
+      width: 0%;
+      transition: 1s ease;
+      align-items: center;
+      height: 100%;
+      background: $blue;
+      border-radius: 2rem;
+      padding-left: 10px;
+    }
+    .lose_rating {
+      padding-right: 10px;
+    }
+  }
+}
+
+.top_ten_player {
+  border: 4px solid $bluemoon;
+  grid-row: 4/-1;
+  width: 95%;
+  margin-top: 50px;
+  border-radius: 2rem;
+}
