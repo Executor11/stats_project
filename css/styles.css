@@ -428,11 +428,67 @@
 }
 
 .top_ten_player {
-  border: 4px solid #eceffa;
   grid-row: 4/-1;
   width: 95%;
   margin-top: 50px;
   border-radius: 2rem;
+}
+.top_ten_player .top_ten_header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  font-size: 16px;
+  color: #a3a8b0;
+}
+.top_ten_player .top_ten_header .battletag,
+.top_ten_player .rating,
+.top_ten_player .win_rate,
+.top_ten_player .played_games,
+.top_ten_player .wins,
+.top_ten_player .fav_role {
+  text-align: center;
+}
+.top_ten_player .player_info {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  font-size: 16px;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 10px 2px #eceffa inset;
+  border-radius: 2rem;
+}
+.top_ten_player .player_info .fav_role {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.top_ten_player .player_info .role {
+  filter: brightness(30%) saturate(999%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.top_ten_player .player_info .hero {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.top_ten_player .fav_hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 180px;
+  margin-right: 0px;
 }
 
 * {
@@ -795,6 +851,17 @@ a {
   grid-column: 1/4;
   margin: 20px;
 }
+.content .content_renderer .info .role .img .role_bruiser,
+.content .content_renderer .info .rank .img .role_bruiser,
+.content .content_renderer .info .favourite_hero .img .role_bruiser {
+  height: 120px;
+  margin: -10px 10px 0 20px;
+  width: 100px;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../img/roles/bruiser.png");
+  filter: brightness(30%) saturate(999%);
+}
 .content .content_renderer .info .role .img img,
 .content .content_renderer .info .rank .img img,
 .content .content_renderer .info .favourite_hero .img img {
@@ -808,6 +875,24 @@ a {
   flex-direction: column;
   height: 100px;
   justify-content: space-around;
+}
+.content .content_renderer .info .role .healer_wrapper,
+.content .content_renderer .info .rank .healer_wrapper,
+.content .content_renderer .info .favourite_hero .healer_wrapper {
+  width: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.content .content_renderer .info .role .healer,
+.content .content_renderer .info .rank .healer,
+.content .content_renderer .info .favourite_hero .healer {
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../img/roles/healer.png");
+  filter: brightness(30%) saturate(999%);
 }
 .content .content_renderer .info .role .difficulty,
 .content .content_renderer .info .rank .difficulty,

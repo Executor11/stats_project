@@ -75,3 +75,19 @@
     transform: translate(-50%, -50%);
   }
 }
+@mixin flex_space_around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@mixin flex_space_between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin image_center {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

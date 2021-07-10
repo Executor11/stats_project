@@ -32,12 +32,12 @@ $(".my_account").on("click", () => {
       <div class="role">
         <div class="title">Favorite role</div>
         <i class="fas fa-ellipsis-h"></i>
-        <div class="img">
-          <img src="img/slayer.png" alt="image" />
+        <div class="img ">
+        <div class="role_bruiser"></div>
         </div>
         <div class="stats">
           <div class="win_rate">Win rate <strong>64.1%</strong></div>
-          <div class="rate">Slayer</div>
+          <div class="rate">Bruiser</div>
           <div class="count win_rate">
             Played games <strong>1027</strong>
           </div>
@@ -67,8 +67,10 @@ $(".my_account").on("click", () => {
           <div class="win_rate">Win rate <strong>61.31%</strong></div>
           <div class="rate font-18">Anna</div>
           <div class="count">
-            <i class="far fa-plus-square font-20 blue bold"></i>
+          <div class="healer_wrapper">
+            <div class="healer"></div>
             <span class="bold font-20">Healer</span>
+            </div>
             <div class="difficulty">
               <span class="font-12">Difficulty</span>
             </div>
@@ -669,7 +671,7 @@ $(".my_statistics").on("click", () => {
     </div>
 </div>`);
   });
-
+  // filter by Filter mode - played games and win rate
   $(".filter_mode").on("change", e => {
     if (e.target.value == "winRate") {
       //if win rate sort
@@ -693,7 +695,15 @@ $(".my_statistics").on("click", () => {
         .appendTo(".search_result");
     }
   });
-  $(".random").on("change", e => {
+  // change options
+  $(".random").on("change", () => {
+    $(".search_result")
+      .children("div")
+      .sort(() => 0.5 - Math.random())
+      .appendTo(".search_result");
+  });
+  //click on search
+  $(".search .search_btn").on("click", () => {
     $(".search_result")
       .children("div")
       .sort(() => 0.5 - Math.random())
@@ -707,10 +717,19 @@ $(".my_top_players").on("click", () => {
   $(".content_renderer").html(`
   <section class="header">Top players</section>
           <section class="top_five">
-            
+          </section>
+          <section class="top_ten_player">
+            <header class="top_ten_header">
+              <div class="battletag">Battletag</div>
+              <div class="rating">Rating</div>
+              <div class="win_rate">Win rate %</div>
+              <div class="played_games">Played games</div>
+              <div class="wins">Win games</div>
+              <div class="fav_role">Favorite role</div>
+              <div class="fav_hero">Favorite heroes</div>
+            </header>
           </section>
 
-          <section class="top_ten_player"></section>
   `);
   // top 5 player
   const topFivePlayers = [
@@ -755,7 +774,7 @@ $(".my_top_players").on("click", () => {
       lose: 187,
     },
   ];
-  topFivePlayers.forEach((e, i) => {
+  topFivePlayers.forEach(e => {
     const winRate = (e.win / (e.win + e.lose)) * 100;
     $(".top_five").append(`
        <div class="top_five_player">
@@ -782,6 +801,102 @@ $(".my_top_players").on("click", () => {
                 <div class="lose_rating_1 silver font-12">Lose</div>
               </div>
             </div>
+            
   `);
+  });
+  // top 5-10 rating
+  const topTenPlayers = [
+    {
+      rank: 6,
+      battletag: "TLHasuObs",
+      rating: 10005,
+      winRate: 55.9,
+      played: 403,
+      win: 244,
+      role: "../img/roles/bruiser.png",
+      favoriteHero: [
+        "../img/heroes/Jaina_square_tile.png",
+        "../img/heroes/garrosh.jpg",
+        "../img/heroes/thrall.jpg",
+      ],
+    },
+    {
+      rank: 7,
+      battletag: "hornyD",
+      rating: 9969,
+      winRate: 72.7,
+      played: 239,
+      win: 145,
+      role: "../img/roles/ranged.png",
+      favoriteHero: [
+        "../img/heroes/hanzo.jpg",
+        "../img/heroes/gall.jpg",
+        "../img/heroes/keltuzad.jpg",
+      ],
+    },
+    {
+      rank: 8,
+      battletag: "ElMatador",
+      rating: 9605,
+      winRate: 88.3,
+      played: 322,
+      win: 176,
+      role: "../img/roles/support.png",
+      favoriteHero: [
+        "../img/heroes/mediv.jpg",
+        "../img/heroes/zeratul.jpg",
+        "../img/heroes/zarya.jpg",
+      ],
+    },
+    {
+      rank: 9,
+      battletag: "Vasko",
+      rating: 9426,
+      winRate: 68.1,
+      played: 132,
+      win: 74,
+      role: "../img/roles/melee.png",
+      favoriteHero: [
+        "../img/heroes/dva.jpg",
+        "../img/heroes/illidan.jpg",
+        "../img/heroes/maiev.jpg",
+      ],
+    },
+    {
+      rank: 10,
+      battletag: "Executor",
+      rating: 9422,
+      winRate: 54.4,
+      played: 584,
+      win: 325,
+      role: "../img/roles/tank.png",
+      favoriteHero: [
+        "../img/heroes/tyrael.jpg",
+        "../img/heroes/sylvana.jpg",
+        "../img/heroes/Uther_Hero_Portrait.png",
+      ],
+    },
+  ];
+  topTenPlayers.forEach(e => {
+    $(".top_ten_player").append(`
+    <div class="player_info">
+              <div class="battletag"
+                >&nbsp;&nbsp; ${e.rank}. &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${e.battletag}</div
+              >
+              <div class="rating">${e.rating}</div>
+              <div class="win_rate">${e.winRate}</div>
+              <div class="played_games">${e.played}</div>
+              <div class="wins">${e.win}</div>
+              <div class="fav_role">
+                <div class="role" 
+                style="background-image: url(${e.role})"
+                ></div>
+              </div>
+              <div class="fav_hero">
+                <div class="hero" style="background-image: url('${e.favoriteHero[0]}')"></div>
+                <div class="hero" style="background-image: url('${e.favoriteHero[1]}')"></div>
+                <div class="hero" style="background-image: url('${e.favoriteHero[2]}')"></div>
+              </div>
+            </div>`);
   });
 });

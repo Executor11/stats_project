@@ -322,10 +322,17 @@ a {
           grid-column: 1/4;
           margin: 20px;
         }
-        .img img {
-          // width: 120px;
+        .img .role_bruiser {
           height: ($height + 20px);
-          // border: 1px solid #000;
+          margin: -10px 10px 0 20px;
+          width: 100px;
+          background-position: center;
+          background-size: cover;
+          background-image: url("../img/roles/bruiser.png");
+          filter: brightness(30%) saturate(999%);
+        }
+        .img img {
+          height: ($height + 20px);
           margin: -10px 10px 0 20px;
         }
         .stats {
@@ -333,6 +340,20 @@ a {
           flex-direction: column;
           height: $height;
           justify-content: space-around;
+        }
+        .healer_wrapper {
+          width: 100px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+        .healer {
+          width: 30px;
+          height: 30px;
+          background-position: center;
+          background-size: cover;
+          background-image: url("../img/roles/healer.png");
+          filter: brightness(30%) saturate(999%);
         }
         .difficulty {
           margin-bottom: -10px;
