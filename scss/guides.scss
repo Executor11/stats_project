@@ -1,0 +1,177 @@
+.guides_main_wrapper {
+  grid-row: 1/-1;
+}
+.popular_heroes {
+  margin-top: 50px;
+  width: 95%;
+  //   grid-row: 2/3;
+  .head_for_container {
+    @include flex_space_between;
+  }
+
+  .hero_wrapper {
+    margin-top: 30px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    .hero {
+      height: 250px;
+      width: 90%;
+      box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2);
+      border-radius: 2rem;
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      justify-content: flex-start;
+      align-items: flex-end;
+
+      position: relative;
+      .name {
+        margin: 10px;
+        .role {
+          @include flex_center;
+        }
+
+        .healer {
+          height: 35px;
+          width: 35px;
+          background-image: url(../img/roles/healer.png);
+          filter: brightness(30%) saturate(999%);
+          @include image_center;
+        }
+      }
+      .hero_image {
+        cursor: pointer;
+        position: absolute;
+        right: -15%;
+        bottom: 25px;
+        @include image_center;
+        height: 80%;
+        width: auto;
+      }
+    }
+  }
+}
+
+.trainers {
+  margin-top: 30px;
+  width: 95%;
+  grid-row: 3/4;
+  .head_for_container {
+    @include flex_space_between;
+  }
+
+  .trainer_wrapper {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    margin-top: 30px;
+    .trainer {
+      @include box-shadow;
+      width: 100px;
+      height: 100px;
+      @include flex_center;
+      flex-direction: column;
+      border-radius: 2rem;
+      cursor: pointer;
+      .avatar {
+        width: 50%;
+        height: 50%;
+        border-radius: 50%;
+        border: 1px solid black;
+        margin-bottom: 5px;
+        @include image_center;
+      }
+    }
+  }
+}
+
+.popular_guides {
+  margin-top: 30px;
+  width: 95%;
+  grid-row: 4/6;
+  height: 100%;
+  .head_for_container {
+    @include flex_space_between;
+  }
+  .guides {
+    width: 200px;
+    font-size: 14px;
+    border: 1px solid $bluemoon;
+    border-radius: 2rem;
+    background: $moon;
+  }
+  .guides_wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+
+    .guide {
+      margin-top: 30px;
+      height: 400px;
+      width: 300px;
+      border: 1px solid $bluemoon;
+      @include box-shadow;
+      border-radius: 2rem;
+
+      .head {
+        width: 100%;
+        height: 45%;
+        border-bottom: 1px solid $bluemoon;
+        @include image_center;
+        background-image: url("../img/avatars/4.jpg");
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        cursor: pointer;
+      }
+      .caption {
+        width: 80%;
+        height: 20%;
+        @include flex_center;
+        margin: 0 auto;
+      }
+      .who_posted {
+        width: 80%;
+        height: 20%;
+        display: flex;
+        margin: 0 auto;
+        border-bottom: 1px solid $bluemoon;
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border: 1px solid #000;
+          margin-right: 10px;
+          border-radius: 50%;
+          @include image_center;
+          cursor: pointer;
+        }
+      }
+      .info {
+        width: 80%;
+        height: 15%;
+        margin: 0 auto;
+        @include flex_space_around;
+        .like {
+          @include flex_center;
+          .love {
+            font-size: 24px;
+            margin-right: 5px;
+          }
+        }
+        i {
+          cursor: pointer;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}

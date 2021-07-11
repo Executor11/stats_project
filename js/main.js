@@ -710,6 +710,7 @@ $(".my_statistics").on("click", () => {
       .appendTo(".search_result");
   });
 });
+// top players section
 $(".my_top_players").on("click", () => {
   $(".nav_list .active").removeClass("active");
   $(".my_top_players a").addClass("active");
@@ -898,5 +899,276 @@ $(".my_top_players").on("click", () => {
                 <div class="hero" style="background-image: url('${e.favoriteHero[2]}')"></div>
               </div>
             </div>`);
+  });
+});
+
+$(".my_guides").on("click", () => {
+  $(".nav_list .active").removeClass("active");
+  $(".my_guides a").addClass("active");
+
+  $(".content_renderer").html(`
+  <div class="guides_main_wrapper">
+  <section class="header">Guides</section>
+  <section class="popular_heroes">
+    <header class="head_for_container">
+      <div class="caption black font-20">Popular heroes</div>
+      <div class="all_heroes silver font-14"
+        >All heroes &nbsp; &nbsp; &rarr;</div
+      >
+    </header>
+    <section class="hero_wrapper">
+      
+    </section>
+  </section>
+  <section class="trainers">
+    <header class="head_for_container">
+      <div class="caption black font-20">Trainers</div>
+      <div class="all_heroes silver font-14"
+        >All trainers &nbsp; &nbsp; &rarr;</div
+      >
+    </header>
+    <div class="trainer_wrapper">
+      
+    </div>
+  </section>
+  <section class="popular_guides">
+    <header class="head_for_container">
+      <select name="guides" class="guides">
+        <option value="popular">Popular</option>
+        <option value="viewed">Most viewed</option>
+        <option value="liked">Most liked</option>
+        <option value="shared">Most shared</option>
+      </select>
+      <div class="all_heroes silver font-14"
+        >All guides &nbsp; &nbsp; &rarr;</div
+      >
+    </header>
+    <div class="guides_wrapper">
+      
+      </div>
+    </div>
+  </section>
+</div>
+  `);
+
+  // list of heroes
+  const heroFromGuides = [
+    {
+      name: "Tiranda",
+      roleImgUrl: "/img/roles/healer.png",
+      role: "Healer",
+      heroImageUrl: "/img/full_hero/tiranda.png",
+    },
+    {
+      name: "Sylvana",
+      roleImgUrl: "/img/roles/ranged.png",
+      role: "Range",
+      heroImageUrl: "/img/full_hero/sylvana.png",
+    },
+    {
+      name: "Kel'Tuzad",
+      roleImgUrl: "/img/roles/ranged.png",
+      role: "Range",
+      heroImageUrl: "/img/full_hero/keltuzad.png",
+    },
+    {
+      name: "Tyrael",
+      roleImgUrl: "/img/roles/tank.png",
+      role: "Tank",
+      heroImageUrl: "/img/full_hero/tyrael.png",
+    },
+    {
+      name: "Jaina",
+      roleImgUrl: "/img/roles/support.png",
+      role: "Support",
+      heroImageUrl: "/img/full_hero/jaina.png",
+    },
+  ];
+  heroFromGuides.forEach(e => {
+    $(".hero_wrapper").append(`
+    <div class="hero">
+          <div class="name"
+            ><div class="hero_name bold font-18"> &nbsp; ${e.name}</div>
+            <div class="role font-14"
+              >
+              <div class="healer"
+              style="background-image: url(${e.roleImgUrl})"
+              ></div> ${e.role}</div
+            >
+          </div>
+          <img src="${e.heroImageUrl}" class="hero_image" />
+        </div>`);
+  });
+  // heroes on click interactive
+  $(".hero_wrapper .hero").on("click", function (e) {
+    console.log(e.target);
+  });
+  // list of trainers
+  const trainersArray = [
+    {
+      name: "Stella",
+      imageUrl: "/img/avatars/1.jpg",
+    },
+    {
+      name: "IvanS",
+      imageUrl: "/img/avatars/2.jpg",
+    },
+    {
+      name: "Fan",
+      imageUrl: "/img/avatars/3.jpg",
+    },
+    {
+      name: "LarryDavid",
+      imageUrl: "/img/avatars/4.jpg",
+    },
+    {
+      name: "InnaDakota",
+      imageUrl: "/img/avatars/5.jpg",
+    },
+    {
+      name: "adrenaline",
+      imageUrl: "/img/avatars/6.jpg",
+    },
+    {
+      name: "KNIP",
+      imageUrl: "/img/avatars/7.jpg",
+    },
+
+    {
+      name: "Qepi",
+      imageUrl: "/img/avatars/8.jfif",
+    },
+  ];
+  trainersArray.forEach(e => {
+    $(".trainer_wrapper").append(`
+    <div class="trainer">
+                <div class="avatar"
+                style="background-image: url(${e.imageUrl})"
+                ></div>
+                <div class="name font-12">${e.name}</div>
+             </div>
+    `);
+  });
+  //guides description
+  const guidesInfo = [
+    {
+      description: "Jaina Pradmure. Admiral daughter.",
+      backgroundImg: "/img/guides_bg/jaina.jpg",
+      author: "IvanS",
+      authorAvatar: "/img/avatars/2.jpg",
+      postedDate: "02 Dec 2020",
+      likes: 3742,
+      comments: 58,
+      views: 6931,
+      iLiked: false,
+    },
+    {
+      description: "Tracer. Always everywhere.",
+      backgroundImg: "/img/guides_bg/tracer.jpg",
+      author: "InnaDakota",
+      authorAvatar: "/img/avatars/5.jpg",
+      postedDate: "28 Nov 2020",
+      likes: 2029,
+      comments: 14,
+      views: 4200,
+      iLiked: true,
+    },
+    {
+      description: "Whitemane. Fury of light.",
+      backgroundImg: "/img/guides_bg/Whitemane.jpg",
+      author: "adrenaline",
+      authorAvatar: "/img/avatars/6.jpg",
+      postedDate: "18 Nov 2020",
+      likes: 1728,
+      comments: 23,
+      views: 5946,
+      iLiked: false,
+    },
+    {
+      description: "Chromie. We have all the time in the world!",
+      backgroundImg: "/img/guides_bg/chromie.jpg",
+      author: "KNIP",
+      authorAvatar: "/img/avatars/7.jpg",
+      postedDate: "28 Oct 2020",
+      likes: 4602,
+      comments: 41,
+      views: 5496,
+      iLiked: false,
+    },
+    {
+      description: "from D.VA, with love.",
+      backgroundImg: "/img/guides_bg/dva.jpg",
+      author: "InnaDakota",
+      authorAvatar: "/img/avatars/5.jpg",
+      postedDate: "18 Oct 2020",
+      likes: 4512,
+      comments: 17,
+      views: 8150,
+      iLiked: false,
+    },
+    {
+      description: "Kel'Thas. Walking flame.",
+      backgroundImg: "/img/guides_bg/keltas.png",
+      author: "Fan",
+      authorAvatar: "/img/avatars/3.jpg",
+      postedDate: "08 Oct 2020",
+      likes: 849,
+      comments: 29,
+      views: 1062,
+      iLiked: false,
+    },
+    {
+      description: "Nova. Ghost of the Nexxus.",
+      backgroundImg: "/img/guides_bg/nova.jpg",
+      author: "LarryDavid",
+      authorAvatar: "/img/avatars/4.jpg",
+      postedDate: "07 Oct 2020",
+      likes: 5281,
+      comments: 33,
+      views: 8157,
+      iLiked: false,
+    },
+    {
+      description: "Arthas. No king rules forever.",
+      backgroundImg: "/img/guides_bg/Arthas.jpg",
+      author: "IvanS",
+      authorAvatar: "/img/avatars/2.jpg",
+      postedDate: "27 Sep 2020",
+      likes: 1895,
+      comments: 12,
+      views: 3947,
+      iLiked: true,
+    },
+  ];
+  guidesInfo.forEach(e => {
+    $(".guides_wrapper").append(`
+  <div class="guide">
+        <div class="head"
+        style="background-image: url(${e.backgroundImg})"
+        ></div>
+        <div class="caption">${e.description}</div>
+        <div class="who_posted">
+          <div class="avatar" 
+          style="background-image: url(${e.authorAvatar})"
+          ></div>
+          <div class="author">
+            <div class="name font-16">${e.author}</div>
+            <div class="date silver font-12">${e.postedDate}</div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="like font-12 silver"
+            ><div class="${e.iLiked ? "red" : "silver"} love">&#9825;</div> ${
+      e.likes
+    }</div
+          >
+          <div class="comment silver font-12"
+            ><i class="far fa-comment-alt"></i> ${e.comments}</div
+          >
+          <div class="views silver font-12"
+            ><i class="fas fa-eye"></i> ${e.views}</div
+          >
+        </div>
+  `);
   });
 });

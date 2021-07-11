@@ -491,6 +491,204 @@
   margin-right: 0px;
 }
 
+.guides_main_wrapper {
+  grid-row: 1/-1;
+}
+
+.popular_heroes {
+  margin-top: 50px;
+  width: 95%;
+}
+.popular_heroes .head_for_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.popular_heroes .hero_wrapper {
+  margin-top: 30px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+.popular_heroes .hero_wrapper .hero {
+  height: 250px;
+  width: 90%;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2);
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: relative;
+}
+.popular_heroes .hero_wrapper .hero .name {
+  margin: 10px;
+}
+.popular_heroes .hero_wrapper .hero .name .role {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popular_heroes .hero_wrapper .hero .name .healer {
+  height: 35px;
+  width: 35px;
+  background-image: url(../img/roles/healer.png);
+  filter: brightness(30%) saturate(999%);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.popular_heroes .hero_wrapper .hero .hero_image {
+  cursor: pointer;
+  position: absolute;
+  right: -15%;
+  bottom: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80%;
+  width: auto;
+}
+
+.trainers {
+  margin-top: 30px;
+  width: 95%;
+  grid-row: 3/4;
+}
+.trainers .head_for_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.trainers .trainer_wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+.trainers .trainer_wrapper .trainer {
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 10px 2px #eceffa inset;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.trainers .trainer_wrapper .trainer .avatar {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin-bottom: 5px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.popular_guides {
+  margin-top: 30px;
+  width: 95%;
+  grid-row: 4/6;
+  height: 100%;
+}
+.popular_guides .head_for_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.popular_guides .guides {
+  width: 200px;
+  font-size: 14px;
+  border: 1px solid #eceffa;
+  border-radius: 2rem;
+  background: #f6f7ff;
+}
+.popular_guides .guides_wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+}
+.popular_guides .guides_wrapper .guide {
+  margin-top: 30px;
+  height: 400px;
+  width: 300px;
+  border: 1px solid #eceffa;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 10px 2px #eceffa inset;
+  border-radius: 2rem;
+}
+.popular_guides .guides_wrapper .guide .head {
+  width: 100%;
+  height: 45%;
+  border-bottom: 1px solid #eceffa;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../img/avatars/4.jpg");
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  cursor: pointer;
+}
+.popular_guides .guides_wrapper .guide .caption {
+  width: 80%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.popular_guides .guides_wrapper .guide .who_posted {
+  width: 80%;
+  height: 20%;
+  display: flex;
+  margin: 0 auto;
+  border-bottom: 1px solid #eceffa;
+}
+.popular_guides .guides_wrapper .guide .who_posted .avatar {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+.popular_guides .guides_wrapper .guide .info {
+  width: 80%;
+  height: 15%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.popular_guides .guides_wrapper .guide .info .like {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popular_guides .guides_wrapper .guide .info .like .love {
+  font-size: 24px;
+  margin-right: 5px;
+}
+.popular_guides .guides_wrapper .guide .info i {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
 * {
   margin: 0;
   padding: 0;
