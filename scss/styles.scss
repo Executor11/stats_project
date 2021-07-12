@@ -5,6 +5,8 @@
 @import "statistic";
 @import "top_players";
 @import "guides";
+@import "hero_info";
+@import "preloader";
 
 * {
   margin: 0;
@@ -264,6 +266,7 @@ a {
 
   //content rendering
   .content_renderer {
+    position: relative;
     background-color: $moon;
     width: calc(100% - 300px);
     margin-left: 50px;

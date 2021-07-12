@@ -1,0 +1,174 @@
+.hero_info_wrapper {
+  grid-row: 1/-1;
+
+  .content_hero_info {
+    display: flex;
+    position: relative;
+  }
+
+  .description {
+    z-index: 3;
+    margin-top: 30px;
+    width: 50%;
+    // border: 1px solid $black;
+    height: 100%;
+  }
+  .head {
+  }
+  .hero_description {
+    width: 100%;
+    display: flex;
+    .desc,
+    .attributes {
+      @include box-shadow;
+      width: 40%;
+      height: 200px;
+      border-radius: 2rem;
+      margin: 50px 30px 0 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+    .attributes {
+      width: 50%;
+    }
+
+    .role,
+    .game,
+    .win_rate,
+    .about {
+      width: 90%;
+      align-items: center;
+      display: flex;
+      justify-content: flex-start;
+      margin-left: 30px;
+    }
+    .about {
+      height: 30%;
+      padding: 10px;
+    }
+    .win_rate {
+      margin-left: 40px;
+      margin-bottom: 20px;
+    }
+    .role {
+      .role_logo {
+        @include image_center;
+        width: 30px;
+        height: 30px;
+        // background-image: url("/img/roles/tank.png");
+        filter: brightness(30%) saturate(999%);
+      }
+    }
+    .game_logo {
+      margin-left: 5px;
+      @include image_center;
+      width: 20px;
+      height: 20px;
+      background-image: url("/img/game_logo/wow.png");
+    }
+  }
+  .attributes {
+    @include flex_center;
+    width: 100%;
+    .damage {
+      width: 95%;
+      height: 20%;
+      display: flex;
+      align-items: center;
+      .caption {
+        width: 100%;
+      }
+      .img_logo {
+        margin-left: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        @include image_center;
+        filter: brightness(30%) saturate(999%);
+      }
+      .attr {
+        margin: 5px;
+      }
+      .lines {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        justify-content: center;
+        width: 90%;
+
+        .line {
+          margin: 5px;
+          height: 5px;
+          border-radius: 30%;
+        }
+      }
+    }
+  }
+  .popular_talents {
+    margin-top: 50px;
+    width: 95%;
+    //   grid-row: 2/3;
+    .head_for_container {
+      @include flex_space_between;
+    }
+
+    .container {
+      margin-top: 50px;
+      width: 100%;
+      height: 300px;
+      //   border: 1px solid black;
+      border-radius: 2rem;
+      @include box-shadow;
+      .head {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        height: 20%;
+        border-bottom: 2px solid $bluemoon;
+        color: $silver;
+        font-size: 14px;
+      }
+      .metas {
+        height: 80%;
+      }
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        height: 33%;
+      }
+      .talents {
+        @include flex_center;
+
+        .talent {
+          width: 30px;
+          height: 30px;
+          //   border: 1px solid black;
+          border-radius: 50%;
+          @include image_center;
+          margin: 2px;
+        }
+      }
+    }
+    .copy_talents {
+      font-size: 28px;
+      cursor: pointer;
+    }
+  }
+  .big_hero {
+    height: 100%;
+    width: 100%;
+    @include image_center;
+    background-size: 80%;
+    background-image: url("/img/full_hero/tyrael.png");
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+}

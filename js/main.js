@@ -1,13 +1,39 @@
 //randomizer
 const randomNum = (min, max) => ~~(Math.random() * (max - min + 1) + min);
 const arrayRandomizer = array => [...array].sort(() => 0.5 - Math.random());
+//
 
+var hellopreloader = document.getElementById("hellopreloader_preload");
+function fadeOutnojquery(el) {
+  el.style.opacity = 1;
+  var interhellopreloader = setInterval(function () {
+    el.style.opacity = el.style.opacity - 0.05;
+    if (el.style.opacity <= 0.05) {
+      clearInterval(interhellopreloader);
+      hellopreloader.style.display = "none";
+    }
+  }, 16);
+}
+window.onload = function () {
+  setTimeout(function () {
+    fadeOutnojquery(hellopreloader);
+  }, 1000);
+};
 //click
 $(".my_account").on("click", () => {
+  $(".content_renderer").html(`
+  <div id="hellopreloader">
+      <div id="hellopreloader_preload"></div>
+      <p>
+        <a href=""></a>
+      </p>
+    </div>
+  `);
   $(".nav_list .active").removeClass("active");
   $(".my_account").addClass("active");
-  $(".content_renderer").hide().show()
-    .html(`  <section class="header">My account</section>
+  setTimeout(() => {
+    $(".content_renderer").hide().show()
+      .html(`  <section class="header">My account</section>
     <section class="player info">
       <div class="character">
         <header class="character_header">
@@ -284,6 +310,7 @@ $(".my_account").on("click", () => {
         </div>
       </div>
     </section>`);
+  }, 2000);
 
   // progress bar
 
@@ -1001,7 +1028,229 @@ $(".my_guides").on("click", () => {
   });
   // heroes on click interactive
   $(".hero_wrapper .hero").on("click", function (e) {
-    console.log(e.target);
+    $(".content_renderer").html(`
+    <div class="hero_info_wrapper">
+    <section class="header">Name</section>
+    <div class="content_hero_info">
+      <div class="description">
+        <div class="head silver">Pilot MEka</div>
+        <div class="hero_description">
+         
+        </div>
+        <div class="popular_talents">
+          <header class="head_for_container">
+            <div class="caption black font-20">Popular talents</div>
+            <div class="all_heroes silver font-14">
+              All &nbsp; &nbsp; &rarr;
+            </div>
+          </header>
+          <div class="container">
+            <div class="head">
+              <div class="win_rate">Win rate</div>
+              <div class="talents">Talents</div>
+              <div class="copy">Copy</div>
+            </div>
+            <div class="metas">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="big_hero"></div>
+    </div>
+  </div>
+    `);
+    //hero decription
+    const heroDescription = {
+      about: `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+      Qui voluptatum odit numquam porro corporis voluptate veniam`,
+      role: "Tank",
+      roleLogo: "/img/roles/tank.png",
+      roleType: "Melee",
+      game: "WoW",
+      gameLogo: "",
+      winRate: 55.3,
+    };
+    $(".hero_description").append(`
+                <div class="desc">
+                  <div class="about font-10">
+                    ${heroDescription.about}
+                  </div>
+                  <div class="role">
+                    <div class="role_logo"
+                    style="background-image: url('${heroDescription.roleLogo}')"
+                    ></div>
+                    ${heroDescription.role}
+                    <div class="silver font-12">&nbsp; (${heroDescription.roleType})</div>
+                  </div>
+                  <div class="game">
+                    <div class="game_logo"></div>
+                    &nbsp; ${heroDescription.game}
+                  </div>
+                  <div class="win_rate font-12">
+                    <div class="blue font-12">Win rate</div>
+                    &nbsp; ${heroDescription.winRate}%
+                  </div>
+                  
+          
+    `);
+    //atrr append
+    $(".hero_description").append(`
+      <div class="attributes"></div>
+      `);
+    //hero attributes
+    const heroAttributes = [
+      {
+        logo: "/img/roles/melee.png",
+        attr: "Damage",
+        diff: [
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "silver_bg",
+          "silver_bg",
+          "silver_bg",
+          "silver_bg",
+          "silver_bg",
+        ],
+      },
+      {
+        logo: "/img/roles/healer.png",
+        attr: "Support",
+        diff: [
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "silver_bg",
+          "silver_bg",
+          "silver_bg",
+          "silver_bg",
+        ],
+      },
+      {
+        logo: "/img/roles/tank.png",
+        attr: "Vitality",
+        diff: [
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "silver_bg",
+          "silver_bg",
+        ],
+      },
+      {
+        logo: "/img/roles/support.png",
+        attr: "Difficulty",
+        diff: [
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "blue_bg",
+          "silver_bg",
+          "silver_bg",
+        ],
+      },
+    ];
+    heroAttributes.forEach(e => {
+      $(".attributes").append(`
+    <div class="damage">
+            <div class="img_logo"
+            style="background-image: url('${e.logo}')"
+            ></div>
+            <div class="caption font-10">
+              <div class="attr">${e.attr}</div>
+              <div class="lines">
+                <div class="line ${e.diff[0]}"></div>
+                <div class="line ${e.diff[1]}" ></div>
+                <div class="line ${e.diff[2]}"></div>
+                <div class="line ${e.diff[3]}"></div>
+                <div class="line ${e.diff[4]}"></div>
+                <div class="line ${e.diff[5]}"></div>
+                <div class="line ${e.diff[6]}"></div>
+                <div class="line ${e.diff[7]}"></div>
+                <div class="line ${e.diff[8]}"></div>
+                <div class="line ${e.diff[9]}"></div>
+              </div>
+            </div>
+          </div>`);
+    });
+    const metaTalents = [
+      {
+        winRate: 55.3,
+        talents: [
+          "/img/skills/tyrael1.png",
+          "/img/skills/tyrael2.png",
+          "/img/skills/tyrael3.png",
+          "/img/skills/tyrael4.png",
+          "/img/skills/tyrael5.png",
+          "/img/skills/tyrael6.png",
+        ],
+      },
+      {
+        winRate: 49.6,
+        talents: [
+          "/img/skills/tyrael4.png",
+          "/img/skills/tyrael5.png",
+          "/img/skills/tyrael6.png",
+          "/img/skills/tyrael1.png",
+          "/img/skills/tyrael2.png",
+          "/img/skills/tyrael3.png",
+        ],
+      },
+      {
+        winRate: 47.2,
+        talents: [
+          "/img/skills/tyrael5.png",
+          "/img/skills/tyrael6.png",
+          "/img/skills/tyrael1.png",
+          "/img/skills/tyrael4.png",
+          "/img/skills/tyrael2.png",
+          "/img/skills/tyrael3.png",
+        ],
+      },
+    ];
+    metaTalents.forEach(e => {
+      $(".metas").append(`
+      <div class="meta">
+                <div class="win_rate">${e.winRate}%</div>
+                <div class="talents">
+                  <div class="talent"
+                  style="background-image: url('${e.talents[0]}')"
+                  ></div>
+                  <div class="talent"
+                  style="background-image: url('${e.talents[1]}')"
+                  ></div>
+                  <div class="talent"
+                  style="background-image: url('${e.talents[2]}')"
+                  ></div>
+                  <div class="talent"
+                  style="background-image: url('${e.talents[3]}')"
+                  ></div>
+                  <div class="talent"
+                  style="background-image: url('${e.talents[4]}')"
+                  ></div>
+                  <div class="talent"
+                  style="background-image: url('${e.talents[5]}')"
+                  ></div>
+                </div>
+                <div class="copy_talents blue ">&#128461;</div>
+              </div>
+      `);
+    });
   });
   // list of trainers
   const trainersArray = [

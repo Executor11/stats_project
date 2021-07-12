@@ -1,0 +1,18 @@
+#hellopreloader > p {
+  display: none;
+}
+#hellopreloader_preload {
+  display: block;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 1000px;
+  background: rgba(67, 63, 209, 0)
+    url(http://hello-site.ru//main/images/preloads/tail-spin.svg) center center
+    no-repeat;
+  background-size: 200px;
+  filter: brightness(0.8) sepia(0.7) saturate(10000%);
+}

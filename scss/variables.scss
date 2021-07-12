@@ -28,6 +28,13 @@ $height: 100px;
   src: url("../fonts/SFPro-Bold.ttf") format("truetype");
 }
 
+.blue_bg {
+  background: $blue;
+}
+.silver_bg {
+  background: $bluemoon;
+  border: 1px solid darken($bluemoon, 3);
+}
 .blue {
   color: $blue;
 }

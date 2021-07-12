@@ -6,6 +6,15 @@
   font-family: "sf-pro-bold";
   src: url("../fonts/SFPro-Bold.ttf") format("truetype");
 }
+.blue_bg {
+  background: #433fd1;
+}
+
+.silver_bg {
+  background: #eceffa;
+  border: 1px solid #e0e5f7;
+}
+
 .blue {
   color: #433fd1;
 }
@@ -689,6 +698,200 @@
   margin-right: 5px;
 }
 
+.hero_info_wrapper {
+  grid-row: 1/-1;
+}
+.hero_info_wrapper .content_hero_info {
+  display: flex;
+  position: relative;
+}
+.hero_info_wrapper .description {
+  z-index: 3;
+  margin-top: 30px;
+  width: 50%;
+  height: 100%;
+}
+.hero_info_wrapper .hero_description {
+  width: 100%;
+  display: flex;
+}
+.hero_info_wrapper .hero_description .desc,
+.hero_info_wrapper .hero_description .attributes {
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 10px 2px #eceffa inset;
+  width: 40%;
+  height: 200px;
+  border-radius: 2rem;
+  margin: 50px 30px 0 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.hero_info_wrapper .hero_description .attributes {
+  width: 50%;
+}
+.hero_info_wrapper .hero_description .role,
+.hero_info_wrapper .hero_description .game,
+.hero_info_wrapper .hero_description .win_rate,
+.hero_info_wrapper .hero_description .about {
+  width: 90%;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 30px;
+}
+.hero_info_wrapper .hero_description .about {
+  height: 30%;
+  padding: 10px;
+}
+.hero_info_wrapper .hero_description .win_rate {
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+.hero_info_wrapper .hero_description .role .role_logo {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  filter: brightness(30%) saturate(999%);
+}
+.hero_info_wrapper .hero_description .game_logo {
+  margin-left: 5px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  background-image: url("/img/game_logo/wow.png");
+}
+.hero_info_wrapper .attributes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.hero_info_wrapper .attributes .damage {
+  width: 95%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+}
+.hero_info_wrapper .attributes .damage .caption {
+  width: 100%;
+}
+.hero_info_wrapper .attributes .damage .img_logo {
+  margin-left: 15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(30%) saturate(999%);
+}
+.hero_info_wrapper .attributes .damage .attr {
+  margin: 5px;
+}
+.hero_info_wrapper .attributes .damage .lines {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  justify-content: center;
+  width: 90%;
+}
+.hero_info_wrapper .attributes .damage .lines .line {
+  margin: 5px;
+  height: 5px;
+  border-radius: 30%;
+}
+.hero_info_wrapper .popular_talents {
+  margin-top: 50px;
+  width: 95%;
+}
+.hero_info_wrapper .popular_talents .head_for_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero_info_wrapper .popular_talents .container {
+  margin-top: 50px;
+  width: 100%;
+  height: 300px;
+  border-radius: 2rem;
+  box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.1), -20px -15px 17px -9px white, 0px 5px 10px 2px #eceffa inset;
+}
+.hero_info_wrapper .popular_talents .container .head {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 20%;
+  border-bottom: 2px solid #eceffa;
+  color: #a3a8b0;
+  font-size: 14px;
+}
+.hero_info_wrapper .popular_talents .container .metas {
+  height: 80%;
+}
+.hero_info_wrapper .popular_talents .container .meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: 33%;
+}
+.hero_info_wrapper .popular_talents .container .talents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero_info_wrapper .popular_talents .container .talents .talent {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 2px;
+}
+.hero_info_wrapper .popular_talents .copy_talents {
+  font-size: 28px;
+  cursor: pointer;
+}
+.hero_info_wrapper .big_hero {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 80%;
+  background-image: url("/img/full_hero/tyrael.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+#hellopreloader > p {
+  display: none;
+}
+
+#hellopreloader_preload {
+  display: block;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 1000px;
+  background: rgba(67, 63, 209, 0) url(http://hello-site.ru//main/images/preloads/tail-spin.svg) center center no-repeat;
+  background-size: 200px;
+  filter: brightness(0.8) sepia(0.7) saturate(10000%);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -985,6 +1188,7 @@ a {
   color: #433fd1;
 }
 .content .content_renderer {
+  position: relative;
   background-color: #f6f7ff;
   width: calc(100% - 300px);
   margin-left: 50px;
