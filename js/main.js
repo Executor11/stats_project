@@ -3,22 +3,6 @@ const randomNum = (min, max) => ~~(Math.random() * (max - min + 1) + min);
 const arrayRandomizer = array => [...array].sort(() => 0.5 - Math.random());
 //
 
-var hellopreloader = document.getElementById("hellopreloader_preload");
-function fadeOutnojquery(el) {
-  el.style.opacity = 1;
-  var interhellopreloader = setInterval(function () {
-    el.style.opacity = el.style.opacity - 0.05;
-    if (el.style.opacity <= 0.05) {
-      clearInterval(interhellopreloader);
-      hellopreloader.style.display = "none";
-    }
-  }, 16);
-}
-window.onload = function () {
-  setTimeout(function () {
-    fadeOutnojquery(hellopreloader);
-  }, 1000);
-};
 //click
 $(".my_account").on("click", () => {
   $(".content_renderer").html(`
@@ -32,13 +16,12 @@ $(".my_account").on("click", () => {
   $(".nav_list .active").removeClass("active");
   $(".my_account").addClass("active");
   setTimeout(() => {
-    $(".content_renderer").hide().show()
-      .html(`  <section class="header">My account</section>
+    $(".content_renderer").html(`  <section class="header">My account</section>
     <section class="player info">
       <div class="character">
         <header class="character_header">
           <i class="fas fa-cog setting"></i>
-          <div class="caption">Catunic</div>
+          <div class="caption">MegaOps</div>
           <i class="fas fa-sync refresh"></i>
         </header>
         <div class="level">
@@ -310,151 +293,161 @@ $(".my_account").on("click", () => {
         </div>
       </div>
     </section>`);
-  }, 2000);
+
+    let lockedRefresher = true;
+    const progressBar = progress => {
+      const pieClass = $(".pie");
+      const leftSide = $(".pie .left-side");
+      const rightSide = $(".pie .right-side");
+
+      const levelCounter = $(".level_counter");
+      //reset rotation
+      pieClass.css("clip", "");
+      rightSide.css("transform", ``);
+      leftSide.css("transform", `rotate(0deg)`);
+      //
+      let rotate = 0;
+
+      let progressUpper = setInterval(() => {
+        rotate++; //increment
+
+        // clear interval
+        if (rotate >= progress) {
+          lockedRefresher = false;
+          window.clearInterval(progressUpper);
+        }
+        // css changes
+        levelCounter.text(~~(rotate * 6.9));
+
+        leftSide.css("transform", `rotate(${rotate * 3.6}deg)`);
+
+        if (rotate >= 50) {
+          pieClass.css("clip", "rect(auto, auto, auto, auto)");
+          rightSide.css("transform", "rotate(180deg)");
+        }
+      }, 30);
+    };
+    progressBar(70);
+
+    // last update timer
+
+    const lastUpdateTimer = () => {
+      const updater = $(".update");
+      let last_update = new Date().getMinutes();
+
+      updater.text("Last update less than 1 min. ago");
+
+      setInterval(() => {
+        let minNow = new Date().getMinutes();
+
+        updater.text(`Last update ${minNow - last_update} min. ago`);
+      }, 60000);
+    };
+    lastUpdateTimer();
+
+    // refresh on click event
+    let rotation = 0;
+    $(".refresh").on("click", () => {
+      if (!lockedRefresher) {
+        $(".refresh").css({
+          transform: `rotate(${(rotation += 180)}deg)`,
+        });
+
+        progressBar(70);
+        lastUpdateTimer();
+      }
+      lockedRefresher = true;
+    });
+    // after pseudo element content on loading
+    const loadingRateOfBg = () => {
+      const loadingElem = $(" figure > .img");
+      const playedGames = $(" figcaption > .black");
+      const statsTag = $("strong");
+      // stats changer
+      [...statsTag].forEach(e => {
+        const target = $(e).text();
+        const value = target.endsWith("%") ? target.slice(0, -1) : target;
+        let start = 0;
+        const interval = setInterval(() => {
+          start += target.endsWith("%") ? 1.1 / 2 : 16;
+          $(e).text(target.endsWith("%") ? start.toFixed(1) + "%" : start);
+          if (start >= value) window.clearInterval(interval);
+        }, 10);
+      });
+      // played games load
+      [...playedGames].forEach(e => {
+        const value = $(e).text();
+        let start = 0;
+        const interval = setInterval(() => {
+          start += randomNum(1, 5);
+
+          $(e).text(start);
+          if (start >= value) window.clearInterval(interval);
+        }, 10);
+      });
+      // img ::after
+      [...loadingElem].forEach(e => {
+        start = 0;
+        const interval = setInterval(() => {
+          start += Math.random() * 2.5 + 1;
+          $(e).attr("data-value", start.toFixed(1) + "%");
+          if (start >= 64) window.clearInterval(interval);
+        }, 110);
+      });
+    };
+    loadingRateOfBg();
+
+    // last games stats
+    const lastGamesStats = $(".last_games_stats .col > span");
+    [...lastGamesStats].forEach((e, i) => {
+      $(e)
+        .css("backgroundColor", i % 2 !== 0 ? "rgb(219, 222, 234)" : "#433fd1")
+        .animate(
+          {
+            height: randomNum(30, 120) + "px",
+          },
+          2500
+        );
+    });
+
+    //random talents
+    const talents = $(".talents > .talent");
+    const images = [
+      "../img/skills/avenging-wrath.png",
+      "../img/skills/divine-favor.png",
+      "../img/skills/holy-wrath.png",
+      "../img/skills/righteous-hammer.png",
+      "../img/skills/vindication.png",
+      "../img/skills/word-of-glory.png",
+    ];
+    // console.log(...talents);
+    [...talents].forEach(e => {
+      const img = arrayRandomizer(images);
+      // console.log($(e).children);
+      [...$(e).children()].forEach((e, i) => {
+        $(e).css("backgroundImage", `url(${img[i]})`);
+      });
+    });
+  }, 1000);
 
   // progress bar
-
-  let lockedRefresher = true;
-  const progressBar = progress => {
-    const pieClass = $(".pie");
-    const leftSide = $(".pie .left-side");
-    const rightSide = $(".pie .right-side");
-
-    const levelCounter = $(".level_counter");
-    //reset rotation
-    pieClass.css("clip", "");
-    rightSide.css("transform", ``);
-    leftSide.css("transform", `rotate(0deg)`);
-    //
-    let rotate = 0;
-
-    let progressUpper = setInterval(() => {
-      rotate++; //increment
-
-      // clear interval
-      if (rotate >= progress) {
-        lockedRefresher = false;
-        window.clearInterval(progressUpper);
-      }
-      // css changes
-      levelCounter.text(~~(rotate * 6.9));
-
-      leftSide.css("transform", `rotate(${rotate * 3.6}deg)`);
-
-      if (rotate >= 50) {
-        pieClass.css("clip", "rect(auto, auto, auto, auto)");
-        rightSide.css("transform", "rotate(180deg)");
-      }
-    }, 30);
-  };
-  progressBar(70);
-
-  // last update timer
-
-  const lastUpdateTimer = () => {
-    const updater = $(".update");
-    let last_update = new Date().getMinutes();
-
-    updater.text("Last update less than 1 min. ago");
-
-    setInterval(() => {
-      let minNow = new Date().getMinutes();
-
-      updater.text(`Last update ${minNow - last_update} min. ago`);
-    }, 60000);
-  };
-  lastUpdateTimer();
-
-  // refresh on click event
-  let rotation = 0;
-  $(".refresh").on("click", () => {
-    if (!lockedRefresher) {
-      $(".refresh").css({
-        transform: `rotate(${(rotation += 180)}deg)`,
-      });
-
-      progressBar(70);
-      lastUpdateTimer();
-    }
-    lockedRefresher = true;
-  });
-  // after pseudo element content on loading
-  const loadingRateOfBg = () => {
-    const loadingElem = $(" figure > .img");
-    const playedGames = $(" figcaption > .black");
-    const statsTag = $("strong");
-    // stats changer
-    [...statsTag].forEach(e => {
-      const target = $(e).text();
-      const value = target.endsWith("%") ? target.slice(0, -1) : target;
-      let start = 0;
-      const interval = setInterval(() => {
-        start += target.endsWith("%") ? 1.1 / 2 : 16;
-        $(e).text(target.endsWith("%") ? start.toFixed(1) + "%" : start);
-        if (start >= value) window.clearInterval(interval);
-      }, 10);
-    });
-    // played games load
-    [...playedGames].forEach(e => {
-      const value = $(e).text();
-      let start = 0;
-      const interval = setInterval(() => {
-        start += randomNum(1, 5);
-
-        $(e).text(start);
-        if (start >= value) window.clearInterval(interval);
-      }, 10);
-    });
-    // img ::after
-    [...loadingElem].forEach(e => {
-      start = 0;
-      const interval = setInterval(() => {
-        start += Math.random() * 2.5 + 1;
-        $(e).attr("data-value", start.toFixed(1) + "%");
-        if (start >= 64) window.clearInterval(interval);
-      }, 110);
-    });
-  };
-  loadingRateOfBg();
-
-  // last games stats
-  const lastGamesStats = $(".last_games_stats .col > span");
-  [...lastGamesStats].forEach((e, i) => {
-    $(e)
-      .css("backgroundColor", i % 2 !== 0 ? "rgb(219, 222, 234)" : "#433fd1")
-      .animate(
-        {
-          height: randomNum(30, 120) + "px",
-        },
-        2500
-      );
-  });
-
-  //random talents
-  const talents = $(".talents > .talent");
-  const images = [
-    "../img/skills/avenging-wrath.png",
-    "../img/skills/divine-favor.png",
-    "../img/skills/holy-wrath.png",
-    "../img/skills/righteous-hammer.png",
-    "../img/skills/vindication.png",
-    "../img/skills/word-of-glory.png",
-  ];
-  // console.log(...talents);
-  [...talents].forEach(e => {
-    const img = arrayRandomizer(images);
-    // console.log($(e).children);
-    [...$(e).children()].forEach((e, i) => {
-      $(e).css("backgroundImage", `url(${img[i]})`);
-    });
-  });
 });
 $(".my_statistics").on("click", () => {
+  //preloader
+  $(".content_renderer").html(`
+  <div id="hellopreloader">
+      <div id="hellopreloader_preload"></div>
+      <p>
+        <a href=""></a>
+      </p>
+    </div>
+  `);
   //active
   $(".nav_list .active").removeClass("active");
   $(".my_statistics a").addClass("active");
   //render
-  $(".content_renderer").html(`
+  setTimeout(() => {
+    $(".content_renderer").html(`
   <section class="header">Statistic</section>
   <section class="search_hero">
         <div class="path">
@@ -555,113 +548,113 @@ $(".my_statistics").on("click", () => {
   
   </section>
   `);
-  //hero result section for find heroes
-  const heroResult = [
-    {
-      img: "../img/heroes/Ana_square_tile.png",
-      name: "Anna",
-      winRate: 61.62,
-      changes: "+1.22",
-      assurance: "+7.17",
-      selection: 9.81,
-      banned: 3.11,
-      playedGames: 981,
-    },
-    {
-      img: "../img/irel.jpg",
-      name: "Yrel",
-      winRate: 59.22,
-      changes: "-2.01",
-      assurance: "+3.17",
-      selection: 4.66,
-      banned: 1.37,
-      playedGames: 712,
-    },
-    {
-      img: "../img/heroes/sylvana.jpg",
-      name: "Sylvana",
-      winRate: 57.95,
-      changes: "-1.71",
-      assurance: "+9.55",
-      selection: 4.22,
-      banned: 6.59,
-      playedGames: 939,
-    },
-    {
-      img: "../img/heroes/thrall.jpg",
-      name: "Thrall",
-      winRate: 56.72,
-      changes: "+5.61",
-      assurance: "-3.97",
-      selection: 4.66,
-      banned: 1.37,
-      playedGames: 967,
-    },
-    {
-      img: "../img/heroes/Uther_Hero_Portrait.png",
-      name: "Uther",
-      winRate: 55.02,
-      changes: "+3.28",
-      assurance: "+1.33",
-      selection: 8.91,
-      banned: 3.87,
-      playedGames: 669,
-    },
-    {
-      img: "../img/heroes/reksar.jpg",
-      name: "Rexxar",
-      winRate: 53.55,
-      changes: "+1.11",
-      assurance: "-5.66",
-      selection: 7.99,
-      banned: 8.57,
-      playedGames: 481,
-    },
-    {
-      img: "../img/heroes/cho.jpg",
-      name: "Cho",
-      winRate: 51.02,
-      changes: "-2.21",
-      assurance: "-1.11",
-      selection: 9.16,
-      banned: 4.17,
-      playedGames: 557,
-    },
-    {
-      img: "../img/heroes/gall.jpg",
-      name: "Gall",
-      winRate: 50.51,
-      changes: "+5.31",
-      assurance: "+1.17",
-      selection: 6.11,
-      banned: 3.26,
-      playedGames: 711,
-    },
-    {
-      img: "../img/heroes/Anduin_square_tile.png",
-      name: "Anduin",
-      winRate: 50.22,
-      changes: "+3.01",
-      assurance: "-1.17",
-      selection: 6.16,
-      banned: 2.37,
-      playedGames: 717,
-    },
+    //hero result section for find heroes
+    const heroResult = [
+      {
+        img: "../img/heroes/Ana_square_tile.png",
+        name: "Anna",
+        winRate: 61.62,
+        changes: "+1.22",
+        assurance: "+7.17",
+        selection: 9.81,
+        banned: 3.11,
+        playedGames: 981,
+      },
+      {
+        img: "../img/irel.jpg",
+        name: "Yrel",
+        winRate: 59.22,
+        changes: "-2.01",
+        assurance: "+3.17",
+        selection: 4.66,
+        banned: 1.37,
+        playedGames: 712,
+      },
+      {
+        img: "../img/heroes/sylvana.jpg",
+        name: "Sylvana",
+        winRate: 57.95,
+        changes: "-1.71",
+        assurance: "+9.55",
+        selection: 4.22,
+        banned: 6.59,
+        playedGames: 939,
+      },
+      {
+        img: "../img/heroes/thrall.jpg",
+        name: "Thrall",
+        winRate: 56.72,
+        changes: "+5.61",
+        assurance: "-3.97",
+        selection: 4.66,
+        banned: 1.37,
+        playedGames: 967,
+      },
+      {
+        img: "../img/heroes/Uther_Hero_Portrait.png",
+        name: "Uther",
+        winRate: 55.02,
+        changes: "+3.28",
+        assurance: "+1.33",
+        selection: 8.91,
+        banned: 3.87,
+        playedGames: 669,
+      },
+      {
+        img: "../img/heroes/reksar.jpg",
+        name: "Rexxar",
+        winRate: 53.55,
+        changes: "+1.11",
+        assurance: "-5.66",
+        selection: 7.99,
+        banned: 8.57,
+        playedGames: 481,
+      },
+      {
+        img: "../img/heroes/cho.jpg",
+        name: "Cho",
+        winRate: 51.02,
+        changes: "-2.21",
+        assurance: "-1.11",
+        selection: 9.16,
+        banned: 4.17,
+        playedGames: 557,
+      },
+      {
+        img: "../img/heroes/gall.jpg",
+        name: "Gall",
+        winRate: 50.51,
+        changes: "+5.31",
+        assurance: "+1.17",
+        selection: 6.11,
+        banned: 3.26,
+        playedGames: 711,
+      },
+      {
+        img: "../img/heroes/Anduin_square_tile.png",
+        name: "Anduin",
+        winRate: 50.22,
+        changes: "+3.01",
+        assurance: "-1.17",
+        selection: 6.16,
+        banned: 2.37,
+        playedGames: 717,
+      },
 
-    {
-      img: "../img/heroes/Jaina_square_tile.png",
-      name: "Jaina",
-      winRate: 49.26,
-      changes: "+8.01",
-      assurance: "-1.17",
-      selection: 1.66,
-      banned: 6.37,
-      playedGames: 517,
-    },
-  ];
+      {
+        img: "../img/heroes/Jaina_square_tile.png",
+        name: "Jaina",
+        winRate: 49.26,
+        changes: "+8.01",
+        assurance: "-1.17",
+        selection: 1.66,
+        banned: 6.37,
+        playedGames: 517,
+      },
+    ];
 
-  heroResult.forEach(e => {
-    $(".search_result").append(`
+    heroResult.forEach(e => {
+      $(".search_result").append(`
     <div class="hero_played">
       <div class="hero">
         <div class="hero_name">
@@ -676,13 +669,13 @@ $(".my_statistics").on("click", () => {
   </div>
   <div class="map">
     <span class=" font-14 ${+e.changes >= 0 ? "green" : "red"}">${
-      e.changes
-    }</span>
+        e.changes
+      }</span>
   </div>
   <div class="rating">
     <span class=" font-14 ${+e.assurance >= 0 ? "green" : "red"}">${
-      e.assurance
-    }</span>
+        e.assurance
+      }</span>
   </div>
   <div class="result">
     <span class="black font-14">${e.selection}</span>
@@ -697,52 +690,65 @@ $(".my_statistics").on("click", () => {
     <span class=" font-14 show_btn">Show</span>
     </div>
 </div>`);
-  });
-  // filter by Filter mode - played games and win rate
-  $(".filter_mode").on("change", e => {
-    if (e.target.value == "winRate") {
-      //if win rate sort
+    });
+    // filter by Filter mode - played games and win rate
+    $(".filter_mode").on("change", e => {
+      if (e.target.value == "winRate") {
+        //if win rate sort
+        $(".search_result")
+          .children("div")
+          .sort(
+            (a, b) =>
+              +$(b).children(".mode").text().trim() -
+              +$(a).children(".mode").text().trim()
+          )
+          .appendTo(".search_result");
+      } else {
+        //if played games sort
+        $(".search_result")
+          .children("div")
+          .sort(
+            (a, b) =>
+              +$(b).children(".playedGames").text().trim() -
+              +$(a).children(".playedGames").text().trim()
+          )
+          .appendTo(".search_result");
+      }
+    });
+    // change options
+    $(".random").on("change", () => {
       $(".search_result")
         .children("div")
-        .sort(
-          (a, b) =>
-            +$(b).children(".mode").text().trim() -
-            +$(a).children(".mode").text().trim()
-        )
+        .sort(() => 0.5 - Math.random())
         .appendTo(".search_result");
-    } else {
-      //if played games sort
+    });
+    //click on search
+    $(".search .search_btn").on("click", () => {
       $(".search_result")
         .children("div")
-        .sort(
-          (a, b) =>
-            +$(b).children(".playedGames").text().trim() -
-            +$(a).children(".playedGames").text().trim()
-        )
+        .sort(() => 0.5 - Math.random())
         .appendTo(".search_result");
-    }
-  });
-  // change options
-  $(".random").on("change", () => {
-    $(".search_result")
-      .children("div")
-      .sort(() => 0.5 - Math.random())
-      .appendTo(".search_result");
-  });
-  //click on search
-  $(".search .search_btn").on("click", () => {
-    $(".search_result")
-      .children("div")
-      .sort(() => 0.5 - Math.random())
-      .appendTo(".search_result");
-  });
+    });
+  }, 500);
 });
 // top players section
 $(".my_top_players").on("click", () => {
+  //preloader.
+  $(".content_renderer").html(`
+  <div id="hellopreloader">
+      <div id="hellopreloader_preload"></div>
+      <p>
+        <a href=""></a>
+      </p>
+    </div>
+  `);
+
+  //active
+
   $(".nav_list .active").removeClass("active");
   $(".my_top_players a").addClass("active");
-
-  $(".content_renderer").html(`
+  setTimeout(() => {
+    $(".content_renderer").html(`
   <section class="header">Top players</section>
           <section class="top_five">
           </section>
@@ -759,52 +765,52 @@ $(".my_top_players").on("click", () => {
           </section>
 
   `);
-  // top 5 player
-  const topFivePlayers = [
-    {
-      position: 1,
-      nickname: "Cris",
-      avatar: "../img/avatars/avatar1.jpg",
-      rating: 10815,
-      win: 537,
-      lose: 314,
-    },
-    {
-      position: 2,
-      nickname: "TotalyMew",
-      avatar: "../img/avatars/avatar2.jfif",
-      rating: 10724,
-      win: 652,
-      lose: 110,
-    },
-    {
-      position: 3,
-      nickname: "ZEACris",
-      avatar: "../img/avatars/avatar3.png",
-      rating: 10116,
-      win: 488,
-      lose: 401,
-    },
-    {
-      position: 4,
-      nickname: "Nano",
-      avatar: "../img/avatars/avatar4.jpg",
-      rating: 10087,
-      win: 467,
-      lose: 229,
-    },
-    {
-      position: 5,
-      nickname: "Mascarade",
-      avatar: "../img/avatars/avatar5.png",
-      rating: 10052,
-      win: 430,
-      lose: 187,
-    },
-  ];
-  topFivePlayers.forEach(e => {
-    const winRate = (e.win / (e.win + e.lose)) * 100;
-    $(".top_five").append(`
+    // top 5 player
+    const topFivePlayers = [
+      {
+        position: 1,
+        nickname: "Cris",
+        avatar: "../img/avatars/avatar1.jpg",
+        rating: 10815,
+        win: 537,
+        lose: 314,
+      },
+      {
+        position: 2,
+        nickname: "TotalyMew",
+        avatar: "../img/avatars/avatar2.jfif",
+        rating: 10724,
+        win: 652,
+        lose: 110,
+      },
+      {
+        position: 3,
+        nickname: "ZEACris",
+        avatar: "../img/avatars/avatar3.png",
+        rating: 10116,
+        win: 488,
+        lose: 401,
+      },
+      {
+        position: 4,
+        nickname: "Nano",
+        avatar: "../img/avatars/avatar4.jpg",
+        rating: 10087,
+        win: 467,
+        lose: 229,
+      },
+      {
+        position: 5,
+        nickname: "Mascarade",
+        avatar: "../img/avatars/avatar5.png",
+        rating: 10052,
+        win: 430,
+        lose: 187,
+      },
+    ];
+    topFivePlayers.forEach(e => {
+      const winRate = (e.win / (e.win + e.lose)) * 100;
+      $(".top_five").append(`
        <div class="top_five_player">
               <header class="position_nickname">
                 <div class="position"
@@ -831,82 +837,82 @@ $(".my_top_players").on("click", () => {
             </div>
             
   `);
-  });
-  // top 5-10 rating
-  const topTenPlayers = [
-    {
-      rank: 6,
-      battletag: "TLHasuObs",
-      rating: 10005,
-      winRate: 55.9,
-      played: 403,
-      win: 244,
-      role: "../img/roles/bruiser.png",
-      favoriteHero: [
-        "../img/heroes/Jaina_square_tile.png",
-        "../img/heroes/garrosh.jpg",
-        "../img/heroes/thrall.jpg",
-      ],
-    },
-    {
-      rank: 7,
-      battletag: "hornyD",
-      rating: 9969,
-      winRate: 72.7,
-      played: 239,
-      win: 145,
-      role: "../img/roles/ranged.png",
-      favoriteHero: [
-        "../img/heroes/hanzo.jpg",
-        "../img/heroes/gall.jpg",
-        "../img/heroes/keltuzad.jpg",
-      ],
-    },
-    {
-      rank: 8,
-      battletag: "ElMatador",
-      rating: 9605,
-      winRate: 88.3,
-      played: 322,
-      win: 176,
-      role: "../img/roles/support.png",
-      favoriteHero: [
-        "../img/heroes/mediv.jpg",
-        "../img/heroes/zeratul.jpg",
-        "../img/heroes/zarya.jpg",
-      ],
-    },
-    {
-      rank: 9,
-      battletag: "Vasko",
-      rating: 9426,
-      winRate: 68.1,
-      played: 132,
-      win: 74,
-      role: "../img/roles/melee.png",
-      favoriteHero: [
-        "../img/heroes/dva.jpg",
-        "../img/heroes/illidan.jpg",
-        "../img/heroes/maiev.jpg",
-      ],
-    },
-    {
-      rank: 10,
-      battletag: "Executor",
-      rating: 9422,
-      winRate: 54.4,
-      played: 584,
-      win: 325,
-      role: "../img/roles/tank.png",
-      favoriteHero: [
-        "../img/heroes/tyrael.jpg",
-        "../img/heroes/sylvana.jpg",
-        "../img/heroes/Uther_Hero_Portrait.png",
-      ],
-    },
-  ];
-  topTenPlayers.forEach(e => {
-    $(".top_ten_player").append(`
+    });
+    // top 5-10 rating
+    const topTenPlayers = [
+      {
+        rank: 6,
+        battletag: "TLHasuObs",
+        rating: 10005,
+        winRate: 55.9,
+        played: 403,
+        win: 244,
+        role: "../img/roles/bruiser.png",
+        favoriteHero: [
+          "../img/heroes/Jaina_square_tile.png",
+          "../img/heroes/garrosh.jpg",
+          "../img/heroes/thrall.jpg",
+        ],
+      },
+      {
+        rank: 7,
+        battletag: "hornyD",
+        rating: 9969,
+        winRate: 72.7,
+        played: 239,
+        win: 145,
+        role: "../img/roles/ranged.png",
+        favoriteHero: [
+          "../img/heroes/hanzo.jpg",
+          "../img/heroes/gall.jpg",
+          "../img/heroes/keltuzad.jpg",
+        ],
+      },
+      {
+        rank: 8,
+        battletag: "ElMatador",
+        rating: 9605,
+        winRate: 88.3,
+        played: 322,
+        win: 176,
+        role: "../img/roles/support.png",
+        favoriteHero: [
+          "../img/heroes/mediv.jpg",
+          "../img/heroes/zeratul.jpg",
+          "../img/heroes/zarya.jpg",
+        ],
+      },
+      {
+        rank: 9,
+        battletag: "Vasko",
+        rating: 9426,
+        winRate: 68.1,
+        played: 132,
+        win: 74,
+        role: "../img/roles/melee.png",
+        favoriteHero: [
+          "../img/heroes/dva.jpg",
+          "../img/heroes/illidan.jpg",
+          "../img/heroes/maiev.jpg",
+        ],
+      },
+      {
+        rank: 10,
+        battletag: "Executor",
+        rating: 9422,
+        winRate: 54.4,
+        played: 584,
+        win: 325,
+        role: "../img/roles/tank.png",
+        favoriteHero: [
+          "../img/heroes/tyrael.jpg",
+          "../img/heroes/sylvana.jpg",
+          "../img/heroes/Uther_Hero_Portrait.png",
+        ],
+      },
+    ];
+    topTenPlayers.forEach(e => {
+      $(".top_ten_player").append(`
     <div class="player_info">
               <div class="battletag"
                 >&nbsp;&nbsp; ${e.rank}. &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${e.battletag}</div
@@ -926,14 +932,26 @@ $(".my_top_players").on("click", () => {
                 <div class="hero" style="background-image: url('${e.favoriteHero[2]}')"></div>
               </div>
             </div>`);
-  });
+    });
+  }, 500);
 });
 
 $(".my_guides").on("click", () => {
+  //preloader.
+  $(".content_renderer").html(`
+   <div id="hellopreloader">
+       <div id="hellopreloader_preload"></div>
+       <p>
+         <a href=""></a>
+       </p>
+     </div>
+   `);
+
+  //active
   $(".nav_list .active").removeClass("active");
   $(".my_guides a").addClass("active");
-
-  $(".content_renderer").html(`
+  setTimeout(() => {
+    $(".content_renderer").html(`
   <div class="guides_main_wrapper">
   <section class="header">Guides</section>
   <section class="popular_heroes">
@@ -978,41 +996,41 @@ $(".my_guides").on("click", () => {
 </div>
   `);
 
-  // list of heroes
-  const heroFromGuides = [
-    {
-      name: "Tiranda",
-      roleImgUrl: "/img/roles/healer.png",
-      role: "Healer",
-      heroImageUrl: "/img/full_hero/tiranda.png",
-    },
-    {
-      name: "Sylvana",
-      roleImgUrl: "/img/roles/ranged.png",
-      role: "Range",
-      heroImageUrl: "/img/full_hero/sylvana.png",
-    },
-    {
-      name: "Kel'Tuzad",
-      roleImgUrl: "/img/roles/ranged.png",
-      role: "Range",
-      heroImageUrl: "/img/full_hero/keltuzad.png",
-    },
-    {
-      name: "Tyrael",
-      roleImgUrl: "/img/roles/tank.png",
-      role: "Tank",
-      heroImageUrl: "/img/full_hero/tyrael.png",
-    },
-    {
-      name: "Jaina",
-      roleImgUrl: "/img/roles/support.png",
-      role: "Support",
-      heroImageUrl: "/img/full_hero/jaina.png",
-    },
-  ];
-  heroFromGuides.forEach(e => {
-    $(".hero_wrapper").append(`
+    // list of heroes
+    const heroFromGuides = [
+      {
+        name: "Tiranda",
+        roleImgUrl: "/img/roles/healer.png",
+        role: "Healer",
+        heroImageUrl: "/img/full_hero/tiranda.png",
+      },
+      {
+        name: "Sylvana",
+        roleImgUrl: "/img/roles/ranged.png",
+        role: "Range",
+        heroImageUrl: "/img/full_hero/sylvana.png",
+      },
+      {
+        name: "Kel'Tuzad",
+        roleImgUrl: "/img/roles/ranged.png",
+        role: "Range",
+        heroImageUrl: "/img/full_hero/keltuzad.png",
+      },
+      {
+        name: "Tyrael",
+        roleImgUrl: "/img/roles/tank.png",
+        role: "Tank",
+        heroImageUrl: "/img/full_hero/tyrael.png",
+      },
+      {
+        name: "Jaina",
+        roleImgUrl: "/img/roles/support.png",
+        role: "Support",
+        heroImageUrl: "/img/full_hero/jaina.png",
+      },
+    ];
+    heroFromGuides.forEach(e => {
+      $(".hero_wrapper").append(`
     <div class="hero">
           <div class="name"
             ><div class="hero_name bold font-18"> &nbsp; ${e.name}</div>
@@ -1025,15 +1043,27 @@ $(".my_guides").on("click", () => {
           </div>
           <img src="${e.heroImageUrl}" class="hero_image" />
         </div>`);
-  });
-  // heroes on click interactive
-  $(".hero_wrapper .hero").on("click", function (e) {
-    $(".content_renderer").html(`
+    });
+    // heroes on click interactive
+    $(".hero_wrapper .hero").on("click", function (e) {
+      //preloader.
+      $(".content_renderer").html(`
+   <div id="hellopreloader">
+       <div id="hellopreloader_preload"></div>
+       <p>
+         <a href=""></a>
+       </p>
+     </div>
+   `);
+      //content renderer
+
+      setTimeout(() => {
+        $(".content_renderer").html(`
     <div class="hero_info_wrapper">
-    <section class="header">Name</section>
+    <section class="header">Tyrael</section>
     <div class="content_hero_info">
       <div class="description">
-        <div class="head silver">Pilot MEka</div>
+        <div class="head silver">Prince of the light</div>
         <div class="hero_description">
          
         </div>
@@ -1060,18 +1090,19 @@ $(".my_guides").on("click", () => {
     </div>
   </div>
     `);
-    //hero decription
-    const heroDescription = {
-      about: `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+
+        //hero decription
+        const heroDescription = {
+          about: `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
       Qui voluptatum odit numquam porro corporis voluptate veniam`,
-      role: "Tank",
-      roleLogo: "/img/roles/tank.png",
-      roleType: "Melee",
-      game: "WoW",
-      gameLogo: "",
-      winRate: 55.3,
-    };
-    $(".hero_description").append(`
+          role: "Tank",
+          roleLogo: "/img/roles/tank.png",
+          roleType: "Melee",
+          game: "WoW",
+          gameLogo: "",
+          winRate: 55.3,
+        };
+        $(".hero_description").append(`
                 <div class="desc">
                   <div class="about font-10">
                     ${heroDescription.about}
@@ -1094,79 +1125,79 @@ $(".my_guides").on("click", () => {
                   
           
     `);
-    //atrr append
-    $(".hero_description").append(`
+        //atrr append
+        $(".hero_description").append(`
       <div class="attributes"></div>
       `);
-    //hero attributes
-    const heroAttributes = [
-      {
-        logo: "/img/roles/melee.png",
-        attr: "Damage",
-        diff: [
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "silver_bg",
-          "silver_bg",
-          "silver_bg",
-          "silver_bg",
-          "silver_bg",
-        ],
-      },
-      {
-        logo: "/img/roles/healer.png",
-        attr: "Support",
-        diff: [
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "silver_bg",
-          "silver_bg",
-          "silver_bg",
-          "silver_bg",
-        ],
-      },
-      {
-        logo: "/img/roles/tank.png",
-        attr: "Vitality",
-        diff: [
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "silver_bg",
-          "silver_bg",
-        ],
-      },
-      {
-        logo: "/img/roles/support.png",
-        attr: "Difficulty",
-        diff: [
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "blue_bg",
-          "silver_bg",
-          "silver_bg",
-        ],
-      },
-    ];
-    heroAttributes.forEach(e => {
-      $(".attributes").append(`
+        //hero attributes
+        const heroAttributes = [
+          {
+            logo: "/img/roles/melee.png",
+            attr: "Damage",
+            diff: [
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "silver_bg",
+              "silver_bg",
+              "silver_bg",
+              "silver_bg",
+              "silver_bg",
+            ],
+          },
+          {
+            logo: "/img/roles/healer.png",
+            attr: "Support",
+            diff: [
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "silver_bg",
+              "silver_bg",
+              "silver_bg",
+              "silver_bg",
+            ],
+          },
+          {
+            logo: "/img/roles/tank.png",
+            attr: "Vitality",
+            diff: [
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "silver_bg",
+              "silver_bg",
+            ],
+          },
+          {
+            logo: "/img/roles/support.png",
+            attr: "Difficulty",
+            diff: [
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "blue_bg",
+              "silver_bg",
+              "silver_bg",
+            ],
+          },
+        ];
+        heroAttributes.forEach(e => {
+          $(".attributes").append(`
     <div class="damage">
             <div class="img_logo"
             style="background-image: url('${e.logo}')"
@@ -1187,44 +1218,44 @@ $(".my_guides").on("click", () => {
               </div>
             </div>
           </div>`);
-    });
-    const metaTalents = [
-      {
-        winRate: 55.3,
-        talents: [
-          "/img/skills/tyrael1.png",
-          "/img/skills/tyrael2.png",
-          "/img/skills/tyrael3.png",
-          "/img/skills/tyrael4.png",
-          "/img/skills/tyrael5.png",
-          "/img/skills/tyrael6.png",
-        ],
-      },
-      {
-        winRate: 49.6,
-        talents: [
-          "/img/skills/tyrael4.png",
-          "/img/skills/tyrael5.png",
-          "/img/skills/tyrael6.png",
-          "/img/skills/tyrael1.png",
-          "/img/skills/tyrael2.png",
-          "/img/skills/tyrael3.png",
-        ],
-      },
-      {
-        winRate: 47.2,
-        talents: [
-          "/img/skills/tyrael5.png",
-          "/img/skills/tyrael6.png",
-          "/img/skills/tyrael1.png",
-          "/img/skills/tyrael4.png",
-          "/img/skills/tyrael2.png",
-          "/img/skills/tyrael3.png",
-        ],
-      },
-    ];
-    metaTalents.forEach(e => {
-      $(".metas").append(`
+        });
+        const metaTalents = [
+          {
+            winRate: 55.3,
+            talents: [
+              "/img/skills/tyrael1.png",
+              "/img/skills/tyrael2.png",
+              "/img/skills/tyrael3.png",
+              "/img/skills/tyrael4.png",
+              "/img/skills/tyrael5.png",
+              "/img/skills/tyrael6.png",
+            ],
+          },
+          {
+            winRate: 49.6,
+            talents: [
+              "/img/skills/tyrael4.png",
+              "/img/skills/tyrael5.png",
+              "/img/skills/tyrael6.png",
+              "/img/skills/tyrael1.png",
+              "/img/skills/tyrael2.png",
+              "/img/skills/tyrael3.png",
+            ],
+          },
+          {
+            winRate: 47.2,
+            talents: [
+              "/img/skills/tyrael5.png",
+              "/img/skills/tyrael6.png",
+              "/img/skills/tyrael1.png",
+              "/img/skills/tyrael4.png",
+              "/img/skills/tyrael2.png",
+              "/img/skills/tyrael3.png",
+            ],
+          },
+        ];
+        metaTalents.forEach(e => {
+          $(".metas").append(`
       <div class="meta">
                 <div class="win_rate">${e.winRate}%</div>
                 <div class="talents">
@@ -1250,46 +1281,48 @@ $(".my_guides").on("click", () => {
                 <div class="copy_talents blue ">&#128461;</div>
               </div>
       `);
+        });
+      }, 500);
     });
-  });
-  // list of trainers
-  const trainersArray = [
-    {
-      name: "Stella",
-      imageUrl: "/img/avatars/1.jpg",
-    },
-    {
-      name: "IvanS",
-      imageUrl: "/img/avatars/2.jpg",
-    },
-    {
-      name: "Fan",
-      imageUrl: "/img/avatars/3.jpg",
-    },
-    {
-      name: "LarryDavid",
-      imageUrl: "/img/avatars/4.jpg",
-    },
-    {
-      name: "InnaDakota",
-      imageUrl: "/img/avatars/5.jpg",
-    },
-    {
-      name: "adrenaline",
-      imageUrl: "/img/avatars/6.jpg",
-    },
-    {
-      name: "KNIP",
-      imageUrl: "/img/avatars/7.jpg",
-    },
 
-    {
-      name: "Qepi",
-      imageUrl: "/img/avatars/8.jfif",
-    },
-  ];
-  trainersArray.forEach(e => {
-    $(".trainer_wrapper").append(`
+    // list of trainers
+    const trainersArray = [
+      {
+        name: "Stella",
+        imageUrl: "/img/avatars/1.jpg",
+      },
+      {
+        name: "IvanS",
+        imageUrl: "/img/avatars/2.jpg",
+      },
+      {
+        name: "Fan",
+        imageUrl: "/img/avatars/3.jpg",
+      },
+      {
+        name: "LarryDavid",
+        imageUrl: "/img/avatars/4.jpg",
+      },
+      {
+        name: "InnaDakota",
+        imageUrl: "/img/avatars/5.jpg",
+      },
+      {
+        name: "adrenaline",
+        imageUrl: "/img/avatars/6.jpg",
+      },
+      {
+        name: "KNIP",
+        imageUrl: "/img/avatars/7.jpg",
+      },
+
+      {
+        name: "Qepi",
+        imageUrl: "/img/avatars/8.jfif",
+      },
+    ];
+    trainersArray.forEach(e => {
+      $(".trainer_wrapper").append(`
     <div class="trainer">
                 <div class="avatar"
                 style="background-image: url(${e.imageUrl})"
@@ -1297,100 +1330,100 @@ $(".my_guides").on("click", () => {
                 <div class="name font-12">${e.name}</div>
              </div>
     `);
-  });
-  //guides description
-  const guidesInfo = [
-    {
-      description: "Jaina Pradmure. Admiral daughter.",
-      backgroundImg: "/img/guides_bg/jaina.jpg",
-      author: "IvanS",
-      authorAvatar: "/img/avatars/2.jpg",
-      postedDate: "02 Dec 2020",
-      likes: 3742,
-      comments: 58,
-      views: 6931,
-      iLiked: false,
-    },
-    {
-      description: "Tracer. Always everywhere.",
-      backgroundImg: "/img/guides_bg/tracer.jpg",
-      author: "InnaDakota",
-      authorAvatar: "/img/avatars/5.jpg",
-      postedDate: "28 Nov 2020",
-      likes: 2029,
-      comments: 14,
-      views: 4200,
-      iLiked: true,
-    },
-    {
-      description: "Whitemane. Fury of light.",
-      backgroundImg: "/img/guides_bg/Whitemane.jpg",
-      author: "adrenaline",
-      authorAvatar: "/img/avatars/6.jpg",
-      postedDate: "18 Nov 2020",
-      likes: 1728,
-      comments: 23,
-      views: 5946,
-      iLiked: false,
-    },
-    {
-      description: "Chromie. We have all the time in the world!",
-      backgroundImg: "/img/guides_bg/chromie.jpg",
-      author: "KNIP",
-      authorAvatar: "/img/avatars/7.jpg",
-      postedDate: "28 Oct 2020",
-      likes: 4602,
-      comments: 41,
-      views: 5496,
-      iLiked: false,
-    },
-    {
-      description: "from D.VA, with love.",
-      backgroundImg: "/img/guides_bg/dva.jpg",
-      author: "InnaDakota",
-      authorAvatar: "/img/avatars/5.jpg",
-      postedDate: "18 Oct 2020",
-      likes: 4512,
-      comments: 17,
-      views: 8150,
-      iLiked: false,
-    },
-    {
-      description: "Kel'Thas. Walking flame.",
-      backgroundImg: "/img/guides_bg/keltas.png",
-      author: "Fan",
-      authorAvatar: "/img/avatars/3.jpg",
-      postedDate: "08 Oct 2020",
-      likes: 849,
-      comments: 29,
-      views: 1062,
-      iLiked: false,
-    },
-    {
-      description: "Nova. Ghost of the Nexxus.",
-      backgroundImg: "/img/guides_bg/nova.jpg",
-      author: "LarryDavid",
-      authorAvatar: "/img/avatars/4.jpg",
-      postedDate: "07 Oct 2020",
-      likes: 5281,
-      comments: 33,
-      views: 8157,
-      iLiked: false,
-    },
-    {
-      description: "Arthas. No king rules forever.",
-      backgroundImg: "/img/guides_bg/Arthas.jpg",
-      author: "IvanS",
-      authorAvatar: "/img/avatars/2.jpg",
-      postedDate: "27 Sep 2020",
-      likes: 1895,
-      comments: 12,
-      views: 3947,
-      iLiked: true,
-    },
-  ];
-  guidesInfo.forEach(e => {
-    $(".guides_wrapper").append(`
+    });
+    //guides description
+    const guidesInfo = [
+      {
+        description: "Jaina Pradmure. Admiral daughter.",
+        backgroundImg: "/img/guides_bg/jaina.jpg",
+        author: "IvanS",
+        authorAvatar: "/img/avatars/2.jpg",
+        postedDate: "02 Dec 2020",
+        likes: 3742,
+        comments: 58,
+        views: 6931,
+        iLiked: false,
+      },
+      {
+        description: "Tracer. Always everywhere.",
+        backgroundImg: "/img/guides_bg/tracer.jpg",
+        author: "InnaDakota",
+        authorAvatar: "/img/avatars/5.jpg",
+        postedDate: "28 Nov 2020",
+        likes: 2029,
+        comments: 14,
+        views: 4200,
+        iLiked: true,
+      },
+      {
+        description: "Whitemane. Fury of light.",
+        backgroundImg: "/img/guides_bg/Whitemane.jpg",
+        author: "adrenaline",
+        authorAvatar: "/img/avatars/6.jpg",
+        postedDate: "18 Nov 2020",
+        likes: 1728,
+        comments: 23,
+        views: 5946,
+        iLiked: false,
+      },
+      {
+        description: "Chromie. We have all the time in the world!",
+        backgroundImg: "/img/guides_bg/chromie.jpg",
+        author: "KNIP",
+        authorAvatar: "/img/avatars/7.jpg",
+        postedDate: "28 Oct 2020",
+        likes: 4602,
+        comments: 41,
+        views: 5496,
+        iLiked: false,
+      },
+      {
+        description: "from D.VA, with love.",
+        backgroundImg: "/img/guides_bg/dva.jpg",
+        author: "InnaDakota",
+        authorAvatar: "/img/avatars/5.jpg",
+        postedDate: "18 Oct 2020",
+        likes: 4512,
+        comments: 17,
+        views: 8150,
+        iLiked: false,
+      },
+      {
+        description: "Kel'Thas. Walking flame.",
+        backgroundImg: "/img/guides_bg/keltas.png",
+        author: "Fan",
+        authorAvatar: "/img/avatars/3.jpg",
+        postedDate: "08 Oct 2020",
+        likes: 849,
+        comments: 29,
+        views: 1062,
+        iLiked: false,
+      },
+      {
+        description: "Nova. Ghost of the Nexxus.",
+        backgroundImg: "/img/guides_bg/nova.jpg",
+        author: "LarryDavid",
+        authorAvatar: "/img/avatars/4.jpg",
+        postedDate: "07 Oct 2020",
+        likes: 5281,
+        comments: 33,
+        views: 8157,
+        iLiked: false,
+      },
+      {
+        description: "Arthas. No king rules forever.",
+        backgroundImg: "/img/guides_bg/Arthas.jpg",
+        author: "IvanS",
+        authorAvatar: "/img/avatars/2.jpg",
+        postedDate: "27 Sep 2020",
+        likes: 1895,
+        comments: 12,
+        views: 3947,
+        iLiked: true,
+      },
+    ];
+    guidesInfo.forEach(e => {
+      $(".guides_wrapper").append(`
   <div class="guide">
         <div class="head"
         style="background-image: url(${e.backgroundImg})"
@@ -1408,8 +1441,8 @@ $(".my_guides").on("click", () => {
         <div class="info">
           <div class="like font-12 silver"
             ><div class="${e.iLiked ? "red" : "silver"} love">&#9825;</div> ${
-      e.likes
-    }</div
+        e.likes
+      }</div
           >
           <div class="comment silver font-12"
             ><i class="far fa-comment-alt"></i> ${e.comments}</div
@@ -1419,5 +1452,6 @@ $(".my_guides").on("click", () => {
           >
         </div>
   `);
-  });
+    });
+  }, 500);
 });

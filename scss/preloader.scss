@@ -13,6 +13,6 @@
   background: rgba(67, 63, 209, 0)
     url(http://hello-site.ru//main/images/preloads/tail-spin.svg) center center
     no-repeat;
-  background-size: 200px;
-  filter: brightness(0.8) sepia(0.7) saturate(10000%);
+  background-size: 150px;
+  filter: brightness(0.4) sepia(0.3) saturate(10000%) hue-rotate(220deg);
 }

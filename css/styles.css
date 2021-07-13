@@ -165,7 +165,7 @@
   height: 70px;
   border-radius: 50%;
   border: none;
-  background-image: url(../img/widowmaker.png);
+  background-image: url(../img/avatar2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -705,6 +705,20 @@
   display: flex;
   position: relative;
 }
+.hero_info_wrapper .content_hero_info:before {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 90%;
+  height: 100%;
+  content: "";
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/img/warcraft.png");
+  opacity: 0.05;
+}
 .hero_info_wrapper .description {
   z-index: 3;
   margin-top: 30px;
@@ -888,8 +902,8 @@
   height: 100%;
   min-width: 1000px;
   background: rgba(67, 63, 209, 0) url(http://hello-site.ru//main/images/preloads/tail-spin.svg) center center no-repeat;
-  background-size: 200px;
-  filter: brightness(0.8) sepia(0.7) saturate(10000%);
+  background-size: 150px;
+  filter: brightness(0.4) sepia(0.3) saturate(10000%) hue-rotate(220deg);
 }
 
 * {
