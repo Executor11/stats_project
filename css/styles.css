@@ -906,6 +906,47 @@
   filter: brightness(0.4) sepia(0.3) saturate(10000%) hue-rotate(220deg);
 }
 
+.notification {
+  display: block;
+  position: relative;
+}
+.notification ul {
+  position: absolute;
+  z-index: 10;
+  margin-top: 20px;
+  left: -100px;
+  top: 20px;
+  border: 1px solid #eceffa;
+}
+.notification ul li {
+  list-style: none;
+  width: 200px;
+  border-bottom: 1px solid #eceffa;
+  height: 100px;
+  background-color: #433fd1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+}
+.notification ul li:before {
+  z-index: 1;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  content: "";
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/img/warcraft.png");
+  opacity: 0.2;
+}
+
+.user i {
+  cursor: pointer;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1045,7 +1086,7 @@ a {
   position: relative;
 }
 .header_top .header_account-mngr .notification:after {
-  content: "3";
+  content: attr(data-value);
   position: absolute;
   width: 10px;
   height: 10px;

@@ -1,0 +1,44 @@
+.notification {
+  display: block;
+  position: relative;
+  ul {
+    position: absolute;
+    z-index: 10;
+    margin-top: 20px;
+    left: -100px;
+    top: 20px;
+    border: 1px solid $bluemoon;
+    li {
+      //   display: none;
+      list-style: none;
+      width: 200px;
+      border-bottom: 1px solid $bluemoon;
+
+      height: 100px;
+      background-color: $blue;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      color: #fff;
+      &:before {
+        z-index: 1;
+        position: absolute;
+
+        width: 100px;
+        height: 100px;
+        content: "";
+        @include image_center;
+
+        background-image: url("/img/warcraft.png");
+        opacity: 0.2;
+      }
+    }
+  }
+}
+
+.user {
+  i {
+    cursor: pointer;
+  }
+}

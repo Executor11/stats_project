@@ -2,7 +2,40 @@
 const randomNum = (min, max) => ~~(Math.random() * (max - min + 1) + min);
 const arrayRandomizer = array => [...array].sort(() => 0.5 - Math.random());
 //
+//drop notification
+let notificationHided = true;
+$(".drop_notification").hide();
+$(".notification .fas").on("click", () => {
+  if (notificationHided) {
+    $(".drop_notification").show();
+    notificationHided = false;
+  } else {
+    $(".drop_notification").hide();
+    notificationHided = true;
+  }
+  console.log("321");
+});
+$("body").on("click", e => {
+  e.stopPropagation();
+  if (
+    !e.target.classList.contains("notification") &&
+    !e.target.classList.contains("fa-bell") &&
+    !e.target.classList.contains("drop")
+  ) {
+    $(".drop_notification").hide();
+    notificationHided = true;
+  }
+});
+let num = 3;
+$(".drop").on("click", e => {
+  e.target.style.backgroundColor = "#fff";
+  e.target.style.color = "#000";
 
+  if (num > 0) {
+    num--;
+    $(".notification").attr("data-value", num);
+  }
+});
 //click
 $(".my_account").on("click", () => {
   $(".content_renderer").html(`
@@ -996,38 +1029,47 @@ $(".my_guides").on("click", () => {
 </div>
   `);
 
+    class Hero {
+      constructor(name, roleImgUrl, role, heroImageUrl) {
+        this.name = name;
+        this.roleImgUrl = roleImgUrl;
+        this.role = role;
+        this.heroImageUrl = heroImageUrl;
+      }
+    }
     // list of heroes
     const heroFromGuides = [
-      {
-        name: "Tiranda",
-        roleImgUrl: "/img/roles/healer.png",
-        role: "Healer",
-        heroImageUrl: "/img/full_hero/tiranda.png",
-      },
-      {
-        name: "Sylvana",
-        roleImgUrl: "/img/roles/ranged.png",
-        role: "Range",
-        heroImageUrl: "/img/full_hero/sylvana.png",
-      },
-      {
-        name: "Kel'Tuzad",
-        roleImgUrl: "/img/roles/ranged.png",
-        role: "Range",
-        heroImageUrl: "/img/full_hero/keltuzad.png",
-      },
-      {
-        name: "Tyrael",
-        roleImgUrl: "/img/roles/tank.png",
-        role: "Tank",
-        heroImageUrl: "/img/full_hero/tyrael.png",
-      },
-      {
-        name: "Jaina",
-        roleImgUrl: "/img/roles/support.png",
-        role: "Support",
-        heroImageUrl: "/img/full_hero/jaina.png",
-      },
+      new Hero(
+        "Tiranda",
+        "/img/roles/healer.png",
+        "Healer",
+        "/img/full_hero/tiranda.png"
+      ),
+      new Hero(
+        "Sylvana",
+        "/img/roles/ranged.png",
+        "Range",
+        "/img/full_hero/sylvana.png"
+      ),
+      new Hero(
+        "Kel'Tuzad",
+        "/img/roles/ranged.png",
+        "Range",
+        "/img/full_hero/keltuzad.png"
+      ),
+
+      new Hero(
+        "Tyrael",
+        "/img/roles/tank.png",
+        "Tank",
+        "/img/full_hero/tyrael.png"
+      ),
+      new Hero(
+        "Jaina",
+        "/img/roles/support.png",
+        "Support",
+        "/img/full_hero/jaina.png"
+      ),
     ];
     heroFromGuides.forEach(e => {
       $(".hero_wrapper").append(`
@@ -1285,41 +1327,22 @@ $(".my_guides").on("click", () => {
       }, 500);
     });
 
+    class Trainer {
+      constructor(name, img) {
+        this.name = name;
+        this.imageUrl = img;
+      }
+    }
     // list of trainers
     const trainersArray = [
-      {
-        name: "Stella",
-        imageUrl: "/img/avatars/1.jpg",
-      },
-      {
-        name: "IvanS",
-        imageUrl: "/img/avatars/2.jpg",
-      },
-      {
-        name: "Fan",
-        imageUrl: "/img/avatars/3.jpg",
-      },
-      {
-        name: "LarryDavid",
-        imageUrl: "/img/avatars/4.jpg",
-      },
-      {
-        name: "InnaDakota",
-        imageUrl: "/img/avatars/5.jpg",
-      },
-      {
-        name: "adrenaline",
-        imageUrl: "/img/avatars/6.jpg",
-      },
-      {
-        name: "KNIP",
-        imageUrl: "/img/avatars/7.jpg",
-      },
-
-      {
-        name: "Qepi",
-        imageUrl: "/img/avatars/8.jfif",
-      },
+      new Trainer("Stella", "/img/avatars/1.jpg"),
+      new Trainer("IvanS", "/img/avatars/2.jpg"),
+      new Trainer("Fan", "/img/avatars/3.jpg"),
+      new Trainer("LarryDavid", "/img/avatars/4.jpg"),
+      new Trainer("InnaDakota", "/img/avatars/5.jpg"),
+      new Trainer("adrenaline", "/img/avatars/6.jpg"),
+      new Trainer("KNIP", "/img/avatars/7.jpg"),
+      new Trainer("Qepi", "/img/avatars/8.jfif"),
     ];
     trainersArray.forEach(e => {
       $(".trainer_wrapper").append(`
