@@ -446,17 +446,16 @@ $(".my_account").on("click", () => {
     //random talents
     const talents = $(".talents > .talent");
     const images = [
-      "../img/skills/avenging-wrath.png",
-      "../img/skills/divine-favor.png",
-      "../img/skills/holy-wrath.png",
-      "../img/skills/righteous-hammer.png",
-      "../img/skills/vindication.png",
-      "../img/skills/word-of-glory.png",
+      "./img/skills/avenging-wrath.png",
+      "./img/skills/divine-favor.png",
+      "./img/skills/holy-wrath.png",
+      "./img/skills/righteous-hammer.png",
+      "./img/skills/vindication.png",
+      "./img/skills/word-of-glory.png",
     ];
     // console.log(...talents);
     [...talents].forEach(e => {
       const img = arrayRandomizer(images);
-      // console.log($(e).children);
       [...$(e).children()].forEach((e, i) => {
         $(e).css("backgroundImage", `url(${img[i]})`);
       });
@@ -584,7 +583,7 @@ $(".my_statistics").on("click", () => {
     //hero result section for find heroes
     const heroResult = [
       {
-        img: "../img/heroes/Ana_square_tile.png",
+        img: "./img/heroes/Ana_square_tile.png",
         name: "Anna",
         winRate: 61.62,
         changes: "+1.22",
@@ -594,7 +593,7 @@ $(".my_statistics").on("click", () => {
         playedGames: 981,
       },
       {
-        img: "../img/irel.jpg",
+        img: "./img/irel.jpg",
         name: "Yrel",
         winRate: 59.22,
         changes: "-2.01",
@@ -604,7 +603,7 @@ $(".my_statistics").on("click", () => {
         playedGames: 712,
       },
       {
-        img: "../img/heroes/sylvana.jpg",
+        img: "./img/heroes/sylvana.jpg",
         name: "Sylvana",
         winRate: 57.95,
         changes: "-1.71",
@@ -614,7 +613,7 @@ $(".my_statistics").on("click", () => {
         playedGames: 939,
       },
       {
-        img: "../img/heroes/thrall.jpg",
+        img: "./img/heroes/thrall.jpg",
         name: "Thrall",
         winRate: 56.72,
         changes: "+5.61",
@@ -624,7 +623,7 @@ $(".my_statistics").on("click", () => {
         playedGames: 967,
       },
       {
-        img: "../img/heroes/Uther_Hero_Portrait.png",
+        img: "./img/heroes/Uther_Hero_Portrait.png",
         name: "Uther",
         winRate: 55.02,
         changes: "+3.28",
@@ -634,7 +633,7 @@ $(".my_statistics").on("click", () => {
         playedGames: 669,
       },
       {
-        img: "../img/heroes/reksar.jpg",
+        img: "./img/heroes/reksar.jpg",
         name: "Rexxar",
         winRate: 53.55,
         changes: "+1.11",
@@ -644,7 +643,7 @@ $(".my_statistics").on("click", () => {
         playedGames: 481,
       },
       {
-        img: "../img/heroes/cho.jpg",
+        img: "./img/heroes/cho.jpg",
         name: "Cho",
         winRate: 51.02,
         changes: "-2.21",
@@ -654,7 +653,7 @@ $(".my_statistics").on("click", () => {
         playedGames: 557,
       },
       {
-        img: "../img/heroes/gall.jpg",
+        img: "./img/heroes/gall.jpg",
         name: "Gall",
         winRate: 50.51,
         changes: "+5.31",
@@ -664,7 +663,7 @@ $(".my_statistics").on("click", () => {
         playedGames: 711,
       },
       {
-        img: "../img/heroes/Anduin_square_tile.png",
+        img: "./img/heroes/Anduin_square_tile.png",
         name: "Anduin",
         winRate: 50.22,
         changes: "+3.01",
@@ -675,7 +674,7 @@ $(".my_statistics").on("click", () => {
       },
 
       {
-        img: "../img/heroes/Jaina_square_tile.png",
+        img: "./img/heroes/Jaina_square_tile.png",
         name: "Jaina",
         winRate: 49.26,
         changes: "+8.01",
@@ -803,7 +802,7 @@ $(".my_top_players").on("click", () => {
       {
         position: 1,
         nickname: "Cris",
-        avatar: "../img/avatars/avatar1.jpg",
+        avatar: "./img/avatars/avatar1.jpg",
         rating: 10815,
         win: 537,
         lose: 314,
@@ -811,7 +810,7 @@ $(".my_top_players").on("click", () => {
       {
         position: 2,
         nickname: "TotalyMew",
-        avatar: "../img/avatars/avatar2.jfif",
+        avatar: "./img/avatars/avatar2.jfif",
         rating: 10724,
         win: 652,
         lose: 110,
@@ -819,7 +818,7 @@ $(".my_top_players").on("click", () => {
       {
         position: 3,
         nickname: "ZEACris",
-        avatar: "../img/avatars/avatar3.png",
+        avatar: "./img/avatars/avatar3.png",
         rating: 10116,
         win: 488,
         lose: 401,
@@ -827,7 +826,7 @@ $(".my_top_players").on("click", () => {
       {
         position: 4,
         nickname: "Nano",
-        avatar: "../img/avatars/avatar4.jpg",
+        avatar: "./img/avatars/avatar4.jpg",
         rating: 10087,
         win: 467,
         lose: 229,
@@ -835,7 +834,7 @@ $(".my_top_players").on("click", () => {
       {
         position: 5,
         nickname: "Mascarade",
-        avatar: "../img/avatars/avatar5.png",
+        avatar: "./img/avatars/avatar5.png",
         rating: 10052,
         win: 430,
         lose: 187,
@@ -880,11 +879,11 @@ $(".my_top_players").on("click", () => {
         winRate: 55.9,
         played: 403,
         win: 244,
-        role: "../img/roles/bruiser.png",
+        role: "./img/roles/bruiser.png",
         favoriteHero: [
-          "../img/heroes/Jaina_square_tile.png",
-          "../img/heroes/garrosh.jpg",
-          "../img/heroes/thrall.jpg",
+          "./img/heroes/Jaina_square_tile.png",
+          "./img/heroes/garrosh.jpg",
+          "./img/heroes/thrall.jpg",
         ],
       },
       {
@@ -894,11 +893,11 @@ $(".my_top_players").on("click", () => {
         winRate: 72.7,
         played: 239,
         win: 145,
-        role: "../img/roles/ranged.png",
+        role: "./img/roles/ranged.png",
         favoriteHero: [
-          "../img/heroes/hanzo.jpg",
-          "../img/heroes/gall.jpg",
-          "../img/heroes/keltuzad.jpg",
+          "./img/heroes/hanzo.jpg",
+          "./img/heroes/gall.jpg",
+          "./img/heroes/keltuzad.jpg",
         ],
       },
       {
@@ -908,11 +907,11 @@ $(".my_top_players").on("click", () => {
         winRate: 88.3,
         played: 322,
         win: 176,
-        role: "../img/roles/support.png",
+        role: "./img/roles/support.png",
         favoriteHero: [
-          "../img/heroes/mediv.jpg",
-          "../img/heroes/zeratul.jpg",
-          "../img/heroes/zarya.jpg",
+          "./img/heroes/mediv.jpg",
+          "./img/heroes/zeratul.jpg",
+          "./img/heroes/zarya.jpg",
         ],
       },
       {
@@ -922,11 +921,11 @@ $(".my_top_players").on("click", () => {
         winRate: 68.1,
         played: 132,
         win: 74,
-        role: "../img/roles/melee.png",
+        role: "./img/roles/melee.png",
         favoriteHero: [
-          "../img/heroes/dva.jpg",
-          "../img/heroes/illidan.jpg",
-          "../img/heroes/maiev.jpg",
+          "./img/heroes/dva.jpg",
+          "./img/heroes/illidan.jpg",
+          "./img/heroes/maiev.jpg",
         ],
       },
       {
@@ -936,11 +935,11 @@ $(".my_top_players").on("click", () => {
         winRate: 54.4,
         played: 584,
         win: 325,
-        role: "../img/roles/tank.png",
+        role: "./img/roles/tank.png",
         favoriteHero: [
-          "../img/heroes/tyrael.jpg",
-          "../img/heroes/sylvana.jpg",
-          "../img/heroes/Uther_Hero_Portrait.png",
+          "./img/heroes/tyrael.jpg",
+          "./img/heroes/sylvana.jpg",
+          "./img/heroes/Uther_Hero_Portrait.png",
         ],
       },
     ];
@@ -1041,34 +1040,34 @@ $(".my_guides").on("click", () => {
     const heroFromGuides = [
       new Hero(
         "Tiranda",
-        "/img/roles/healer.png",
+        "./img/roles/healer.png",
         "Healer",
-        "/img/full_hero/tiranda.png"
+        "./img/full_hero/tiranda.png"
       ),
       new Hero(
         "Sylvana",
-        "/img/roles/ranged.png",
+        "./img/roles/ranged.png",
         "Range",
-        "/img/full_hero/sylvana.png"
+        "./img/full_hero/sylvana.png"
       ),
       new Hero(
         "Kel'Tuzad",
-        "/img/roles/ranged.png",
+        "./img/roles/ranged.png",
         "Range",
-        "/img/full_hero/keltuzad.png"
+        "./img/full_hero/keltuzad.png"
       ),
 
       new Hero(
         "Tyrael",
-        "/img/roles/tank.png",
+        "./img/roles/tank.png",
         "Tank",
-        "/img/full_hero/tyrael.png"
+        "./img/full_hero/tyrael.png"
       ),
       new Hero(
         "Jaina",
-        "/img/roles/support.png",
+        "./img/roles/support.png",
         "Support",
-        "/img/full_hero/jaina.png"
+        "./img/full_hero/jaina.png"
       ),
     ];
     heroFromGuides.forEach(e => {
@@ -1138,7 +1137,7 @@ $(".my_guides").on("click", () => {
           about: `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
       Qui voluptatum odit numquam porro corporis voluptate veniam`,
           role: "Tank",
-          roleLogo: "/img/roles/tank.png",
+          roleLogo: "./img/roles/tank.png",
           roleType: "Melee",
           game: "WoW",
           gameLogo: "",
@@ -1174,7 +1173,7 @@ $(".my_guides").on("click", () => {
         //hero attributes
         const heroAttributes = [
           {
-            logo: "/img/roles/melee.png",
+            logo: "./img/roles/melee.png",
             attr: "Damage",
             diff: [
               "blue_bg",
@@ -1190,7 +1189,7 @@ $(".my_guides").on("click", () => {
             ],
           },
           {
-            logo: "/img/roles/healer.png",
+            logo: "./img/roles/healer.png",
             attr: "Support",
             diff: [
               "blue_bg",
@@ -1206,7 +1205,7 @@ $(".my_guides").on("click", () => {
             ],
           },
           {
-            logo: "/img/roles/tank.png",
+            logo: "./img/roles/tank.png",
             attr: "Vitality",
             diff: [
               "blue_bg",
@@ -1222,7 +1221,7 @@ $(".my_guides").on("click", () => {
             ],
           },
           {
-            logo: "/img/roles/support.png",
+            logo: "./img/roles/support.png",
             attr: "Difficulty",
             diff: [
               "blue_bg",
@@ -1265,34 +1264,34 @@ $(".my_guides").on("click", () => {
           {
             winRate: 55.3,
             talents: [
-              "/img/skills/tyrael1.png",
-              "/img/skills/tyrael2.png",
-              "/img/skills/tyrael3.png",
-              "/img/skills/tyrael4.png",
-              "/img/skills/tyrael5.png",
-              "/img/skills/tyrael6.png",
+              "./img/skills/tyrael1.png",
+              "./img/skills/tyrael2.png",
+              "./img/skills/tyrael3.png",
+              "./img/skills/tyrael4.png",
+              "./img/skills/tyrael5.png",
+              "./img/skills/tyrael6.png",
             ],
           },
           {
             winRate: 49.6,
             talents: [
-              "/img/skills/tyrael4.png",
-              "/img/skills/tyrael5.png",
-              "/img/skills/tyrael6.png",
-              "/img/skills/tyrael1.png",
-              "/img/skills/tyrael2.png",
-              "/img/skills/tyrael3.png",
+              "./img/skills/tyrael4.png",
+              "./img/skills/tyrael5.png",
+              "./img/skills/tyrael6.png",
+              "./img/skills/tyrael1.png",
+              "./img/skills/tyrael2.png",
+              "./img/skills/tyrael3.png",
             ],
           },
           {
             winRate: 47.2,
             talents: [
-              "/img/skills/tyrael5.png",
-              "/img/skills/tyrael6.png",
-              "/img/skills/tyrael1.png",
-              "/img/skills/tyrael4.png",
-              "/img/skills/tyrael2.png",
-              "/img/skills/tyrael3.png",
+              "./img/skills/tyrael5.png",
+              "./img/skills/tyrael6.png",
+              "./img/skills/tyrael1.png",
+              "./img/skills/tyrael4.png",
+              "./img/skills/tyrael2.png",
+              "./img/skills/tyrael3.png",
             ],
           },
         ];
@@ -1335,14 +1334,14 @@ $(".my_guides").on("click", () => {
     }
     // list of trainers
     const trainersArray = [
-      new Trainer("Stella", "/img/avatars/1.jpg"),
-      new Trainer("IvanS", "/img/avatars/2.jpg"),
-      new Trainer("Fan", "/img/avatars/3.jpg"),
-      new Trainer("LarryDavid", "/img/avatars/4.jpg"),
-      new Trainer("InnaDakota", "/img/avatars/5.jpg"),
-      new Trainer("adrenaline", "/img/avatars/6.jpg"),
-      new Trainer("KNIP", "/img/avatars/7.jpg"),
-      new Trainer("Qepi", "/img/avatars/8.jfif"),
+      new Trainer("Stella", "./img/avatars/1.jpg"),
+      new Trainer("IvanS", "./img/avatars/2.jpg"),
+      new Trainer("Fan", "./img/avatars/3.jpg"),
+      new Trainer("LarryDavid", "./img/avatars/4.jpg"),
+      new Trainer("InnaDakota", "./img/avatars/5.jpg"),
+      new Trainer("adrenaline", "./img/avatars/6.jpg"),
+      new Trainer("KNIP", "./img/avatars/7.jpg"),
+      new Trainer("Qepi", "./img/avatars/8.jfif"),
     ];
     trainersArray.forEach(e => {
       $(".trainer_wrapper").append(`
@@ -1358,9 +1357,9 @@ $(".my_guides").on("click", () => {
     const guidesInfo = [
       {
         description: "Jaina Pradmure. Admiral daughter.",
-        backgroundImg: "/img/guides_bg/jaina.jpg",
+        backgroundImg: "./img/guides_bg/jaina.jpg",
         author: "IvanS",
-        authorAvatar: "/img/avatars/2.jpg",
+        authorAvatar: "./img/avatars/2.jpg",
         postedDate: "02 Dec 2020",
         likes: 3742,
         comments: 58,
@@ -1369,9 +1368,9 @@ $(".my_guides").on("click", () => {
       },
       {
         description: "Tracer. Always everywhere.",
-        backgroundImg: "/img/guides_bg/tracer.jpg",
+        backgroundImg: "./img/guides_bg/tracer.jpg",
         author: "InnaDakota",
-        authorAvatar: "/img/avatars/5.jpg",
+        authorAvatar: "./img/avatars/5.jpg",
         postedDate: "28 Nov 2020",
         likes: 2029,
         comments: 14,
@@ -1380,9 +1379,9 @@ $(".my_guides").on("click", () => {
       },
       {
         description: "Whitemane. Fury of light.",
-        backgroundImg: "/img/guides_bg/Whitemane.jpg",
+        backgroundImg: "./img/guides_bg/Whitemane.jpg",
         author: "adrenaline",
-        authorAvatar: "/img/avatars/6.jpg",
+        authorAvatar: "./img/avatars/6.jpg",
         postedDate: "18 Nov 2020",
         likes: 1728,
         comments: 23,
@@ -1391,9 +1390,9 @@ $(".my_guides").on("click", () => {
       },
       {
         description: "Chromie. We have all the time in the world!",
-        backgroundImg: "/img/guides_bg/chromie.jpg",
+        backgroundImg: "./img/guides_bg/chromie.jpg",
         author: "KNIP",
-        authorAvatar: "/img/avatars/7.jpg",
+        authorAvatar: "./img/avatars/7.jpg",
         postedDate: "28 Oct 2020",
         likes: 4602,
         comments: 41,
@@ -1402,9 +1401,9 @@ $(".my_guides").on("click", () => {
       },
       {
         description: "from D.VA, with love.",
-        backgroundImg: "/img/guides_bg/dva.jpg",
+        backgroundImg: "./img/guides_bg/dva.jpg",
         author: "InnaDakota",
-        authorAvatar: "/img/avatars/5.jpg",
+        authorAvatar: "./img/avatars/5.jpg",
         postedDate: "18 Oct 2020",
         likes: 4512,
         comments: 17,
@@ -1413,9 +1412,9 @@ $(".my_guides").on("click", () => {
       },
       {
         description: "Kel'Thas. Walking flame.",
-        backgroundImg: "/img/guides_bg/keltas.png",
+        backgroundImg: "./img/guides_bg/keltas.png",
         author: "Fan",
-        authorAvatar: "/img/avatars/3.jpg",
+        authorAvatar: "./img/avatars/3.jpg",
         postedDate: "08 Oct 2020",
         likes: 849,
         comments: 29,
@@ -1424,9 +1423,9 @@ $(".my_guides").on("click", () => {
       },
       {
         description: "Nova. Ghost of the Nexxus.",
-        backgroundImg: "/img/guides_bg/nova.jpg",
+        backgroundImg: "./img/guides_bg/nova.jpg",
         author: "LarryDavid",
-        authorAvatar: "/img/avatars/4.jpg",
+        authorAvatar: "./img/avatars/4.jpg",
         postedDate: "07 Oct 2020",
         likes: 5281,
         comments: 33,
@@ -1435,9 +1434,9 @@ $(".my_guides").on("click", () => {
       },
       {
         description: "Arthas. No king rules forever.",
-        backgroundImg: "/img/guides_bg/Arthas.jpg",
+        backgroundImg: "./img/guides_bg/Arthas.jpg",
         author: "IvanS",
-        authorAvatar: "/img/avatars/2.jpg",
+        authorAvatar: "./img/avatars/2.jpg",
         postedDate: "27 Sep 2020",
         likes: 1895,
         comments: 12,

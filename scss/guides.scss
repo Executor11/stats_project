@@ -38,7 +38,7 @@
         .healer {
           height: 35px;
           width: 35px;
-          background-image: url(../img/roles/healer.png);
+          background-image: url("../img/roles/healer.png");
           filter: brightness(30%) saturate(999%);
           @include image_center;
         }
