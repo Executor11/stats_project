@@ -1477,3 +1477,190 @@ $(".my_guides").on("click", () => {
     });
   }, 500);
 });
+
+$(".header_account-mngr .chat").on("click", () => {
+  $(".content_renderer").html(`
+  <div id="hellopreloader">
+      <div id="hellopreloader_preload"></div>
+      <p>
+        <a href=""></a>
+      </p>
+    </div>
+  `);
+  setTimeout(() => {
+    $(".content_renderer").html(`
+  <section class="message_content_wrapper">
+            <section class="header"
+              >InnaDakota
+              <i class="fas fa-ellipsis-h font-20" aria-hidden="true"></i>
+            </section>
+            <div class="chat_box">
+              <section class="chat">
+                <div class="messages_box">
+                  <div class="message">
+                    <div class="avatar" style="background-image: url('./img/avatars/avatar5.png')"></div>
+                    <div class="message_content">
+                      <div class="name flex font-12">
+                        InnaDacota
+                        <div class="date font-12 silver">11 min ago.</div>
+                      </div>
+
+                      <div class="content silver font-12">
+                        Hello can your help me?
+                      </div>
+                      <div class="content silver font-12">
+                        I'am under the water
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="message">
+                    <div class="avatar" style="background-image: url('./img/avatar2.jpg')"></div>
+                    <div class="message_content last_message">
+                      <div class="name flex font-12">
+                        MegaOps
+                        <div class="date font-12 silver">10 min ago.</div>
+                      </div>
+
+                      <div class="content silver font-12">
+                        Oh its so crazy!!
+                      </div>
+                      <div class="content silver font-12">
+                        Wait 30 min. and I come to help :DD
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="send_message">
+                  <div class="tools">
+                    <div class="left"
+                      ><i class="far fa-grin"></i>
+                      <i class="fas fa-italic"></i>
+                      <i class="fas fa-bold"></i>
+                      <i class="fas fa-folder"><input type="file" class="files"/></i
+                    ></div>
+
+                    <div class="send">Send</div>
+                  </div>
+                  <textarea class="text font-14 silver"></textarea>
+                </div>
+              </section>
+              <section class="friends">
+                <div class="head">
+                  <span class="font-12 silver">Personal messages</span>
+                  <i class="fas fa-chevron-up"></i>
+                </div>
+              </section>
+              
+            </div>
+          </section>
+  
+  `);
+    // list of friends add
+    class FriendList {
+      constructor(avatar, name, time, unreads) {
+        this.avatar = avatar;
+        this.name = name;
+        this.time = time;
+        this.unreads = unreads;
+      }
+    }
+    const friends = [
+      new FriendList("./img/avatars/1.jpg", "HasuObs", "10 min. ago", 1),
+      new FriendList("./img/avatars/avatar5.png", "InnaDacota", "online", 3),
+      new FriendList(
+        "./img/avatars/avatar3.png",
+        "adrenaline",
+        "1 min. ago",
+        1
+      ),
+      new FriendList("./img/avatars/4.jpg", "KNIP", "7 min. ago", 0),
+      new FriendList("./img/avatars/5.jpg", "Stell", "15 min. ago", 2),
+    ];
+
+    friends.forEach(e => {
+      $("section.friends").append(`
+      <div class="friend_info ${e.name == "InnaDacota" ? "blue_bg" : ""}" >
+      <div class="avatar" 
+      style="background-image: url('${e.avatar}')"
+      ></div>
+      <div class="info">
+        <div class="name">${e.name}</div>
+        <div class="online silver font-12">${e.time}</div>
+      </div>
+      <div class="unread ${e.name == "InnaDacota" ? "green_bg" : "rose_bg"}">
+      ${e.unreads}
+      </div>
+    </div>
+      `);
+    });
+
+    // message toolbar
+    //bold
+    let boldMode = false;
+    $(".fa-bold").on("click", e => {
+      if (!boldMode) {
+        e.target.style.backgroundColor = "#433fd1";
+        e.target.style.color = "#fff";
+        boldMode = true;
+
+        $(".text")[0].style.fontWeight = "bold";
+      } else {
+        e.target.style.backgroundColor = "#eceffa";
+        e.target.style.color = "#a3a8b0";
+        boldMode = false;
+        $(".text")[0].style.fontWeight = "normal";
+      }
+    });
+    //italic
+    let italicMode = false;
+    $(".fa-italic").on("click", e => {
+      if (!italicMode) {
+        e.target.style.backgroundColor = "#433fd1";
+        e.target.style.color = "#fff";
+        $(".text")[0].style.fontStyle = "italic";
+
+        italicMode = true;
+      } else {
+        e.target.style.backgroundColor = "#eceffa";
+        e.target.style.color = "#a3a8b0";
+        $(".text")[0].style.fontStyle = "normal";
+
+        italicMode = false;
+      }
+    });
+
+    // adding messages
+    $(".send").on("click", () => {
+      let text = $(".text")[0].value;
+      if (text) {
+        $(".last_message").append(`
+      <div class="content silver font-12"
+      style="font-style:
+      ${italicMode ? "italic" : "normal"};
+       font-weight: ${boldMode ? "bold" : "normal"}"
+      >
+      ${text}
+     </div>
+      `);
+        $(".text")[0].value = "";
+      }
+    });
+    //hide friend list
+    let arrowDownUp = 0;
+    let showHideFriendList = false;
+    $(".fa-chevron-up").on("click", e => {
+      console.log(e.target);
+      arrowDownUp += 180;
+      e.target.style.transform = `rotate(${arrowDownUp}deg)`;
+      if (!showHideFriendList) {
+        $(".friend_info").hide();
+        showHideFriendList = true;
+      } else {
+        $(".friend_info").show();
+        showHideFriendList = false;
+      }
+    });
+  }, 500);
+});

@@ -6,8 +6,16 @@
   font-family: "sf-pro-bold";
   src: url("../fonts/SFPro-Bold.ttf") format("truetype");
 }
+.green_bg {
+  background: #3abf5d;
+}
+
 .blue_bg {
   background: #433fd1;
+}
+
+.rose_bg {
+  background: #d53d9c;
 }
 
 .silver_bg {
@@ -94,6 +102,10 @@
 
 #border_red {
   border-color: #d53d9c;
+}
+
+.flex {
+  display: flex;
 }
 
 .logo {
@@ -946,6 +958,192 @@
 
 .user i {
   cursor: pointer;
+}
+
+.message_content_wrapper {
+  grid-row: 1/-1;
+}
+.message_content_wrapper .chat_box {
+  width: 100%;
+  display: flex;
+  min-height: 800px;
+  max-height: 800px;
+}
+.message_content_wrapper .chat {
+  position: relative;
+  width: 70%;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+}
+.message_content_wrapper .chat .messages_box {
+  height: calc(100% - 270px);
+  width: 100%;
+  overflow: auto;
+}
+.message_content_wrapper .chat .message {
+  width: 100%;
+  display: flex;
+}
+.message_content_wrapper .chat .avatar {
+  margin: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+}
+.message_content_wrapper .chat .message_content {
+  display: flex;
+  flex-direction: column;
+}
+.message_content_wrapper .chat .message_content .name {
+  margin: 10px;
+  width: 150px;
+  justify-content: space-between;
+  align-items: center;
+}
+.message_content_wrapper .chat .message_content .content {
+  padding: 10px;
+  border: 1px solid #eceffa;
+  background-color: #eceffa;
+  max-width: 400px;
+  word-wrap: anywhere;
+  overflow-wrap: anywhere;
+  line-height: 20px;
+  border-radius: 2rem;
+  margin: 5px;
+}
+.message_content_wrapper .send_message {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  width: 90%;
+  height: 250px;
+  border-radius: 1rem;
+}
+.message_content_wrapper .send_message .tools {
+  height: 70px;
+  border-bottom: 2px solid #eceffa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.message_content_wrapper .send_message .left {
+  margin-left: 20px;
+}
+.message_content_wrapper .send_message .fa-grin,
+.message_content_wrapper .send_message .fa-italic,
+.message_content_wrapper .send_message .fa-bold,
+.message_content_wrapper .send_message .fa-folder {
+  margin: 5px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: #eceffa;
+  border-radius: 5px;
+  color: #a3a8b0;
+  cursor: pointer;
+}
+.message_content_wrapper .send_message .fa-grin:hover,
+.message_content_wrapper .send_message .fa-italic:hover,
+.message_content_wrapper .send_message .fa-bold:hover,
+.message_content_wrapper .send_message .fa-folder:hover {
+  color: #eceffa;
+  background-color: #433fd1;
+}
+.message_content_wrapper .send_message .send {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  padding: 10px;
+  color: #eceffa;
+  background-color: #433fd1;
+  border-radius: 1rem;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0px;
+}
+.message_content_wrapper .send_message .text {
+  width: 100%;
+  height: calc(100% - 80px);
+  resize: none;
+  overflow: auto;
+  padding: 10px;
+  outline: none;
+  border: none;
+}
+.message_content_wrapper .friends {
+  border-radius: 2rem;
+  background-color: #fff;
+  width: 30%;
+}
+.message_content_wrapper .friends .head {
+  height: 60px;
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.message_content_wrapper .friends .friend_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  border: 1px solid #eceffa;
+  width: 90%;
+  padding: 30px;
+  margin: 0 auto;
+  margin-top: 10px;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.message_content_wrapper .friends .friend_info .avatar {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+}
+.message_content_wrapper .friends .friend_info .info {
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  line-height: 20px;
+}
+.message_content_wrapper .friends .friend_info .unread {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  color: #f6f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.fa-folder {
+  position: relative;
+}
+
+.files {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  opacity: 0;
 }
 
 * {
