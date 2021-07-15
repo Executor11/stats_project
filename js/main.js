@@ -2,6 +2,7 @@
 const randomNum = (min, max) => ~~(Math.random() * (max - min + 1) + min);
 const arrayRandomizer = array => [...array].sort(() => 0.5 - Math.random());
 //
+
 //drop notification
 let notificationHided = true;
 $(".drop_notification").hide();
@@ -36,8 +37,34 @@ $(".drop").on("click", e => {
     $(".notification").attr("data-value", num);
   }
 });
-//click
+
+// drop menu
+$(window).on("resize", () => {
+  if (window.screen.width <= 768) {
+    $(".nav ul").hide();
+    let menuDropped = false;
+    $(".fa-bars").on("click", () => {
+      if (!menuDropped) {
+        $(".nav ul").show();
+        menuDropped = true;
+      } else {
+        $(".nav ul").hide();
+        menuDropped = false;
+      }
+    });
+  }
+  if (window.screen.width >= 768) {
+    $(".nav ul").show();
+    menuDropped = true;
+  }
+});
+
+//click my account
 $(".my_account").on("click", () => {
+  if (window.screen.width <= 768) {
+    $(".nav ul").hide();
+    menuDropped = false;
+  }
   $(".content_renderer").html(`
   <div id="hellopreloader">
       <div id="hellopreloader_preload"></div>
@@ -49,7 +76,9 @@ $(".my_account").on("click", () => {
   $(".nav_list .active").removeClass("active");
   $(".my_account").addClass("active");
   setTimeout(() => {
-    $(".content_renderer").html(`  <section class="header">My account</section>
+    $(".content_renderer").html(` 
+    <div class="my_account_wrapper">
+     <section class="header">My account</section>
     <section class="player info">
       <div class="character">
         <header class="character_header">
@@ -117,11 +146,11 @@ $(".my_account").on("click", () => {
               <span class="font-12">Difficulty</span>
             </div>
             <div class="diffculty">
-              <i class="fas fa-window-minimize blue font-20"></i>
-              <i class="fas fa-window-minimize blue font-20"></i>
-              <i class="fas fa-window-minimize blue font-20"></i>
-              <i class="fas fa-window-minimize silver font-20"></i>
-              <i class="fas fa-window-minimize silver font-20"></i>
+              <i class="fas fa-window-minimize blue font-16"></i>
+              <i class="fas fa-window-minimize blue font-16"></i>
+              <i class="fas fa-window-minimize blue font-16"></i>
+              <i class="fas fa-window-minimize silver font-16"></i>
+              <i class="fas fa-window-minimize silver font-16"></i>
             </div>
           </div>
         </div>
@@ -325,7 +354,8 @@ $(".my_account").on("click", () => {
           </div>
         </div>
       </div>
-    </section>`);
+    </section>
+    </div>`);
 
     let lockedRefresher = true;
     const progressBar = progress => {
@@ -465,6 +495,8 @@ $(".my_account").on("click", () => {
   // progress bar
 });
 $(".my_statistics").on("click", () => {
+  $(".nav ul").hide();
+  menuDropped = false;
   //preloader
   $(".content_renderer").html(`
   <div id="hellopreloader">
@@ -480,6 +512,7 @@ $(".my_statistics").on("click", () => {
   //render
   setTimeout(() => {
     $(".content_renderer").html(`
+    <div class="my_statistic_wrapper">
   <section class="header">Statistic</section>
   <section class="search_hero">
         <div class="path">
@@ -576,10 +609,9 @@ $(".my_statistics").on("click", () => {
           <span class="silver font-14">Talents</span>
           </div>
     </section>
-    
-  
   </section>
-  `);
+  
+  </div>`);
     //hero result section for find heroes
     const heroResult = [
       {
@@ -765,6 +797,8 @@ $(".my_statistics").on("click", () => {
 });
 // top players section
 $(".my_top_players").on("click", () => {
+  $(".nav ul").hide();
+  menuDropped = false;
   //preloader.
   $(".content_renderer").html(`
   <div id="hellopreloader">
@@ -781,6 +815,7 @@ $(".my_top_players").on("click", () => {
   $(".my_top_players a").addClass("active");
   setTimeout(() => {
     $(".content_renderer").html(`
+    <div class="top_wrapper">
   <section class="header">Top players</section>
           <section class="top_five">
           </section>
@@ -796,7 +831,7 @@ $(".my_top_players").on("click", () => {
             </header>
           </section>
 
-  `);
+          </div>`);
     // top 5 player
     const topFivePlayers = [
       {
@@ -969,6 +1004,8 @@ $(".my_top_players").on("click", () => {
 });
 
 $(".my_guides").on("click", () => {
+  $(".nav ul").hide();
+  menuDropped = false;
   //preloader.
   $(".content_renderer").html(`
    <div id="hellopreloader">
@@ -1479,6 +1516,8 @@ $(".my_guides").on("click", () => {
 });
 
 $(".header_account-mngr .chat").on("click", () => {
+  $(".nav ul").hide();
+  menuDropped = false;
   $(".content_renderer").html(`
   <div id="hellopreloader">
       <div id="hellopreloader_preload"></div>
@@ -1664,3 +1703,6 @@ $(".header_account-mngr .chat").on("click", () => {
     });
   }, 500);
 });
+
+//on load
+document.querySelector(".my_account").click();

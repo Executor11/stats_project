@@ -1,5 +1,7 @@
+.top_wrapper {
+  grid-row: 1/-1;
+}
 .top_five {
-  grid-row: 2/4;
   width: 95%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);

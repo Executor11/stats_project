@@ -253,8 +253,11 @@
   border-color: #433fd1;
 }
 
+.my_statistic_wrapper {
+  grid-row: 1/-1;
+}
+
 .search_hero {
-  grid-row: 2/3;
   width: 95%;
   height: 100px;
   border-radius: 2rem;
@@ -302,7 +305,6 @@
   margin-top: 50px;
   border-radius: 2rem;
   width: 95%;
-  grid-row: 3/-1;
 }
 .search_result > .header {
   border-bottom: 1px solid #eceffa;
@@ -339,8 +341,11 @@
   cursor: pointer;
 }
 
+.top_wrapper {
+  grid-row: 1/-1;
+}
+
 .top_five {
-  grid-row: 2/4;
   width: 95%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -734,7 +739,7 @@
 .hero_info_wrapper .description {
   z-index: 3;
   margin-top: 30px;
-  width: 50%;
+  width: 100%;
   height: 100%;
 }
 .hero_info_wrapper .hero_description {
@@ -913,7 +918,6 @@
   left: 0;
   width: 100%;
   height: 100%;
-  min-width: 1000px;
   background: rgba(67, 63, 209, 0) url(http://hello-site.ru//main/images/preloads/tail-spin.svg) center center no-repeat;
   background-size: 150px;
   filter: brightness(0.4) sepia(0.3) saturate(10000%) hue-rotate(220deg);
@@ -1345,12 +1349,13 @@ a {
 .content .side_bar .games {
   width: 40%;
   height: 100%;
+  min-height: 700px;
   background: #433fd1;
   border-radius: 2rem;
-  display: grid;
-  grid-template-rows: repeat(10, 1fr);
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  position: relative;
 }
 .content .side_bar .games .game_link,
 .content .side_bar .games .add_game {
@@ -1403,8 +1408,12 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
   align-self: start;
-  grid-row: 10/-1;
 }
 .content .side_bar .games .background_mode i {
   color: #fff;
@@ -1454,10 +1463,13 @@ a {
   width: 100%;
   color: #433fd1;
   font-weight: 900;
-  grid-row: 1/2;
+}
+.content .content_renderer .my_account_wrapper {
+  grid-row: 1/-1;
+  width: 100%;
 }
 .content .content_renderer .info {
-  grid-row: 2/4;
+  margin-top: 50px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1493,6 +1505,9 @@ a {
 }
 .content .content_renderer .info .favourite_hero {
   margin-right: 20px;
+}
+.content .content_renderer .info .diffculty {
+  width: 100px;
 }
 .content .content_renderer .info .role,
 .content .content_renderer .info .rank,
@@ -1864,6 +1879,455 @@ footer .footer_menu {
   grid-column: 6/-1;
   justify-content: space-around;
   align-items: center;
+}
+
+@media only screen and (max-width: 1300px) {
+  .content .content_renderer .info .role .img .role_bruiser,
+.role .img img,
+.content .content_renderer .info .rank .img img,
+.content .content_renderer .info .favourite_hero .img img {
+    height: 80px;
+  }
+
+  .content .content_renderer .stats .win_rate {
+    width: 100px;
+    font-size: 10px;
+  }
+
+  .content .content_renderer .info .role .healer,
+.content .content_renderer .info .rank .healer,
+.content .content_renderer .info .favourite_hero .healer {
+    width: 20px;
+    height: 20px;
+  }
+
+  .content .content_bg figure .img {
+    width: 100px;
+    height: 100px;
+  }
+
+  section.played_games .played_games_content .game .talent_img {
+    height: 25px;
+    width: 25px;
+  }
+
+  .search_hero .search_hero_select {
+    width: 100px;
+  }
+
+  .search_hero .search > .search_btn {
+    width: 50px;
+    font-size: 10px;
+  }
+
+  .top_five_player .position_nickname .name {
+    font-size: 14px;
+  }
+
+  .top_ten_player .player_info .battletag {
+    font-size: 12px;
+  }
+
+  .top_ten_player .fav_hero {
+    width: 140px;
+  }
+  .top_ten_player .fav_hero .hero {
+    width: 40px;
+    height: 40px;
+  }
+
+  .top_five_player .win_lose_rate_1 {
+    justify-content: space-around;
+  }
+
+  .popular_heroes .hero_wrapper .hero .name .hero_name {
+    font-size: 14px;
+  }
+
+  .popular_heroes .hero_wrapper .hero .hero_image {
+    height: 60%;
+  }
+
+  .popular_guides .guides_wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .content .content_renderer .info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content .content_renderer .info .role,
+.content .content_renderer .info .rank,
+.content .content_renderer .info .favourite_hero {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content .content_renderer .info .character,
+.content .content_renderer .info .role,
+.content .content_renderer .info .rank,
+.content .content_renderer .info .favourite_hero {
+    margin-top: 30px;
+  }
+
+  .content .content_renderer .info .character,
+.content .content_renderer .info .role,
+.content .content_renderer .info .rank,
+.content .content_renderer .info .favourite_hero {
+    width: 80%;
+  }
+
+  .content .statistics {
+    grid-template-columns: 1fr;
+  }
+
+  .content .battlegrounds,
+.content .last_games {
+    margin-top: 30px;
+  }
+
+  section.played_games .played_games_content .game {
+    font-size: 10px;
+  }
+
+  .search_hero .search_hero_select {
+    width: 80px;
+    font-size: 10px;
+  }
+
+  .search_result > .header {
+    font-size: 10px;
+  }
+
+  .hero span,
+.mode span,
+.map span,
+.rating span,
+.result span,
+.time span,
+.talents span {
+    font-size: 10px;
+  }
+
+  .top_five_player .position_nickname .name {
+    font-size: 10px;
+  }
+
+  .top_five_player .win_lose_rate {
+    width: 120px;
+  }
+
+  .top_ten_player .top_ten_header .battletag,
+.top_ten_player .rating,
+.top_ten_player .win_rate,
+.top_ten_player .played_games,
+.top_ten_player .wins,
+.top_ten_player .fav_role {
+    font-size: 12px;
+  }
+
+  .top_ten_player .fav_hero {
+    width: 100px;
+    font-size: 12px;
+  }
+
+  .top_ten_player .fav_hero .hero {
+    width: 30px;
+    height: 30px;
+  }
+
+  .top_ten_player .player_info .role {
+    width: 50px;
+    height: 50px;
+  }
+
+  .popular_heroes .hero_wrapper .hero .hero_image {
+    height: 45%;
+    top: 50px;
+  }
+
+  .trainers .trainer_wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .trainers .trainer_wrapper .trainer {
+    margin-top: 30px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .header_top .header_search .search_input {
+    width: 200px;
+    font-size: 10px;
+    padding-left: 20px;
+  }
+
+  .header_top .header_search .servers {
+    left: 22%;
+  }
+
+  .header_top .header_search .search_btn {
+    right: 30%;
+  }
+
+  .header_top .header_account-mngr .chat,
+.header_top .header_account-mngr .favourite,
+.header_top .header_account-mngr .notification {
+    margin: 10px;
+  }
+
+  .message_content_wrapper .friends .friend_info .unread {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .header_top .header_search {
+    display: none;
+  }
+
+  .header_top .header_account-mngr {
+    grid-column-start: 4;
+    grid-column-end: -1;
+    justify-self: right;
+  }
+
+  .content .side_bar .games {
+    width: 0;
+    position: fixed;
+    left: 30px;
+  }
+
+  .content .side_bar {
+    width: 0;
+  }
+
+  .content .nav ul {
+    margin-top: 20px;
+    width: 92%;
+    position: fixed;
+    z-index: 5;
+    background-color: #eceffa;
+    margin-left: 45px;
+    flex-direction: row;
+  }
+
+  .content .content_renderer {
+    width: 100%;
+  }
+
+  .search_hero {
+    margin-top: 30px;
+    flex-direction: column;
+    height: 400px;
+  }
+
+  .search_hero .search_hero_select {
+    width: 200px;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .content .nav ul {
+    width: 80vw;
+    font-size: 14px;
+  }
+
+  .content .nav ul .nav_list {
+    font-size: 10px;
+  }
+
+  .header_top .header_title {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+
+  .header_top .header_account-mngr {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    justify-self: center;
+  }
+
+  .content .content_renderer .header {
+    margin-left: 20vw;
+  }
+
+  .content .content_renderer {
+    width: 85vw;
+  }
+
+  .content .content_renderer .info {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .content .content_renderer .info .character,
+.content .content_renderer .info .role,
+.content .content_renderer .info .rank,
+.content .content_renderer .info .favourite_hero {
+    width: 79vw;
+  }
+
+  .content .content_bg figure .img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .content .content_bg figure .img.img_1::after,
+.content .content_bg figure .img.img_2::after,
+.content .content_bg figure .img.img_3::after,
+.content .content_bg figure figcaption {
+    font-size: 12px;
+  }
+
+  .content .content_bg {
+    width: 99%;
+  }
+
+  .content .battlegrounds .win_lose > span,
+.content .last_games .win_lose > span {
+    margin-right: 100px;
+  }
+
+  .content .battlegrounds {
+    height: 200px;
+    margin-top: 0px;
+  }
+
+  .content .battlegrounds,
+.content .last_games {
+    width: 79vw;
+  }
+
+  .content .battlegrounds .col > span,
+.content .last_games .col > span {
+    width: 14px;
+  }
+
+  section.played_games .played_games_content .game .talents,
+.result,
+section.played_games .played_games_content .game .time,
+.message_content_wrapper .friends .friend_info .info {
+    display: none;
+  }
+
+  .search_result .show_btn {
+    display: none;
+  }
+
+  .content .content_renderer .search_result .header {
+    margin-left: 20px;
+  }
+  .content .content_renderer .search_result .header .hero span,
+.content .content_renderer .search_result .header .mode span,
+.content .content_renderer .search_result .header .map span,
+.content .content_renderer .search_result .header .rating span,
+.content .content_renderer .search_result .header .result span,
+.content .content_renderer .search_result .header .time span,
+.content .content_renderer .search_result .header .talents span {
+    font-size: 8px;
+  }
+
+  .talents span,
+.time span {
+    display: none;
+  }
+
+  .top_five {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .top_five .top_five_player {
+    margin-top: 30px;
+  }
+
+  .top_ten_player .fav_hero {
+    display: none;
+  }
+
+  .top_ten_player .player_info .battletag {
+    width: 120px;
+  }
+
+  .popular_guides .guides_wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .popular_heroes .hero_wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .popular_heroes .hero_wrapper .hero .hero_image {
+    height: 75%;
+    top: 50px;
+    left: 30%;
+  }
+
+  section.played_games .played_games_content .game .hero_avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  footer {
+    grid-template-rows: repeat(10, 1fr);
+  }
+
+  footer .about {
+    grid-column: 1/-1;
+  }
+
+  footer .footer_menu {
+    margin-top: 40px;
+    grid-column: 1/-1;
+  }
+  footer .footer_menu .footer_menu_item {
+    font-size: 10px;
+  }
+  footer .footer_menu .footer_help {
+    margin-left: 20px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .content .side_bar .games {
+    left: 20px;
+  }
+
+  .content .battlegrounds .col > span,
+.content .last_games .col > span {
+    width: 10px;
+  }
+
+  .content .battlegrounds .last_games_dates > span,
+.content .last_games .last_games_dates > span {
+    font-size: 10px;
+  }
+
+  .content .nav ul .nav_list a {
+    font-size: 8px;
+  }
+
+  .top_five {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .popular_heroes .hero_wrapper .hero .hero_image {
+    height: 65%;
+    top: 20px;
+    left: 20%;
+  }
+
+  .trainers .trainer_wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .message_content_wrapper .friends {
+    display: none;
+  }
+
+  .message_content_wrapper .chat {
+    position: relative;
+    width: 95%;
+  }
+
+  .message_content_wrapper .send_message {
+    width: 100%;
+    margin-bottom: 30px;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
