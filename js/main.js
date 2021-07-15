@@ -495,8 +495,10 @@ $(".my_account").on("click", () => {
   // progress bar
 });
 $(".my_statistics").on("click", () => {
-  $(".nav ul").hide();
-  menuDropped = false;
+  if (window.screen.width <= 768) {
+    $(".nav ul").hide();
+    menuDropped = false;
+  }
   //preloader
   $(".content_renderer").html(`
   <div id="hellopreloader">
@@ -797,8 +799,10 @@ $(".my_statistics").on("click", () => {
 });
 // top players section
 $(".my_top_players").on("click", () => {
-  $(".nav ul").hide();
-  menuDropped = false;
+  if (window.screen.width <= 768) {
+    $(".nav ul").hide();
+    menuDropped = false;
+  }
   //preloader.
   $(".content_renderer").html(`
   <div id="hellopreloader">
@@ -1004,8 +1008,10 @@ $(".my_top_players").on("click", () => {
 });
 
 $(".my_guides").on("click", () => {
-  $(".nav ul").hide();
-  menuDropped = false;
+  if (window.screen.width <= 768) {
+    $(".nav ul").hide();
+    menuDropped = false;
+  }
   //preloader.
   $(".content_renderer").html(`
    <div id="hellopreloader">
@@ -1516,8 +1522,10 @@ $(".my_guides").on("click", () => {
 });
 
 $(".header_account-mngr .chat").on("click", () => {
-  $(".nav ul").hide();
-  menuDropped = false;
+  if (window.screen.width <= 768) {
+    $(".nav ul").hide();
+    menuDropped = false;
+  }
   $(".content_renderer").html(`
   <div id="hellopreloader">
       <div id="hellopreloader_preload"></div>
