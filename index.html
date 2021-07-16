@@ -44,7 +44,7 @@
           <button class="language">
             <i class="fas fa-globe-europe"></i>EN
           </button>
-          <a href="#" class="chat"><i class="fas fa-comments"></i></a>
+          <a href="#/chat/" class="chat"><i class="fas fa-comments"></i></a>
           <a href="#" class="favourite"><i class="fas fa-heart"></i></a>
           <a href="#" class="notification" data-value="3"
             ><i class="fas fa-bell"></i>
@@ -116,35 +116,40 @@
             <a href="#" class="add_game">
               <i class="fas fa-plus"></i>
             </a>
-            <div class="background_mode">
+            <!-- <div class="background_mode">
               <i class="fas fa-adjust"></i>
-            </div>
+            </div> -->
           </section>
           <section class="nav">
             <ul>
               <li class="nav_list">
-                <a href="#" class="my_account silver">
+                <a
+                  href="#/my_account/"
+                  class="my_account silver"
+                  data-href="./pages/my_account.html"
+                >
                   <i class="fas fa-th-large"></i>My account</a
                 >
               </li>
               <li class="nav_list my_statistics">
-                <a href="#" class="silver">
+                <a
+                  href="#/statistic/"
+                  data-href="./pages/statistics.html"
+                  class="silver"
+                >
                   <i class="fas fa-chart-pie"></i>Statistic
                 </a>
               </li>
               <li class="nav_list my_top_players">
-                <a href="#" class="silver">
+                <a href="#/top_players/" class="silver">
                   <i class="fas fa-trophy"></i>Top players
                 </a>
               </li>
               <li class="nav_list my_guides">
-                <a href="#" class="silver">
+                <a href="#/my_guides/" class="silver">
                   <i class="fab fa-studiovinari"></i>Guides
                 </a>
               </li>
-              <!-- <li class="nav_list"> removed coz i don't have time, will fix soon
-                <i class="fas fa-graduation-cap"></i>Learning
-              </li> -->
             </ul>
           </section>
         </section>
@@ -181,6 +186,6 @@
 
     <!-- scripts -->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>

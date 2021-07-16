@@ -1,8 +1,29 @@
+import Statistic from "./pages/statistic.js";
+import Account from "./pages/my_account.js";
+import TopPlayers from "./pages/top_players.js";
+import Guides from "./pages/guides.js";
+import Chat from "./pages/chat.js";
+
 //randomizer
 const randomNum = (min, max) => ~~(Math.random() * (max - min + 1) + min);
 const arrayRandomizer = array => [...array].sort(() => 0.5 - Math.random());
 //
+//app render
+const app = $(".content_renderer");
 
+//preloader start
+
+const preloader = () => {
+  app.html(`
+  <div id="hellopreloader">
+      <div id="hellopreloader_preload"></div>
+      <p>
+        <a href=""></a>
+      </p>
+    </div>
+  `);
+};
+//
 //drop notification
 let notificationHided = true;
 $(".drop_notification").hide();
@@ -14,8 +35,8 @@ $(".notification .fas").on("click", () => {
     $(".drop_notification").hide();
     notificationHided = true;
   }
-  console.log("321");
 });
+//notification hide
 $("body").on("click", e => {
   e.stopPropagation();
   if (
@@ -58,304 +79,18 @@ $(window).on("resize", () => {
     menuDropped = true;
   }
 });
-
 //click my account
-$(".my_account").on("click", () => {
+$(".my_account ").on("click", () => {
+  const myAccount = new Account();
   if (window.screen.width <= 768) {
     $(".nav ul").hide();
     menuDropped = false;
   }
-  $(".content_renderer").html(`
-  <div id="hellopreloader">
-      <div id="hellopreloader_preload"></div>
-      <p>
-        <a href=""></a>
-      </p>
-    </div>
-  `);
+  preloader();
   $(".nav_list .active").removeClass("active");
   $(".my_account").addClass("active");
   setTimeout(() => {
-    $(".content_renderer").html(` 
-    <div class="my_account_wrapper">
-     <section class="header">My account</section>
-    <section class="player info">
-      <div class="character">
-        <header class="character_header">
-          <i class="fas fa-cog setting"></i>
-          <div class="caption">MegaOps</div>
-          <i class="fas fa-sync refresh"></i>
-        </header>
-        <div class="level">
-          <a href="#" class="hero_rank"></a>
-          <div class="pie-wrapper progress style-2">
-            <span class="label"></span>
-            <div class="pie">
-              <div class="left-side half-circle"></div>
-              <div class="right-side half-circle"></div>
-            </div>
-            <div class="shadow"></div>
-            <span class="level_counter bold">478</span>
-          </div>
-        </div>
-        <div class="update"></div>
-      </div>
-      <div class="role">
-        <div class="title">Favorite role</div>
-        <i class="fas fa-ellipsis-h"></i>
-        <div class="img ">
-        <div class="role_bruiser"></div>
-        </div>
-        <div class="stats">
-          <div class="win_rate">Win rate <strong>64.1%</strong></div>
-          <div class="rate">Bruiser</div>
-          <div class="count win_rate">
-            Played games <strong>1027</strong>
-          </div>
-        </div>
-      </div>
-      <div class="rank">
-        <div class="title">Current rank</div>
-        <i class="fas fa-ellipsis-h"></i>
-        <div class="img">
-          <img src="img/diamond.png" alt="image" />
-        </div>
-        <div class="stats">
-          <div class="win_rate">Win rate <strong>70.7%</strong></div>
-          <div class="rate">
-            Diamond <span class="green font-12">+168</span>
-          </div>
-          <div class="count win_rate">Rating <strong>2832</strong></div>
-        </div>
-      </div>
-      <div class="favourite_hero">
-        <div class="title">Favorite hero</div>
-        <i class="fas fa-ellipsis-h"></i>
-        <div class="img">
-          <img src="img/anna.png" alt="image" />
-        </div>
-        <div class="stats">
-          <div class="win_rate">Win rate <strong>61.31%</strong></div>
-          <div class="rate font-18">Anna</div>
-          <div class="count">
-          <div class="healer_wrapper">
-            <div class="healer"></div>
-            <span class="bold font-20">Healer</span>
-            </div>
-            <div class="difficulty">
-              <span class="font-12">Difficulty</span>
-            </div>
-            <div class="diffculty">
-              <i class="fas fa-window-minimize blue font-16"></i>
-              <i class="fas fa-window-minimize blue font-16"></i>
-              <i class="fas fa-window-minimize blue font-16"></i>
-              <i class="fas fa-window-minimize silver font-16"></i>
-              <i class="fas fa-window-minimize silver font-16"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="player statistics">
-      <div class="battlegrounds">
-        <div class="title_bg">
-          <div class="title">Battlegrounds</div>
-          <i class="fas fa-ellipsis-h"></i>
-        </div>
-        <div class="content_bg">
-          <div class="current_bg">
-            <figure>
-              <div class="img img_1" data-value="67.7%"></div>
-              <figcaption class="font-14 bold">Immortal fight</figcaption>
-              <figcaption class="silver font-12">
-                played games <span class="black font-12">456</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="current_bg">
-            <figure>
-              <div class="img img_2" data-value="66.3%"></div>
-              <figcaption class="font-14 bold">Horror garden</figcaption>
-              <figcaption class="silver font-12">
-                played games <span class="black font-12">309</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="current_bg">
-            <figure>
-              <div class="img img_3" data-value="66.2%"></div>
-              <figcaption class="font-14 bold">
-                Celestial temple
-              </figcaption>
-              <figcaption class="silver font-12">
-                played games <span class="black font-12">518</span>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-      <div class="last_games">
-        <div class="title_bg">
-          <div class="title">Summary of recent games</div>
-          <i class="fas fa-ellipsis-h"></i>
-        </div>
-        <div class="last_games_stats">
-          <div class="col"><span></span><span></span></div>
-          <div class="col"><span></span><span></span></div>
-          <div class="col"><span></span><span></span></div>
-          <div class="col"><span></span><span></span></div>
-          <div class="col"><span></span><span></span></div>
-          <div class="col"><span></span><span></span></div>
-          <div class="col"><span></span><span></span></div>
-        </div>
-        <div class="last_games_dates">
-          <span class="silver font-12" style="margin-left: 10px"
-            >13.07</span
-          >
-          <span class="silver font-12">15.07</span
-          ><span class="silver font-12">16.07</span
-          ><span class="silver font-12">19.07</span
-          ><span class="silver font-12">24.07</span
-          ><span class="silver font-12">25.07</span
-          ><span class="silver font-12" style="margin-right: 50px"
-            >02.08</span
-          >
-        </div>
-        <div class="win_lose">
-          <span class="silver font-12 win">win</span>
-          <span class="silver font-12">lose</span>
-        </div>
-      </div>
-    </section>
-    <section class="player played_games">
-      <div class="title_played_games">
-        <div class="title">Played games</div>
-        <i class="fas fa-ellipsis-h"></i>
-      </div>
-      <div class="played_games_content">
-        <div class="game">
-          <div class="hero">
-            <a href="#" class="hero_avatar" id="border_red"></a>
-            <div class="hero_name">
-              <span class="silver font-12">hero</span>
-              <span class="black font-12 bold">Irithel</span>
-            </div>
-          </div>
-          <div class="mode">
-            <span class="silver font-12">mode</span>
-            <span class="black font-12 bold">Rating game</span>
-          </div>
-          <div class="map">
-            <span class="silver font-12">map</span>
-            <span class="black font-12 bold">Celestial temple</span>
-          </div>
-          <div class="rating">
-            <span class="silver font-12">rating</span>
-            <span class="black font-12 bold">2832</span>
-          </div>
-          <div class="result">
-            <span class="silver font-12">result</span>
-            <span class="font-12 bold red">Defeat</span>
-          </div>
-          <div class="time">
-            <span class="silver font-12">time</span>
-            <span class="black font-12 bold">02.08.2021, 18:15</span>
-          </div>
-          <div class="talents">
-            <span class="silver font-12">talents</span>
-            <div class="talent">
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-            </div>
-          </div>
-        </div>
-        <div class="game">
-          <div class="hero">
-            <a href="#" class="hero_avatar"></a>
-            <div class="hero_name">
-              <span class="silver font-12">hero</span>
-              <span class="black font-12 bold">Irithel</span>
-            </div>
-          </div>
-          <div class="mode">
-            <span class="silver font-12">mode</span>
-            <span class="black font-12 bold">Rating game</span>
-          </div>
-          <div class="map">
-            <span class="silver font-12">map</span>
-            <span class="black font-12 bold">Celestial temple</span>
-          </div>
-          <div class="rating">
-            <span class="silver font-12">rating</span>
-            <span class="black font-12 bold">2832</span>
-          </div>
-          <div class="result">
-            <span class="silver font-12">result</span>
-            <span class="font-12 bold green">Win</span>
-          </div>
-          <div class="time">
-            <span class="silver font-12">time</span>
-            <span class="black font-12 bold">02.08.2021, 17:52</span>
-          </div>
-          <div class="talents">
-            <span class="silver font-12">talents</span>
-            <div class="talent">
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-            </div>
-          </div>
-        </div>
-        <div class="game">
-          <div class="hero">
-            <a href="#" class="hero_avatar"></a>
-            <div class="hero_name">
-              <span class="silver font-12">hero</span>
-              <span class="black font-12 bold">Irithel</span>
-            </div>
-          </div>
-          <div class="mode">
-            <span class="silver font-12">mode</span>
-            <span class="black font-12 bold">Rating game</span>
-          </div>
-          <div class="map">
-            <span class="silver font-12">map</span>
-            <span class="black font-12 bold">Celestial temple</span>
-          </div>
-          <div class="rating">
-            <span class="silver font-12">rating</span>
-            <span class="black font-12 bold">2832</span>
-          </div>
-          <div class="result">
-            <span class="silver font-12">result</span>
-            <span class="font-12 bold green">Win</span>
-          </div>
-          <div class="time">
-            <span class="silver font-12">time</span>
-            <span class="black font-12 bold">02.08.2021, 17:20</span>
-          </div>
-          <div class="talents">
-            <span class="silver font-12">talents</span>
-            <div class="talent">
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-              <a href="#" class="talent_img"></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    </div>`);
+    app.html(myAccount.markup());
 
     let lockedRefresher = true;
     const progressBar = progress => {
@@ -450,7 +185,7 @@ $(".my_account").on("click", () => {
       });
       // img ::after
       [...loadingElem].forEach(e => {
-        start = 0;
+        let start = 0;
         const interval = setInterval(() => {
           start += Math.random() * 2.5 + 1;
           $(e).attr("data-value", start.toFixed(1) + "%");
@@ -494,269 +229,24 @@ $(".my_account").on("click", () => {
 
   // progress bar
 });
-$(".my_statistics").on("click", () => {
+$(".my_statistics a").on("click", () => {
   if (window.screen.width <= 768) {
     $(".nav ul").hide();
     menuDropped = false;
   }
-  //preloader
-  $(".content_renderer").html(`
-  <div id="hellopreloader">
-      <div id="hellopreloader_preload"></div>
-      <p>
-        <a href=""></a>
-      </p>
-    </div>
-  `);
+  const statisticPage = new Statistic();
+  // preloader
+  preloader();
   //active
   $(".nav_list .active").removeClass("active");
   $(".my_statistics a").addClass("active");
   //render
   setTimeout(() => {
-    $(".content_renderer").html(`
-    <div class="my_statistic_wrapper">
-  <section class="header">Statistic</section>
-  <section class="search_hero">
-        <div class="path">
-          <span class="silver font-12">Path</span>
-          <select name="path" class="search_hero_select random">
-            <option value="2.52.0.8">2.52.0.8</option>
-            <option value="2.52.0.6">2.52.0.6</option>
-            <option value="2.52.0.2">2.52.0.2</option>
-            <option value="2.51.9.8">2.51.9.8</option>
-          </select>
-        </div>
-      <div class="role">
-        <span class="silver font-12">Role</span>
-        <select name="path" class="search_hero_select random">
-          <option value="All">All</option>
-          <option value="Healer">Healer</option>
-          <option value="Slayer">Slayer</option>
-          <option value="Tank">Tank</option>
-        </select>
-      </div>
-      <div class="game_mode">
-        <span class="silver font-12">Game mode</span>
-        <select name="path" class="search_hero_select random">
-          <option value="Rating">Rating</option>
-          <option value="Solo">Solo</option>
-          <option value="Friendly">Friendly</option>
-          <option value="Normal">Normal</option>
-        </select>
-      </div>
-      <div class="map">
-        <span class="silver font-12">Map</span>
-        <select name="path" class="search_hero_select random">
-          <option value="Temple">Temple</option>
-          <option value="Road">Road</option>
-          <option value="Walley">Walley</option>
-          <option value="Free">Free</option>
-        </select>
-      </div>
-      <div class="hero_rank">
-        <span class="silver font-12">Hero rank</span>
-        <select name="path" class="search_hero_select random">
-          <option value="Silver">Silver</option>
-          <option value="Gold">Gold</option>
-          <option value="Diamond">Diamond</option>
-          <option value="Bronse">Bronse</option>
-        </select>
-      </div>
-      <div class="graphic_mode">
-        <span class="silver font-12">Sorting mode</span>
-        <select name="filter_mode" class="search_hero_select filter_mode">
-          <option value="winRate">Win Rate</option>
-          <option value="playedGames">Played Games</option>
-        </select>
-      </div>
-      <div class="hero">
-        <span class="silver font-12">Hero</span>
-        <select name="path" class="search_hero_select random">
-          <option value="All">All</option>
-          <option value="Healer">Healer</option>
-          <option value="Slayer">Slayer</option>
-          <option value="Tank">Tank</option>
-        </select>
-      </div>
-      <div class="search">
-        <button class="search_btn">Search</button>
-      </div>
-  </section>
-  <section class="search_result">
-    <section class="header">
-        <div class="hero">
-          <div class="hero_name">
-            <span class="silver font-14">Hero</span>
-          </div>
-        </div>
-        <div class="mode">
-          <span class="silver font-14">Win Rate %</span>
-        </div>
-        <div class="map">
-          <span class="silver font-14">Changes %</span>
-        </div>
-        <div class="rating">
-          <span class="silver font-14">Assurance %</span>
-        </div>
-        <div class="result">
-          <span class="silver font-14">Selection %</span>
-        </div>
-        <div class="time">
-          <span class="silver font-14">Banned %</span>
-        </div>
-        <div class="time">
-          <span class="silver font-14">Played Games</span>
-        </div>
-        <div class="talents">
-          <span class="silver font-14">Talents</span>
-          </div>
-    </section>
-  </section>
-  
-  </div>`);
-    //hero result section for find heroes
-    const heroResult = [
-      {
-        img: "./img/heroes/Ana_square_tile.png",
-        name: "Anna",
-        winRate: 61.62,
-        changes: "+1.22",
-        assurance: "+7.17",
-        selection: 9.81,
-        banned: 3.11,
-        playedGames: 981,
-      },
-      {
-        img: "./img/irel.jpg",
-        name: "Yrel",
-        winRate: 59.22,
-        changes: "-2.01",
-        assurance: "+3.17",
-        selection: 4.66,
-        banned: 1.37,
-        playedGames: 712,
-      },
-      {
-        img: "./img/heroes/sylvana.jpg",
-        name: "Sylvana",
-        winRate: 57.95,
-        changes: "-1.71",
-        assurance: "+9.55",
-        selection: 4.22,
-        banned: 6.59,
-        playedGames: 939,
-      },
-      {
-        img: "./img/heroes/thrall.jpg",
-        name: "Thrall",
-        winRate: 56.72,
-        changes: "+5.61",
-        assurance: "-3.97",
-        selection: 4.66,
-        banned: 1.37,
-        playedGames: 967,
-      },
-      {
-        img: "./img/heroes/Uther_Hero_Portrait.png",
-        name: "Uther",
-        winRate: 55.02,
-        changes: "+3.28",
-        assurance: "+1.33",
-        selection: 8.91,
-        banned: 3.87,
-        playedGames: 669,
-      },
-      {
-        img: "./img/heroes/reksar.jpg",
-        name: "Rexxar",
-        winRate: 53.55,
-        changes: "+1.11",
-        assurance: "-5.66",
-        selection: 7.99,
-        banned: 8.57,
-        playedGames: 481,
-      },
-      {
-        img: "./img/heroes/cho.jpg",
-        name: "Cho",
-        winRate: 51.02,
-        changes: "-2.21",
-        assurance: "-1.11",
-        selection: 9.16,
-        banned: 4.17,
-        playedGames: 557,
-      },
-      {
-        img: "./img/heroes/gall.jpg",
-        name: "Gall",
-        winRate: 50.51,
-        changes: "+5.31",
-        assurance: "+1.17",
-        selection: 6.11,
-        banned: 3.26,
-        playedGames: 711,
-      },
-      {
-        img: "./img/heroes/Anduin_square_tile.png",
-        name: "Anduin",
-        winRate: 50.22,
-        changes: "+3.01",
-        assurance: "-1.17",
-        selection: 6.16,
-        banned: 2.37,
-        playedGames: 717,
-      },
+    app.html(statisticPage.markup());
 
-      {
-        img: "./img/heroes/Jaina_square_tile.png",
-        name: "Jaina",
-        winRate: 49.26,
-        changes: "+8.01",
-        assurance: "-1.17",
-        selection: 1.66,
-        banned: 6.37,
-        playedGames: 517,
-      },
-    ];
+    const heroResult = statisticPage.heroResult();
 
-    heroResult.forEach(e => {
-      $(".search_result").append(`
-    <div class="hero_played">
-      <div class="hero">
-        <div class="hero_name">
-          <div  class="hero_avatar" style="background-image: url(${
-            e.img
-          })"></div>
-            <span class="black font-18">${e.name}</span>
-          </div>
-        </div>
-  <div class="mode">
-    <span class="black font-14">${e.winRate}</span>
-  </div>
-  <div class="map">
-    <span class=" font-14 ${+e.changes >= 0 ? "green" : "red"}">${
-        e.changes
-      }</span>
-  </div>
-  <div class="rating">
-    <span class=" font-14 ${+e.assurance >= 0 ? "green" : "red"}">${
-        e.assurance
-      }</span>
-  </div>
-  <div class="result">
-    <span class="black font-14">${e.selection}</span>
-  </div>
-  <div class="time">
-    <span class="black font-14">${e.banned}</span>
-  </div>
-  <div class="time playedGames">
-    <span class="black font-14">${e.playedGames}</span>
-  </div>
-  <div class="talents">
-    <span class=" font-14 show_btn">Show</span>
-    </div>
-</div>`);
-    });
+    statisticPage.appendSearchResults(heroResult);
     // filter by Filter mode - played games and win rate
     $(".filter_mode").on("change", e => {
       if (e.target.value == "winRate") {
@@ -798,278 +288,43 @@ $(".my_statistics").on("click", () => {
   }, 500);
 });
 // top players section
-$(".my_top_players").on("click", () => {
+$(".my_top_players a").on("click", () => {
+  const topPlayers = new TopPlayers();
   if (window.screen.width <= 768) {
     $(".nav ul").hide();
     menuDropped = false;
   }
   //preloader.
-  $(".content_renderer").html(`
-  <div id="hellopreloader">
-      <div id="hellopreloader_preload"></div>
-      <p>
-        <a href=""></a>
-      </p>
-    </div>
-  `);
+  preloader();
 
   //active
 
   $(".nav_list .active").removeClass("active");
   $(".my_top_players a").addClass("active");
   setTimeout(() => {
-    $(".content_renderer").html(`
-    <div class="top_wrapper">
-  <section class="header">Top players</section>
-          <section class="top_five">
-          </section>
-          <section class="top_ten_player">
-            <header class="top_ten_header">
-              <div class="battletag">Battletag</div>
-              <div class="rating">Rating</div>
-              <div class="win_rate">Win rate %</div>
-              <div class="played_games">Played games</div>
-              <div class="wins">Win games</div>
-              <div class="fav_role">Favorite role</div>
-              <div class="fav_hero">Favorite heroes</div>
-            </header>
-          </section>
-
-          </div>`);
+    app.html(topPlayers.markup());
     // top 5 player
-    const topFivePlayers = [
-      {
-        position: 1,
-        nickname: "Cris",
-        avatar: "./img/avatars/avatar1.jpg",
-        rating: 10815,
-        win: 537,
-        lose: 314,
-      },
-      {
-        position: 2,
-        nickname: "TotalyMew",
-        avatar: "./img/avatars/avatar2.jfif",
-        rating: 10724,
-        win: 652,
-        lose: 110,
-      },
-      {
-        position: 3,
-        nickname: "ZEACris",
-        avatar: "./img/avatars/avatar3.png",
-        rating: 10116,
-        win: 488,
-        lose: 401,
-      },
-      {
-        position: 4,
-        nickname: "Nano",
-        avatar: "./img/avatars/avatar4.jpg",
-        rating: 10087,
-        win: 467,
-        lose: 229,
-      },
-      {
-        position: 5,
-        nickname: "Mascarade",
-        avatar: "./img/avatars/avatar5.png",
-        rating: 10052,
-        win: 430,
-        lose: 187,
-      },
-    ];
-    topFivePlayers.forEach(e => {
-      const winRate = (e.win / (e.win + e.lose)) * 100;
-      $(".top_five").append(`
-       <div class="top_five_player">
-              <header class="position_nickname">
-                <div class="position"
-                  > <div class="crown"></div><div class="center font-10">${e.position}</div></div
-                >
-                <div class="name font-20 bold">${e.nickname}</div>
-              </header>
-              <div class="avatar"
-              style="background-image: url(${e.avatar})"
-              ></div>
-              <div class="raiting font-12"
-                ><span class="font-12 silver">Raiting</span> ${e.rating}</div
-              >
-              <div class="win_lose_rate">
-                <div class="win_rating silver font-12"
-                style="width: ${winRate}%"
-                >${e.win}</div>
-                <div class="lose_rating silver font-12">${e.lose}</div>
-              </div>
-              <div class="win_lose_rate_1">
-                <div class="win_rating_1 silver font-12">Win</div>
-                <div class="lose_rating_1 silver font-12">Lose</div>
-              </div>
-            </div>
-            
-  `);
-    });
+    topPlayers.topFiveInfoRender(topPlayers.topFive());
     // top 5-10 rating
-    const topTenPlayers = [
-      {
-        rank: 6,
-        battletag: "TLHasuObs",
-        rating: 10005,
-        winRate: 55.9,
-        played: 403,
-        win: 244,
-        role: "./img/roles/bruiser.png",
-        favoriteHero: [
-          "./img/heroes/Jaina_square_tile.png",
-          "./img/heroes/garrosh.jpg",
-          "./img/heroes/thrall.jpg",
-        ],
-      },
-      {
-        rank: 7,
-        battletag: "hornyD",
-        rating: 9969,
-        winRate: 72.7,
-        played: 239,
-        win: 145,
-        role: "./img/roles/ranged.png",
-        favoriteHero: [
-          "./img/heroes/hanzo.jpg",
-          "./img/heroes/gall.jpg",
-          "./img/heroes/keltuzad.jpg",
-        ],
-      },
-      {
-        rank: 8,
-        battletag: "ElMatador",
-        rating: 9605,
-        winRate: 88.3,
-        played: 322,
-        win: 176,
-        role: "./img/roles/support.png",
-        favoriteHero: [
-          "./img/heroes/mediv.jpg",
-          "./img/heroes/zeratul.jpg",
-          "./img/heroes/zarya.jpg",
-        ],
-      },
-      {
-        rank: 9,
-        battletag: "Vasko",
-        rating: 9426,
-        winRate: 68.1,
-        played: 132,
-        win: 74,
-        role: "./img/roles/melee.png",
-        favoriteHero: [
-          "./img/heroes/dva.jpg",
-          "./img/heroes/illidan.jpg",
-          "./img/heroes/maiev.jpg",
-        ],
-      },
-      {
-        rank: 10,
-        battletag: "Executor",
-        rating: 9422,
-        winRate: 54.4,
-        played: 584,
-        win: 325,
-        role: "./img/roles/tank.png",
-        favoriteHero: [
-          "./img/heroes/tyrael.jpg",
-          "./img/heroes/sylvana.jpg",
-          "./img/heroes/Uther_Hero_Portrait.png",
-        ],
-      },
-    ];
-    topTenPlayers.forEach(e => {
-      $(".top_ten_player").append(`
-    <div class="player_info">
-              <div class="battletag"
-                >&nbsp;&nbsp; ${e.rank}. &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${e.battletag}</div
-              >
-              <div class="rating">${e.rating}</div>
-              <div class="win_rate">${e.winRate}</div>
-              <div class="played_games">${e.played}</div>
-              <div class="wins">${e.win}</div>
-              <div class="fav_role">
-                <div class="role" 
-                style="background-image: url(${e.role})"
-                ></div>
-              </div>
-              <div class="fav_hero">
-                <div class="hero" style="background-image: url('${e.favoriteHero[0]}')"></div>
-                <div class="hero" style="background-image: url('${e.favoriteHero[1]}')"></div>
-                <div class="hero" style="background-image: url('${e.favoriteHero[2]}')"></div>
-              </div>
-            </div>`);
-    });
+
+    topPlayers.topTenInfoRenderer(topPlayers.topTen());
   }, 500);
 });
 
-$(".my_guides").on("click", () => {
+$(".my_guides a").on("click", () => {
+  const guides = new Guides();
   if (window.screen.width <= 768) {
     $(".nav ul").hide();
     menuDropped = false;
   }
   //preloader.
-  $(".content_renderer").html(`
-   <div id="hellopreloader">
-       <div id="hellopreloader_preload"></div>
-       <p>
-         <a href=""></a>
-       </p>
-     </div>
-   `);
+  preloader();
 
   //active
   $(".nav_list .active").removeClass("active");
   $(".my_guides a").addClass("active");
   setTimeout(() => {
-    $(".content_renderer").html(`
-  <div class="guides_main_wrapper">
-  <section class="header">Guides</section>
-  <section class="popular_heroes">
-    <header class="head_for_container">
-      <div class="caption black font-20">Popular heroes</div>
-      <div class="all_heroes silver font-14"
-        >All heroes &nbsp; &nbsp; &rarr;</div
-      >
-    </header>
-    <section class="hero_wrapper">
-      
-    </section>
-  </section>
-  <section class="trainers">
-    <header class="head_for_container">
-      <div class="caption black font-20">Trainers</div>
-      <div class="all_heroes silver font-14"
-        >All trainers &nbsp; &nbsp; &rarr;</div
-      >
-    </header>
-    <div class="trainer_wrapper">
-      
-    </div>
-  </section>
-  <section class="popular_guides">
-    <header class="head_for_container">
-      <select name="guides" class="guides">
-        <option value="popular">Popular</option>
-        <option value="viewed">Most viewed</option>
-        <option value="liked">Most liked</option>
-        <option value="shared">Most shared</option>
-      </select>
-      <div class="all_heroes silver font-14"
-        >All guides &nbsp; &nbsp; &rarr;</div
-      >
-    </header>
-    <div class="guides_wrapper">
-      
-      </div>
-    </div>
-  </section>
-</div>
-  `);
+    app.html(guides.markup());
 
     class Hero {
       constructor(name, roleImgUrl, role, heroImageUrl) {
@@ -1131,18 +386,11 @@ $(".my_guides").on("click", () => {
     // heroes on click interactive
     $(".hero_wrapper .hero").on("click", function (e) {
       //preloader.
-      $(".content_renderer").html(`
-   <div id="hellopreloader">
-       <div id="hellopreloader_preload"></div>
-       <p>
-         <a href=""></a>
-       </p>
-     </div>
-   `);
+      preloader();
       //content renderer
 
       setTimeout(() => {
-        $(".content_renderer").html(`
+        app.html(`
     <div class="hero_info_wrapper">
     <section class="header">Tyrael</section>
     <div class="content_hero_info">
@@ -1526,16 +774,9 @@ $(".header_account-mngr .chat").on("click", () => {
     $(".nav ul").hide();
     menuDropped = false;
   }
-  $(".content_renderer").html(`
-  <div id="hellopreloader">
-      <div id="hellopreloader_preload"></div>
-      <p>
-        <a href=""></a>
-      </p>
-    </div>
-  `);
+  preloader();
   setTimeout(() => {
-    $(".content_renderer").html(`
+    app.html(`
   <section class="message_content_wrapper">
             <section class="header"
               >InnaDakota
